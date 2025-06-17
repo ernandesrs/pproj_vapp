@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-neutral-900 rounded-lg p-5 w-full max-w-[475px] mx-auto">
+    <div class="bg-white shadow dark:bg-neutral-900 rounded-lg p-5 w-full max-w-[475px] mx-auto">
 
         <div class="flex justify-center gap-2.5">
             <RouterLink v-for="(link, index) in links" :key="index" :to="link.to">

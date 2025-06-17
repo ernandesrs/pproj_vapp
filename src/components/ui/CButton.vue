@@ -1,6 +1,6 @@
 <template>
     <button
-        class="relative duration-200 px-6 py-2.5 border border-transparent rounded-lg disabled:opacity-75 disabled:cursor-not-allowed"
+        class="relative text-neutral-50 duration-200 px-6 py-2.5 border border-transparent rounded-lg disabled:opacity-75 disabled:cursor-not-allowed"
         :class="getStyle">
 
         <!-- button loading content -->
