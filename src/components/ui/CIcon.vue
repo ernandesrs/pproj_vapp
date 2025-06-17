@@ -4,11 +4,7 @@
 
 <script setup lang="ts">
 
-export interface IconProps {
-    name: string,
-    prepend?: boolean,
-    append?: boolean,
-};
+import type { IconProps } from '@/types/components/ui/icon_type';
 
 const props = withDefaults(defineProps<IconProps>(), {
     name: 'app',
