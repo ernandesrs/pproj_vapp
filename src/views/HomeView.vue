@@ -17,6 +17,10 @@
 <script setup lang="ts">
 
 import CIcon from '@/components/ui/CIcon.vue';
+import { useAppSettings } from '@/composables/useAppSettings';
+import { onMounted } from 'vue';
+
+const { setAppTitle } = useAppSettings();
 
 const links = [
     {
@@ -30,6 +34,12 @@ const links = [
         to: { name: 'home' }
     }
 ];
+
+onMounted(() => {
+
+    setAppTitle('Home');
+
+});
 
 </script>
 

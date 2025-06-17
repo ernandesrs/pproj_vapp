@@ -17,8 +17,8 @@
             </main>
         </div>
         <footer class="text-sm text-neutral-600 font-medium">
-            Developed by <a class="text-violet-900 hover:text-violet-800 duration-200" href="https://github.com/ernandsrs" target="_blank"
-                title="Profile on Github">Ernands RS</a>
+            Developed by <a class="text-violet-900 hover:text-violet-800 duration-200"
+                href="https://github.com/ernandsrs" target="_blank" title="Profile on Github">Ernands RS</a>
         </footer>
     </div>
 </template>
