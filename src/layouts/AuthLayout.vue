@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-screen p-4 flex gap-5 flex-col justify-center items-center bg-neutral-950 text-white">
+    <div class="w-full h-screen p-4 flex gap-5 flex-col justify-center items-center bg-neutral-100 text-neutral-800 dark:bg-neutral-950 dark:text-white">
 
         <CToggle v-model="dark" icon-on-checked="moon-stars-fill" icon-on-unchecked="sun-fill"
             class="absolute top-4 right-6" />
@@ -17,8 +17,8 @@
                 <RouterView />
             </main>
         </div>
-        <footer class="text-sm text-neutral-600 font-medium">
-            Developed by <a class="text-violet-900 hover:text-violet-800 duration-200"
+        <footer class="text-sm text-neutral-400 dark:text-neutral-500">
+            Developed by <a class="text-violet-500 hover:text-violet-600 dark:text-violet-900 dark:hover:text-violet-800 duration-200"
                 href="https://github.com/ernandsrs" target="_blank" title="Profile on Github">Ernands RS</a>
         </footer>
     </div>
@@ -27,13 +27,16 @@
 <script setup lang="ts">
 
 import CToggle from '@/components/ui/CToggle.vue';
+import { useAppSettings } from '@/composables/useAppSettings';
 import { ref, watch } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 
-const dark = ref<boolean>(false);
+const { isDarkTheme, darkModeToggle } = useAppSettings();
+
+const dark = ref<boolean>(isDarkTheme());
 
 watch(() => dark.value, (n) => {
-    console.log('dark: ', n);
+    darkModeToggle();
 });
 
 </script>
