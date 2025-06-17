@@ -3,7 +3,7 @@
 
         <div class="flex justify-center gap-2.5">
             <RouterLink v-for="(link, index) in links" :key="index" :to="link.to">
-                <CButton :icon="link.icon" :label="link.label" color="primary" />
+                <CButton :icon="link.icon" :label="link.label" color="primary" variant="text" />
             </RouterLink>
         </div>
 
