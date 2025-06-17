@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-neutral-900 rounded-lg p-5 w-full max-w-[475px] mx-auto">
+    <div class="bg-white shadow dark:bg-neutral-900 rounded-lg p-5 w-full max-w-[475px] mx-auto">
         <div class="text-xl font-medium text-center mb-5">
             LOGIN
         </div>
