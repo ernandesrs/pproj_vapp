@@ -1,5 +1,9 @@
 <template>
     <div class="w-full h-screen p-4 flex gap-5 flex-col justify-center items-center bg-neutral-950 text-white">
+
+        <CToggle v-model="dark" icon-on-checked="moon-stars-fill" icon-on-unchecked="sun-fill"
+            class="absolute top-4 right-6" />
+
         <header class="flex flex-col items-center">
             <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="75" height="75" />
             <div class="text-center mt-4">
@@ -22,7 +26,15 @@
 
 <script setup lang="ts">
 
-import { RouterLink, RouterView } from 'vue-router'
+import CToggle from '@/components/ui/CToggle.vue';
+import { ref, watch } from 'vue';
+import { RouterLink, RouterView } from 'vue-router';
+
+const dark = ref<boolean>(false);
+
+watch(() => dark.value, (n) => {
+    console.log('dark: ', n);
+});
 
 </script>
 
