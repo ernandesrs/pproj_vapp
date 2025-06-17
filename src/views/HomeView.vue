@@ -2,12 +2,8 @@
     <div class="bg-neutral-900 rounded-lg p-5 w-full max-w-[475px] mx-auto">
 
         <div class="flex justify-center gap-2.5">
-            <RouterLink class="bg-violet-950 hover:bg-violet-900 duration-200 px-6 py-2.5 rounded-lg"
-                v-for="(link, index) in links" :key="index" :to="link.to">
-                <CIcon prepend :name="link.icon" />
-                <span class=" inline-block">
-                    {{ link.label }}
-                </span>
+            <RouterLink v-for="(link, index) in links" :key="index" :to="link.to">
+                <CButton :icon="link.icon" :label="link.label" color="primary" />
             </RouterLink>
         </div>
 
@@ -16,7 +12,7 @@
 
 <script setup lang="ts">
 
-import CIcon from '@/components/ui/CIcon.vue';
+import CButton from '@/components/ui/CButton.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { onMounted } from 'vue';
 
