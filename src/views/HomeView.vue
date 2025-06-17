@@ -27,7 +27,12 @@ const links = [
     {
         icon: 'box-arrow-in-right',
         label: 'Login',
-        to: { name: 'home' }
+        to: { name: 'auth.login' }
+    },
+    {
+        icon: 'person-plus',
+        label: 'Register',
+        to: { name: 'auth.register' }
     }
 ];
 
