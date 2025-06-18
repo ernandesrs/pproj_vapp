@@ -29,7 +29,7 @@
             ]" />
             <CInput class="col-span-12" v-model="formData.email" label="E-mail" type="email" />
 
-            <CUpload class="col-span-12" v-model="formData.photo" label="Drag and drop your photo here" multiple :error="'Jujubas'" />
+            <CUpload class="col-span-12" v-model="formData.photo" label="Drag and drop your photo here" multiple />
 
             <CInput class="col-span-12 sm:col-span-6" v-model="formData.password" label="Password" type="password" />
             <CInput class="col-span-12 sm:col-span-6" v-model="formData.password_confirmation"
