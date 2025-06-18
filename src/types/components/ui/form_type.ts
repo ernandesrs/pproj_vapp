@@ -5,4 +5,5 @@ export interface InputProps {
     label: string,
     type?: InputType,
     id?: string,
+    error?: string
 }
