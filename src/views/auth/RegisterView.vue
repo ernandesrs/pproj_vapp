@@ -28,12 +28,16 @@
                 }
             ]" />
             <CInput class="col-span-12" v-model="formData.email" label="E-mail" type="email" />
+
+            <CUpload class="col-span-12" v-model="formData.photo" label="Drag and drop your photo here" multiple />
+
             <CInput class="col-span-12 sm:col-span-6" v-model="formData.password" label="Password" type="password" />
             <CInput class="col-span-12 sm:col-span-6" v-model="formData.password_confirmation"
                 label="Password confirmation" type="password" />
 
             <div class="col-span-12 flex items-center justify-center gap-2.5">
-                <CToggle /> Accept <a href="#" class="text-violet-500">terms and conditions</a>
+                <CToggle v-model="formData.accept_terms" /> Accept <a href="#" class="text-violet-500">terms and
+                    conditions</a>
             </div>
 
             <div class="col-span-12 flex justify-center">
@@ -51,6 +55,7 @@ import CButton from '@/components/ui/CButton.vue';
 import CToggle from '@/components/ui/CToggle.vue';
 import CInput from '@/components/ui/form/CInput.vue';
 import CSelect from '@/components/ui/form/CSelect.vue';
+import CUpload from '@/components/ui/form/CUpload.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { onMounted, ref } from 'vue';
 
@@ -64,6 +69,8 @@ const formData = ref<{
     email: string,
     password: string,
     password_confirmation: string,
+    photo: Array<File>,
+    accept_terms: boolean
 }>({
     first_name: '',
     last_name: '',
@@ -72,6 +79,8 @@ const formData = ref<{
     email: '',
     password: '',
     password_confirmation: '',
+    photo: [],
+    accept_terms: false
 });
 
 onMounted(() => {
