@@ -43,6 +43,7 @@ const onFileInput = (e: Event) => {
 };
 
 const onDropFiles = (e: DragEvent) => {
+    isDragging.value = false;
     if (e.dataTransfer) {
         addFiles(e.dataTransfer.files);
     }
