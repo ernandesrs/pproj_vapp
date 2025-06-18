@@ -13,10 +13,28 @@
             <CInput class="col-span-12 sm:col-span-6" v-model="formData.first_name" label="First name" type="text" />
             <CInput class="col-span-12 sm:col-span-6" v-model="formData.last_name" label="Last name" type="text" />
             <CInput class="col-span-12 sm:col-span-6" v-model="formData.username" label="Username" type="text" />
+            <CSelect class="col-span-12 sm:col-span-6" v-model="formData.gender" label="Gender" :options="[
+                {
+                    label: 'None',
+                    value: 'none'
+                },
+                {
+                    label: 'Female',
+                    value: 'female'
+                },
+                {
+                    label: 'Male',
+                    value: 'male'
+                }
+            ]" />
             <CInput class="col-span-12" v-model="formData.email" label="E-mail" type="email" />
             <CInput class="col-span-12 sm:col-span-6" v-model="formData.password" label="Password" type="password" />
             <CInput class="col-span-12 sm:col-span-6" v-model="formData.password_confirmation"
                 label="Password confirmation" type="password" />
+
+            <div class="col-span-12 flex items-center justify-center gap-2.5">
+                <CToggle /> Accept <a href="#" class="text-violet-500">terms and conditions</a>
+            </div>
 
             <div class="col-span-12 flex justify-center">
                 <CButton icon="check-lg" label="Submit form" />
@@ -30,7 +48,9 @@
 <script setup lang="ts">
 
 import CButton from '@/components/ui/CButton.vue';
+import CToggle from '@/components/ui/CToggle.vue';
 import CInput from '@/components/ui/form/CInput.vue';
+import CSelect from '@/components/ui/form/CSelect.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { onMounted, ref } from 'vue';
 
@@ -40,6 +60,7 @@ const formData = ref<{
     first_name: string,
     last_name: string,
     username: string,
+    gender: string,
     email: string,
     password: string,
     password_confirmation: string,
@@ -47,6 +68,7 @@ const formData = ref<{
     first_name: '',
     last_name: '',
     username: '',
+    gender: '',
     email: '',
     password: '',
     password_confirmation: '',

@@ -16,15 +16,13 @@
                 'border-zinc-300 dark:border-zinc-700': !hasError,
                 'border-rose-500 dark:border-rose-800': hasError,
             }">
-                <input @focusin="focused = true" @focusout="focused = false" v-model="value"
-                    class="w-full h-full px-5 rounded-lg outline-0"
-                    :type="props.type == 'password' ? (showPassword ? 'text' : 'password') : props.type" :id="getId"
-                    :name="getId">
+                <select @focusin="focused = true" @focusout="focused = false" v-model="value"
+                    class="w-full h-full px-5 rounded-lg outline-0" :type="props.type" :id="getId" :name="getId">
+                    <option v-for="(option, index) in props.options" :key="'select_option_' + (index + 1)"
+                        :value="option.value" v-text="option.label">
+                    </option>
+                </select>
 
-                <button @click="showPassword = !showPassword" v-if="props.type == 'password'"
-                    class="size-9 mr-2.5 cursor-pointer">
-                    <CIcon :name="showPassword ? 'eye-slash-fill' : 'eye-fill'" />
-                </button>
             </div>
         </div>
 
@@ -34,22 +32,18 @@
 
 <script setup lang="ts">
 
-import type { InputProps } from '@/types/components/ui/form_type';
+import type { SelectProps } from '@/types/components/ui/form_type';
 import { computed, ref, watch } from 'vue';
-import CIcon from '../CIcon.vue';
 
 const emit = defineEmits(['update:modelValue']);
 
-const props = withDefaults(defineProps<InputProps>(), {
-    type: 'text'
-});
+const props = withDefaults(defineProps<SelectProps>(), {});
 
-const showPassword = ref<boolean>(false);
 const focused = ref<boolean>(false);
-const value = ref<string | number>(props.modelValue);
+const value = ref<string | number | object>(props.modelValue);
 
 const getId = computed((): string => {
-    return props.id ?? 'form_input_' + crypto.randomUUID();
+    return props.id ?? 'form_select_' + crypto.randomUUID();
 });
 
 const hasError = computed((): boolean => {
@@ -59,7 +53,6 @@ const hasError = computed((): boolean => {
 watch(() => value.value, (n) => {
     emit('update:modelValue', n);
 });
-
 
 </script>
 
