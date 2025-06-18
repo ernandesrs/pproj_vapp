@@ -17,7 +17,8 @@
                 'border-rose-500 dark:border-rose-800': hasError,
             }">
                 <select @focusin="focused = true" @focusout="focused = false" v-model="value"
-                    class="w-full h-full px-5 rounded-lg outline-0 bg-zinc-50 dark:bg-zinc-900" :type="props.type" :id="getId" :name="getId">
+                    class="w-full h-full px-5 rounded-lg outline-0 bg-zinc-50 dark:bg-zinc-900" :id="getId"
+                    :name="getId">
                     <option v-for="(option, index) in props.options" :key="'select_option_' + (index + 1)"
                         :value="option.value" v-text="option.label">
                     </option>

@@ -2,13 +2,13 @@ export type InputType = "text" | "email" | "password" | "number" | "date";
 
 interface BaseFormFieldProps {
     label: string,
-    type?: InputType,
     id?: string,
     error?: string
 };
 
 export interface InputProps extends BaseFormFieldProps {
     modelValue: string | number,
+    type?: InputType,
 };
 
 export interface SelectOption {
