@@ -40,8 +40,8 @@
                     id="password_confirmation" label="Password confirmation" type="password" />
 
                 <div class="col-span-12 flex items-center justify-center gap-2.5">
-                    <CToggle v-model="formData.accept_terms" /> Accept <a href="#" class="text-violet-500">terms and
-                        conditions</a>
+                    <CToggle v-model="formData.accept_terms" id="accept_terms"
+                        append-label="Accept terms and conditions" />
                 </div>
             </CForm>
 
@@ -70,6 +70,7 @@ const formDataSchema = yup.object({
     gender: yup.mixed().required().oneOf(Array().concat(['male', 'female'])),
     password: yup.string().required(),
     password_confirmation: yup.string().required(),
+    accept_terms: yup.boolean().isTrue('Precisa aceitar os termos')
 });
 
 const formData = ref<{
