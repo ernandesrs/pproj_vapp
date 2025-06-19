@@ -48,11 +48,11 @@
 
 import { ref, watch } from 'vue';
 import CIcon from '../CIcon.vue';
-import type { UplaodProps } from '@/types/components/ui/form_type';
+import type { UploadProps } from '@/types/components/ui/form_type';
 import { useBaseFormFields } from '@/composables/useBaseFormFields';
 
 const emit = defineEmits(['update:modelValue']);
-const props = withDefaults(defineProps<UplaodProps>(), {});
+const props = withDefaults(defineProps<UploadProps>(), {});
 
 const { getId, hasError, errorMessage } = useBaseFormFields(props.id, () => props.error);
 
