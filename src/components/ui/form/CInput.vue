@@ -28,14 +28,14 @@
             </div>
         </div>
 
-        <small v-if="hasError" v-text="props.error" class="text-red-600 dark:text-red-700 ml-2"></small>
+        <small v-if="hasError" v-text="errorMessage" class="text-red-600 dark:text-red-700 ml-2"></small>
     </div>
 </template>
 
 <script setup lang="ts">
 
 import type { InputProps } from '@/types/components/ui/form_type';
-import { computed, ref, watch } from 'vue';
+import { computed, inject, ref, watch } from 'vue';
 import CIcon from '../CIcon.vue';
 
 const emit = defineEmits(['update:modelValue']);
@@ -44,22 +44,38 @@ const props = withDefaults(defineProps<InputProps>(), {
     type: 'text'
 });
 
+const errors = inject('errors', null);
+
 const showPassword = ref<boolean>(false);
 const focused = ref<boolean>(false);
 const value = ref<string | number>(props.modelValue);
+const errorMessage = ref<string | undefined | null>(null);
 
 const getId = computed((): string => {
     return props.id ?? 'form_input_' + crypto.randomUUID();
 });
 
 const hasError = computed((): boolean => {
-    return (props.error ?? '').length == 0 ? false : true;
+    return (errorMessage.value ?? '').length == 0 ? false : true;
 });
 
 watch(() => value.value, (n) => {
     emit('update:modelValue', n);
 });
 
+watch(() => props.error, (n) => {
+    errorMessage.value = n;
+}, { immediate: true });
+
+watch(() => errors, (n) => {
+    const msg = errors.value[props.id];
+
+    if (msg) {
+        errorMessage.value = msg;
+    } else {
+        errorMessage.value = null;
+    }
+}, { deep: true });
 
 </script>
 

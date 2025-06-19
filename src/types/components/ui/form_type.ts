@@ -2,7 +2,7 @@ export type InputType = "text" | "email" | "password" | "number" | "date";
 
 interface BaseFormFieldProps {
     label: string,
-    id?: string,
+    id: string,
     error?: string
 };
 
@@ -25,3 +25,9 @@ export interface UplaodProps extends BaseFormFieldProps {
     modelValue: Array<File>,
     multiple?: boolean
 };
+
+export interface FormProps {
+    data: any,
+    validationSchema?: any,
+    submitText?: string
+}
