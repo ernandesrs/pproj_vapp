@@ -6,10 +6,6 @@
 
         <div class="grid grid-cols-12 gap-5">
 
-            <div class="col-span-12 flex justify-center">
-                {{ formData }}
-            </div>
-
             <CForm :data="formData" :validation-schema="formDataSchema" class="col-span-12">
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.first_name" id="first_name"
                     label="First name" type="text" />
@@ -39,8 +35,6 @@
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.password_confirmation"
                     id="password_confirmation" label="Password confirmation" type="password" />
 
-                <CUpload class="col-span-12" v-model="formData.photo" id="photo" label="Upload de foto" />
-
                 <div class="col-span-12 flex items-center justify-center gap-2.5">
                     <CToggle v-model="formData.accept_terms" id="accept_terms" label="Accept terms and conditions"
                         right-label />
@@ -60,7 +54,6 @@ import CInput from '@/components/ui/form/CInput.vue';
 import CSelect from '@/components/ui/form/CSelect.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { onMounted, ref } from 'vue';
-import CUpload from '@/components/ui/form/CUpload.vue';
 import { yupValidator } from '@/utils/validator';
 
 const { setAppTitle } = useAppSettings();
@@ -71,7 +64,6 @@ const formDataSchema = yupValidator.object({
     username: yupValidator.string().required(),
     email: yupValidator.string().required().email(),
     gender: yupValidator.mixed().required().oneOf(Array().concat(['male', 'female'])),
-    photo: yupValidator.mixed().allowedMimeTypes(['image/jpg', 'image/jpeg', 'image/png']).minSize(0.25).maxSize(1),
     password: yupValidator.string().required().confirmedPassword(),
     accept_terms: yupValidator.boolean().isTrue('Accept our terms')
 });
@@ -84,7 +76,6 @@ const formData = ref<{
     email: string,
     password: string,
     password_confirmation: string,
-    photo: Array<File>,
     accept_terms: boolean
 }>({
     first_name: '',
@@ -94,7 +85,6 @@ const formData = ref<{
     email: '',
     password: '',
     password_confirmation: '',
-    photo: [],
     accept_terms: false
 });
 
