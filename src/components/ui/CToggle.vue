@@ -38,7 +38,7 @@ const props = withDefaults(defineProps<ToggleProps>(), {
 const checked = ref<boolean>(props.modelValue);
 
 const getId = computed(() => {
-    return 'toggle_' + crypto.randomUUID();
+    return props.id ? props.id : 'toggle_' + crypto.randomUUID();
 });
 
 watch(() => props.modelValue, (n) => {
