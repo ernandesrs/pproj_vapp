@@ -67,7 +67,9 @@ const formDataSchema = yup.object({
     last_name: yup.string().required(),
     username: yup.string().required(),
     email: yup.string().required().email(),
-    gender: yup.mixed().required().oneOf(Array().concat(['male', 'female']))
+    gender: yup.mixed().required().oneOf(Array().concat(['male', 'female'])),
+    password: yup.string().required(),
+    password_confirmation: yup.string().required(),
 });
 
 const formData = ref<{
