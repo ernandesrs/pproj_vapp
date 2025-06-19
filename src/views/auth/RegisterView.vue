@@ -39,6 +39,8 @@
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.password_confirmation"
                     id="password_confirmation" label="Password confirmation" type="password" />
 
+                <CUpload class="col-span-12" v-model="formData.photo" id="photo" label="Upload de foto" error="Lorem dolro sit error error message" />
+
                 <div class="col-span-12 flex items-center justify-center gap-2.5">
                     <CToggle v-model="formData.accept_terms" id="accept_terms" label="Accept terms and conditions"
                         right-label />
@@ -59,6 +61,7 @@ import CSelect from '@/components/ui/form/CSelect.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { onMounted, ref } from 'vue';
 import * as yup from 'yup';
+import CUpload from '@/components/ui/form/CUpload.vue';
 
 const { setAppTitle } = useAppSettings();
 

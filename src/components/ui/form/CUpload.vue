@@ -40,18 +40,21 @@
             </div>
         </div>
 
-        <small v-if="hasError" v-text="props.error" class="text-red-600 dark:text-red-700 ml-2"></small>
+        <small v-if="hasError" v-text="errorMessage" class="text-red-600 dark:text-red-700 ml-2"></small>
     </div>
 </template>
 
 <script setup lang="ts">
 
-import { computed, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import CIcon from '../CIcon.vue';
 import type { UplaodProps } from '@/types/components/ui/form_type';
+import { useBaseFormFields } from '@/composables/useBaseFormFields';
 
 const emit = defineEmits(['update:modelValue']);
 const props = withDefaults(defineProps<UplaodProps>(), {});
+
+const { getId, hasError, errorMessage } = useBaseFormFields(props.id, () => props.error);
 
 const isDragging = ref<boolean>(false);
 
@@ -89,14 +92,6 @@ const addFiles = (filesList: FileList) => {
 const deleteFile = (index: number) => {
     files.value = files.value.filter((file, fileIndex) => index !== fileIndex);
 };
-
-const hasError = computed(() => {
-    return props.error && props.error.length > 0 ? true : false;
-});
-
-const getId = computed(() => {
-    return props.id ?? 'form_upload_' + crypto.randomUUID();
-});
 
 watch(() => files.value, (n) => {
     emit('update:modelValue', n);
