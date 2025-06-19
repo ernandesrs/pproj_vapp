@@ -33,39 +33,22 @@
 
 <script setup lang="ts">
 
+import { useBaseFormFields } from '@/composables/useBaseFormFields';
 import type { SelectProps } from '@/types/components/ui/form_type';
-import { computed, inject, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 
 const emit = defineEmits(['update:modelValue']);
 
 const props = withDefaults(defineProps<SelectProps>(), {});
 
-const errors = inject<Record<string, string>>('errors', {});
+const { getId, hasError, errorMessage } = useBaseFormFields(props.id, () => props.error);
 
 const focused = ref<boolean>(false);
 const value = ref<string | number | object>(props.modelValue);
-const errorMessage = ref<string | undefined | null>(null);
-
-const getId = computed((): string => {
-    return props.id ?? 'form_select_' + crypto.randomUUID();
-});
-
-const hasError = computed((): boolean => {
-    return (errorMessage.value ?? '').length == 0 ? false : true;
-});
 
 watch(() => value.value, (n) => {
     emit('update:modelValue', n);
 });
-
-watch(() => props.error, (n) => {
-    errorMessage.value = n;
-}, { immediate: true });
-
-watch(() => errors, () => {
-    const inputError = Object.entries(errors.value).find((err) => err[0] === props.id);
-    errorMessage.value = inputError ? inputError[1] : null;
-}, { deep: true });
 
 </script>
 
