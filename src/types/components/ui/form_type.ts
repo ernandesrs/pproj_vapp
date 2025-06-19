@@ -28,6 +28,13 @@ export interface UplaodProps extends BaseFormFieldProps {
     multiple?: boolean
 };
 
+export interface ToggleProps extends BaseFormFieldProps {
+    modelValue: boolean,
+    iconOnChecked?: string,
+    iconOnUnchecked?: string,
+    rightLabel?: boolean
+};
+
 export interface FormProps {
     data: any,
     validationSchema?: AnySchema,

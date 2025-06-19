@@ -40,8 +40,8 @@
                     id="password_confirmation" label="Password confirmation" type="password" />
 
                 <div class="col-span-12 flex items-center justify-center gap-2.5">
-                    <CToggle v-model="formData.accept_terms" id="accept_terms"
-                        append-label="Accept terms and conditions" />
+                    <CToggle v-model="formData.accept_terms" id="accept_terms" label="Accept terms and conditions"
+                        right-label />
                 </div>
             </CForm>
 
@@ -52,7 +52,7 @@
 
 <script setup lang="ts">
 
-import CToggle from '@/components/ui/CToggle.vue';
+import CToggle from '@/components/ui/form/CToggle.vue';
 import CForm from '@/components/ui/form/CForm.vue';
 import CInput from '@/components/ui/form/CInput.vue';
 import CSelect from '@/components/ui/form/CSelect.vue';

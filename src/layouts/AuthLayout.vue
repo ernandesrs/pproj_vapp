@@ -1,7 +1,7 @@
 <template>
     <div class="w-full h-screen p-4 flex gap-5 flex-col justify-center items-center bg-neutral-100 text-neutral-800 dark:bg-neutral-950 dark:text-white">
 
-        <CToggle v-model="dark" icon-on-checked="moon-stars-fill" icon-on-unchecked="sun-fill"
+        <CToggle v-model="dark" icon-on-checked="moon-stars-fill" icon-on-unchecked="sun-fill" label="Dark mode"
             class="absolute top-4 right-6" />
 
         <header class="flex flex-col items-center">
