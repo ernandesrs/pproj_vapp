@@ -70,7 +70,7 @@ const formDataSchema = yup.object({
     gender: yup.mixed().required().oneOf(Array().concat(['male', 'female'])),
     password: yup.string().required(),
     password_confirmation: yup.string().required(),
-    accept_terms: yup.boolean().isTrue('Precisa aceitar os termos')
+    accept_terms: yup.boolean().isTrue('Accept our terms')
 });
 
 const formData = ref<{
