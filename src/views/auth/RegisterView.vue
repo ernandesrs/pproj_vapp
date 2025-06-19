@@ -39,7 +39,7 @@
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.password_confirmation"
                     id="password_confirmation" label="Password confirmation" type="password" />
 
-                <CUpload class="col-span-12" v-model="formData.photo" id="photo" label="Upload de foto" error="Lorem dolro sit error error message" />
+                <CUpload class="col-span-12" v-model="formData.photo" id="photo" label="Upload de foto" />
 
                 <div class="col-span-12 flex items-center justify-center gap-2.5">
                     <CToggle v-model="formData.accept_terms" id="accept_terms" label="Accept terms and conditions"
@@ -60,20 +60,21 @@ import CInput from '@/components/ui/form/CInput.vue';
 import CSelect from '@/components/ui/form/CSelect.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { onMounted, ref } from 'vue';
-import * as yup from 'yup';
 import CUpload from '@/components/ui/form/CUpload.vue';
+import { yupValidator } from '@/utils/validator';
 
 const { setAppTitle } = useAppSettings();
 
-const formDataSchema = yup.object({
-    first_name: yup.string().required(),
-    last_name: yup.string().required(),
-    username: yup.string().required(),
-    email: yup.string().required().email(),
-    gender: yup.mixed().required().oneOf(Array().concat(['male', 'female'])),
-    password: yup.string().required(),
-    password_confirmation: yup.string().required(),
-    accept_terms: yup.boolean().isTrue('Accept our terms')
+const formDataSchema = yupValidator.object({
+    first_name: yupValidator.string().required(),
+    last_name: yupValidator.string().required(),
+    username: yupValidator.string().required(),
+    email: yupValidator.string().required().email(),
+    gender: yupValidator.mixed().required().oneOf(Array().concat(['male', 'female'])),
+    photo: yupValidator.mixed().required().allowedMimeTypes(['image/jpg', 'image/jpeg']),
+    password: yupValidator.string().required(),
+    password_confirmation: yupValidator.string().required(),
+    accept_terms: yupValidator.boolean().isTrue('Accept our terms')
 });
 
 const formData = ref<{
