@@ -1,6 +1,10 @@
 import * as yup from 'yup';
 
 declare module 'yup' {
+    interface StringSchema<TType = string, TContext = any, TDefault = undefined, TFlags = {}> {
+        confirmedPassword(errorMessage?: string): this;
+    }
+
     interface MixedSchema<TType = any, TContext = any, TDefault = undefined, TFlags = {}> {
         allowedMimeTypes(types: string[], errorMessage?: string): this;
         maxSize(mb: number, errorMessage?: string): this;
@@ -8,13 +12,24 @@ declare module 'yup' {
     }
 };
 
+yup.addMethod(yup.string, 'confirmedPassword', function (message?: string) {
+    return this.test('confirmed-password', message || "The passwords entered don't match", (password, context) => {
+        const confirmation = context.parent?.password_confirmation;
+
+        if (!confirmation) {
+            return context.createError({ path: 'password', message: 'Requires password confirmation' });
+        }
+
+        return confirmation === password;
+    });
+});
+
 yup.addMethod(yup.mixed, 'allowedMimeTypes', function (mimeTypes: string[], message?: string) {
     return this.test('allowed-mime-types', message || 'Invalid file type', (fileOrFiles: File | File[] | null | undefined) => {
         if (!fileOrFiles) return true;
 
         const files = Array.isArray(fileOrFiles) ? fileOrFiles : [fileOrFiles];
         return files.every(file => {
-            console.log(file.type, mimeTypes);
             return mimeTypes.includes(file.type)
         });
     });

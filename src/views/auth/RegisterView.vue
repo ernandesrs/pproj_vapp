@@ -72,8 +72,7 @@ const formDataSchema = yupValidator.object({
     email: yupValidator.string().required().email(),
     gender: yupValidator.mixed().required().oneOf(Array().concat(['male', 'female'])),
     photo: yupValidator.mixed().allowedMimeTypes(['image/jpg', 'image/jpeg', 'image/png']).minSize(0.25).maxSize(1),
-    password: yupValidator.string().required(),
-    password_confirmation: yupValidator.string().required(),
+    password: yupValidator.string().required().confirmedPassword(),
     accept_terms: yupValidator.boolean().isTrue('Accept our terms')
 });
 
