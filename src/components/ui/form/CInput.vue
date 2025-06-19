@@ -21,7 +21,7 @@
                     :type="props.type == 'password' ? (showPassword ? 'text' : 'password') : props.type" :id="getId"
                     :name="getId">
 
-                <button @click="showPassword = !showPassword" v-if="props.type == 'password'"
+                <button type="button" @click="showPassword = !showPassword" v-if="props.type == 'password'"
                     class="size-9 mr-2.5 cursor-pointer">
                     <CIcon :name="showPassword ? 'eye-slash-fill' : 'eye-fill'" />
                 </button>

@@ -1,7 +1,7 @@
 <template>
     <button
         class="relative text-neutral-50 duration-200 px-6 py-2.5 border border-transparent rounded-lg disabled:opacity-75 disabled:cursor-not-allowed"
-        :class="getStyle">
+        :class="getStyle" :type="props.type">
 
         <!-- button loading content -->
         <div v-if="props.loading"
@@ -49,6 +49,7 @@ import CIcon from './CIcon.vue';
 import { computed } from 'vue';
 
 const props = withDefaults(defineProps<ButtonProps>(), {
+    type: 'button',
     color: 'primary',
     variant: 'filled'
 });

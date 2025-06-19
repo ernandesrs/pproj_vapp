@@ -18,7 +18,7 @@
                     <span>{{ props.label }}</span>
                 </div>
 
-                <button @click="inputRef ? inputRef.click() : ''"
+                <button type="button" @click="inputRef ? inputRef.click() : ''"
                     class="cursor-pointer bg-zinc-200 dark:bg-zinc-800 text-zinc-500 dark:text-white shadow-sm size-10 rounded-lg">
                     <CIcon name="upload" />
                 </button>
@@ -33,7 +33,7 @@
                 <div class="text-xs">
                     {{ file.name }}...{{ file.type }}
                 </div>
-                <button @click="deleteFile(index)"
+                <button type="button" @click="deleteFile(index)"
                     class="cursor-pointer size-5 bg-rose-600 hover:bg-rose-700 duration-200 text-white rounded-full flex items-center justify-center">
                     <CIcon name="x" />
                 </button>
