@@ -15,15 +15,16 @@
 import type { FormProps } from '@/types/components/ui/form_type';
 import CButton from '../CButton.vue';
 import { provide, ref } from 'vue';
+import { ValidationError } from 'yup';
 
 const props = withDefaults(defineProps<FormProps>(), {
     submitText: 'Submit form'
 });
 
-const validationErrors = ref<Record<string, string | string[]>>({});
+const validationErrors = ref<Record<string, string>>({});
 
 const onSubmit = async () => {
-    if (props.validationSchema && !(await validate())) {
+    if (!(await validate())) {
         // Validation fail
         return;
     }
@@ -35,14 +36,26 @@ const onSubmit = async () => {
 const validate = async (): Promise<boolean> => {
     validationErrors.value = {};
 
-    try {
-        await props.validationSchema.validate(props.data, { strict: true, abortEarly: false });
+    if (!props.validationSchema) {
         return true;
-    } catch (error) {
-        const errors = error.inner as [];
-        errors.map((err) => {
-            validationErrors.value[err.path] = err.message;
+    }
+
+    try {
+        await props.validationSchema.validate(props.data, {
+            strict: true,
+            abortEarly: false
         });
+        return true;
+    } catch (error: unknown) {
+        if (error instanceof ValidationError) {
+            error.inner.forEach((err: ValidationError) => {
+                if (err.path) {
+                    validationErrors.value[err.path] = err.message;
+                }
+            });
+        } else {
+            console.error('Unexpected error:', error);
+        }
         return false;
     }
 };

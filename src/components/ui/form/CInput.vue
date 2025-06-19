@@ -44,7 +44,7 @@ const props = withDefaults(defineProps<InputProps>(), {
     type: 'text'
 });
 
-const errors = inject('errors', null);
+const errors = inject<Record<string, string>>('errors', {});
 
 const showPassword = ref<boolean>(false);
 const focused = ref<boolean>(false);
@@ -67,14 +67,10 @@ watch(() => props.error, (n) => {
     errorMessage.value = n;
 }, { immediate: true });
 
-watch(() => errors, (n) => {
-    const msg = errors.value[props.id];
+watch(() => errors, () => {
+    const inputError = Object.entries(errors.value).find((err) => err[0] === props.id);
 
-    if (msg) {
-        errorMessage.value = msg;
-    } else {
-        errorMessage.value = null;
-    }
+    errorMessage.value = inputError ? inputError[1] : null;
 }, { deep: true });
 
 </script>

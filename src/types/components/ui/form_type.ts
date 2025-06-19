@@ -1,3 +1,5 @@
+import type { AnySchema } from "yup";
+
 export type InputType = "text" | "email" | "password" | "number" | "date";
 
 interface BaseFormFieldProps {
@@ -28,6 +30,6 @@ export interface UplaodProps extends BaseFormFieldProps {
 
 export interface FormProps {
     data: any,
-    validationSchema?: any,
+    validationSchema?: AnySchema,
     submitText?: string
-}
+};

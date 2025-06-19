@@ -40,7 +40,7 @@ const emit = defineEmits(['update:modelValue']);
 
 const props = withDefaults(defineProps<SelectProps>(), {});
 
-const errors = inject('errors', null);
+const errors = inject<Record<string, string>>('errors', {});
 
 const focused = ref<boolean>(false);
 const value = ref<string | number | object>(props.modelValue);
@@ -62,14 +62,9 @@ watch(() => props.error, (n) => {
     errorMessage.value = n;
 }, { immediate: true });
 
-watch(() => errors, (n) => {
-    const msg = errors.value[props.id];
-
-    if (msg) {
-        errorMessage.value = msg;
-    } else {
-        errorMessage.value = null;
-    }
+watch(() => errors, () => {
+    const inputError = Object.entries(errors.value).find((err) => err[0] === props.id);
+    errorMessage.value = inputError ? inputError[1] : null;
 }, { deep: true });
 
 </script>
