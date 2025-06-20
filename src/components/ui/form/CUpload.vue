@@ -56,7 +56,7 @@ const props = withDefaults(defineProps<UploadProps>(), {
     allowedMimeTypes: () => []
 });
 
-const { getId, hasError, errorMessage } = useBaseFormFields(props.id, () => props.error);
+const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props.id, () => props.error, () => props.validationRule);
 
 const isDragging = ref<boolean>(false);
 
@@ -108,6 +108,8 @@ const addFiles = (filesList: FileList) => {
             count = filesList.length;
         }
     } while (count < filesList.length);
+
+    validateField(files.value);
 };
 
 const deleteFile = (index: number) => {

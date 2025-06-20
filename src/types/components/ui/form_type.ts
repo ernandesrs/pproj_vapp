@@ -1,11 +1,12 @@
-import type { AnySchema } from "yup";
+import type { AnySchema, Schema } from "yup";
 
 export type InputType = "text" | "email" | "password" | "number" | "date";
 
 interface BaseFormFieldProps {
     label: string,
     id: string,
-    error?: string
+    error?: string,
+    validationRule?: Schema<any>
 };
 
 export interface InputProps extends BaseFormFieldProps {

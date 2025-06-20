@@ -16,8 +16,10 @@
                 'border-zinc-300 dark:border-zinc-700': !hasError,
                 'border-rose-500 dark:border-rose-800': hasError,
             }">
-                <input @focusin="focused = true" @focusout="focused = false" v-model="value"
-                    class="w-full h-full px-5 rounded-lg outline-0"
+                <input @focusin="focused = true" @focusout="() => {
+                    validateField(value);
+                    focused = false;
+                }" v-model="value" class="w-full h-full px-5 rounded-lg outline-0"
                     :type="props.type == 'password' ? (showPassword ? 'text' : 'password') : props.type" :id="getId"
                     :name="getId">
 
@@ -45,7 +47,7 @@ const props = withDefaults(defineProps<InputProps>(), {
     type: 'text'
 });
 
-const { getId, hasError, errorMessage } = useBaseFormFields(props.id, () => props.error);
+const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props.id, () => props.error, () => props.validationRule);
 
 const showPassword = ref<boolean>(false);
 const focused = ref<boolean>(false);

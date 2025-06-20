@@ -1,9 +1,34 @@
-import { computed, inject, ref, watch } from "vue";
+import { computed, inject, ref, watch, type Ref } from "vue";
+import type { Schema } from "yup";
 
-export function useBaseFormFields(id: string, externalError?: () => string | undefined) {
+export function useBaseFormFields(id: string, externalError?: () => string | undefined, validationRules?: () => Schema<any> | undefined) {
     // vars
-    const errors = inject<Record<string, string>>('errors', {});
+    const errors = inject<Ref<Record<string, string>>>('errors', ref({}))
     const errorMessage = ref<string | null>(null);
+
+    // methods
+    const validateField = async (value: any) => {
+        if (!validationRules) {
+            return true;
+        }
+
+        const schema = validationRules();
+        if (!schema) return true;
+
+        errorMessage.value = null;
+        delete errors.value[id]; // errors.value[id] = '';
+
+        try {
+            await schema.validate(value);
+            return true;
+        } catch (err) {
+            if (err instanceof Error) {
+                errorMessage.value = err.message;
+                errors.value[id] = err.message;
+            }
+            return false;
+        }
+    };
 
     // computeds
     const getId = computed(() => id);
@@ -22,6 +47,7 @@ export function useBaseFormFields(id: string, externalError?: () => string | und
 
     return {
         errorMessage,
+        validateField,
         hasError,
         getId
     };

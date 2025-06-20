@@ -29,10 +29,15 @@ const validationErrors = ref<Record<string, string>>({});
 const submitting = ref<boolean>(false);
 
 const onSubmit = async () => {
+    if (Object.entries(validationErrors.value).length > 0) {
+        // Validation on one or more fields, with validation rule fails
+        return;
+    }
+
     const validatedData = await validate();
 
     if (!validatedData) {
-        // Validation fail
+        // Validation on form, with validation schema fails
         return;
     }
 

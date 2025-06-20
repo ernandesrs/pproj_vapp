@@ -16,9 +16,11 @@
                 'border-zinc-300 dark:border-zinc-700': !hasError,
                 'border-rose-500 dark:border-rose-800': hasError,
             }">
-                <select @focusin="focused = true" @focusout="focused = false" v-model="value"
-                    class="w-full h-full px-5 rounded-lg outline-0 bg-zinc-50 dark:bg-zinc-900" :id="getId"
-                    :name="getId">
+                <select @focusin="focused = true" @focusout="() => {
+                    validateField(value);
+                    focused = false;
+                }" v-model="value" class="w-full h-full px-5 rounded-lg outline-0 bg-zinc-50 dark:bg-zinc-900"
+                    :id="getId" :name="getId">
                     <option v-for="(option, index) in props.options" :key="'select_option_' + (index + 1)"
                         :value="option.value" v-text="option.label">
                     </option>
@@ -41,7 +43,7 @@ const emit = defineEmits(['update:modelValue']);
 
 const props = withDefaults(defineProps<SelectProps>(), {});
 
-const { getId, hasError, errorMessage } = useBaseFormFields(props.id, () => props.error);
+const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props.id, () => props.error, () => props.validationRule);
 
 const focused = ref<boolean>(false);
 const value = ref<string | number | object>(props.modelValue);

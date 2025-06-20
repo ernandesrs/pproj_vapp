@@ -9,7 +9,7 @@
             <CForm :on-submit="onSubmit" :data="formData" :validation-schema="formDataSchema"
                 :external-errors="externalErrors" class="col-span-12">
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.first_name" id="first_name"
-                    label="First name" type="text" />
+                    label="First name" type="text" :validation-rule="yupValidator.string().required().min(5)" />
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.last_name" id="last_name" label="Last name"
                     type="text" />
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.username" id="username" label="Username"
@@ -28,7 +28,7 @@
                             label: 'Male',
                             value: 'male'
                         }
-                    ]" />
+                    ]" :validation-rule="yupValidator.mixed().oneOf(['male', 'female'])" />
                 <CInput class="col-span-12" v-model="formData.email" id="email" label="E-mail" type="email" />
 
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.password" id="password" label="Password"
@@ -36,9 +36,12 @@
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.password_confirmation"
                     id="password_confirmation" label="Password confirmation" type="password" />
 
+                <CUpload class="col-span-12" v-model="p" label="Upload" id="p"
+                    :validation-rule="yupValidator.mixed().allowedMimeTypes(['image/jpg', 'image/jpeg'])" />
+
                 <div class="col-span-12 flex items-center justify-center gap-2.5">
                     <CToggle v-model="formData.accept_terms" id="accept_terms" label="Accept terms and conditions"
-                        right-label />
+                        right-label :validation-rule="yupValidator.boolean().isFalse()" />
                 </div>
             </CForm>
 
@@ -56,9 +59,10 @@ import CSelect from '@/components/ui/form/CSelect.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { onMounted, ref } from 'vue';
 import { yupValidator } from '@/utils/validator';
+import CUpload from '@/components/ui/form/CUpload.vue';
 
 const { setAppTitle } = useAppSettings();
-
+const p = ref<Array<File>>([]);
 const formDataSchema = yupValidator.object({
     first_name: yupValidator.string().required(),
     last_name: yupValidator.string().required(),

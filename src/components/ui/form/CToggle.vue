@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<ToggleProps>(), {
     iconOnUnchecked: 'x',
 });
 
-const { getId, hasError, errorMessage } = useBaseFormFields(props.id, () => props.error);
+const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props.id, () => props.error, () => props.validationRule);
 
 const checked = ref<boolean>(props.modelValue);
 
@@ -35,6 +35,7 @@ watch(() => props.modelValue, (n) => {
 watch(() => checked.value, (n) => {
     emit('update:modelValue', n);
     n ? emit('checked', true) : emit('unchecked', false);
+    validateField(n);
 });
 
 </script>
