@@ -6,7 +6,7 @@
 
         <div>
             <CForm :on-submit="onSubmit" :data="loginForm" :validation-schema="loginValidationSchema"
-                submit-text="Login">
+                :external-errors="externalErrors" submit-text="Login">
                 <CInput class="col-span-12" v-model="loginForm.email" type="email" label="E-mail" id="email" />
                 <CInput class="col-span-12" v-model="loginForm.password" type="password" label="Password"
                     id="password" />
@@ -36,6 +36,8 @@ const loginValidationSchema = yupValidator.object({
     remember: yupValidator.boolean()
 });
 
+const externalErrors = ref<Record<string, string>>({});
+
 const loginForm = ref<{
     email: string,
     password: string,
@@ -46,12 +48,14 @@ const loginForm = ref<{
     remember: false
 });
 
-const onSubmit = async (validated: any): Promise<void> => {
+const onSubmit = async (validated: any): Promise<void | unknown> => {
     return new Promise((resolve) => {
         setTimeout(() => {
             console.log(validated);
-            resolve();
+            resolve({});
         }, 5000);
+    }).catch((e) => {
+        externalErrors.value = e.validation_errors;
     });
 };
 

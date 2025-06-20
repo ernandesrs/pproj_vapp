@@ -17,7 +17,7 @@
 
 import type { FormProps } from '@/types/components/ui/form_type';
 import CButton from '../CButton.vue';
-import { provide, ref } from 'vue';
+import { provide, ref, watch } from 'vue';
 import { ValidationError } from 'yup';
 
 const props = withDefaults(defineProps<FormProps>(), {
@@ -69,6 +69,12 @@ const validate = async (): Promise<boolean> => {
         return false;
     }
 };
+
+watch(() => props.externalErrors, (n) => {
+    if (n) {
+        validationErrors.value = n;
+    }
+}, { deep: true, immediate: true });
 
 provide('errors', validationErrors);
 
