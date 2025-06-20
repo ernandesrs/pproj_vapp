@@ -25,7 +25,7 @@ export interface SelectProps extends BaseFormFieldProps {
 
 export interface UploadProps extends BaseFormFieldProps {
     modelValue: Array<File>,
-    multiple?: boolean,
+    limit?: number,
     allowedMimeTypes?: Array<string>
 };
 

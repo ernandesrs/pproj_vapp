@@ -10,8 +10,7 @@
             'border-rose-500 dark:border-rose-800': hasError,
         }">
             <input @input="onFileInput" ref="inputRef" type="file" :id="getId" :name="getId" class="hidden"
-                :multiple="props.multiple ? true : false"
-                :accept="props.allowedMimeTypes ? props.allowedMimeTypes.join(',') : ''">
+                :multiple="isMultiple" :accept="props.allowedMimeTypes ? props.allowedMimeTypes.join(',') : ''">
 
             <div dropzone @dragover.prevent="isDragging = true" @dragleave.prevent="isDragging = false"
                 @drop.prevent="onDropFiles" class="w-full h-full relative flex gap-2.5 items-center p-2.5 rounded-lg">
@@ -47,7 +46,7 @@
 
 <script setup lang="ts">
 
-import { ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import CIcon from '../CIcon.vue';
 import type { UploadProps } from '@/types/components/ui/form_type';
 import { useBaseFormFields } from '@/composables/useBaseFormFields';
@@ -105,7 +104,7 @@ const addFiles = (filesList: FileList) => {
 
         count++;
 
-        if (!props.multiple) {
+        if (!isMultiple.value || props.limit == count) {
             count = filesList.length;
         }
     } while (count < filesList.length);
@@ -114,6 +113,10 @@ const addFiles = (filesList: FileList) => {
 const deleteFile = (index: number) => {
     files.value = files.value.filter((file, fileIndex) => index !== fileIndex);
 };
+
+const isMultiple = computed((): boolean => {
+    return props.limit && props.limit > 1 ? true : false;
+});
 
 watch(() => files.value, (n) => {
     emit('update:modelValue', n);
