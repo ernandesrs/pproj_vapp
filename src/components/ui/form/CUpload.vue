@@ -10,7 +10,8 @@
             'border-rose-500 dark:border-rose-800': hasError,
         }">
             <input @input="onFileInput" ref="inputRef" type="file" :id="getId" :name="getId" class="hidden"
-                :multiple="props.multiple ? true : false">
+                :multiple="props.multiple ? true : false"
+                :accept="props.allowedMimeTypes ? props.allowedMimeTypes.join(',') : ''">
 
             <div dropzone @dragover.prevent="isDragging = true" @dragleave.prevent="isDragging = false"
                 @drop.prevent="onDropFiles" class="w-full h-full relative flex gap-2.5 items-center p-2.5 rounded-lg">
@@ -52,7 +53,9 @@ import type { UploadProps } from '@/types/components/ui/form_type';
 import { useBaseFormFields } from '@/composables/useBaseFormFields';
 
 const emit = defineEmits(['update:modelValue']);
-const props = withDefaults(defineProps<UploadProps>(), {});
+const props = withDefaults(defineProps<UploadProps>(), {
+    allowedMimeTypes: () => []
+});
 
 const { getId, hasError, errorMessage } = useBaseFormFields(props.id, () => props.error);
 
@@ -75,6 +78,7 @@ const onFileInput = (e: Event) => {
 
 const onDropFiles = (e: DragEvent) => {
     isDragging.value = false;
+
     if (e.dataTransfer) {
         addFiles(e.dataTransfer.files);
     }
@@ -82,9 +86,23 @@ const onDropFiles = (e: DragEvent) => {
 
 const addFiles = (filesList: FileList) => {
     let count = 0;
+
+    errorMessage.value = null;
     files.value = [];
+
     do {
-        files.value.push(filesList[count]);
+        const file = filesList[count];
+
+        if (props.allowedMimeTypes.length == 0) {
+            files.value.push(file);
+        } else if (props.allowedMimeTypes.includes(file.type)) {
+            files.value.push(file);
+        } else {
+            files.value = [];
+            errorMessage.value = 'One or more dropped file has invalid type';
+            count = filesList.length;
+        }
+
         count++;
     } while (count < filesList.length);
 };
@@ -106,8 +124,6 @@ watch(() => files.value, (n) => {
             type: fileExt
         });
     });
-
-    console.log(n);
 }, { deep: true });
 
 </script>

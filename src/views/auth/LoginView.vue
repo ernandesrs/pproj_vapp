@@ -10,6 +10,9 @@
                 <CInput class="col-span-12" v-model="loginForm.password" type="password" label="Password"
                     id="password" />
 
+                <CUpload class="col-span-12" v-model="photo" label="Upload" id="upload_photo"
+                    :allowed-mime-types="['image/jpg', 'image/jpeg']" />
+
                 <div class="col-span-12 flex justify-center">
                     <CToggle v-model="loginForm.remember" label="Remember-me" right-label id="remember" />
                 </div>
@@ -23,6 +26,7 @@
 import CForm from '@/components/ui/form/CForm.vue';
 import CInput from '@/components/ui/form/CInput.vue';
 import CToggle from '@/components/ui/form/CToggle.vue';
+import CUpload from '@/components/ui/form/CUpload.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { yupValidator } from '@/utils/validator';
 import { onMounted, ref } from 'vue';
@@ -44,6 +48,8 @@ const loginForm = ref<{
     password: '',
     remember: false
 });
+
+const photo = ref([]);
 
 onMounted(() => {
 
