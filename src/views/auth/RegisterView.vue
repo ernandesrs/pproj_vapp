@@ -6,7 +6,8 @@
 
         <div class="grid grid-cols-12 gap-5">
 
-            <CForm :data="formData" :validation-schema="formDataSchema" class="col-span-12">
+            <CForm :on-submit="onSubmit" :data="formData" :validation-schema="formDataSchema"
+                :external-errors="externalErrors" class="col-span-12">
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.first_name" id="first_name"
                     label="First name" type="text" />
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.last_name" id="last_name" label="Last name"
@@ -68,6 +69,9 @@ const formDataSchema = yupValidator.object({
     accept_terms: yupValidator.boolean().isTrue('Accept our terms')
 });
 
+const externalErrors = ref<Record<string, string>>({});
+
+
 const formData = ref<{
     first_name: string,
     last_name: string,
@@ -87,6 +91,17 @@ const formData = ref<{
     password_confirmation: '',
     accept_terms: false
 });
+
+const onSubmit = async (validated: any): Promise<void | unknown> => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log(validated);
+            resolve({});
+        }, 2500);
+    }).catch((e) => {
+        externalErrors.value = e.validation_errors;
+    });
+};
 
 onMounted(() => {
 
