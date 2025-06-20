@@ -39,5 +39,7 @@ export interface ToggleProps extends BaseFormFieldProps {
 export interface FormProps {
     data: any,
     validationSchema?: AnySchema,
-    submitText?: string
+    submitText?: string,
+
+    onSubmit: (validated: any) => Promise<void> | void
 };

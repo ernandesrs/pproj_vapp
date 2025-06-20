@@ -56,7 +56,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 
 const getStyle = computed((): string => {
     const color = colors[props.variant][props.color];
-    return color + (props.loading ? ' animate-pulse cursor-progress' : ' cursor-pointer');
+    return color + (props.loading ? ' animate-pulse cursor-progress pointer-events-none' : ' cursor-pointer');
 });
 
 </script>

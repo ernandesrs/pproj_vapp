@@ -5,13 +5,11 @@
         </div>
 
         <div>
-            <CForm :data="loginForm" :validation-schema="loginValidationSchema" submit-text="Login">
+            <CForm :on-submit="onSubmit" :data="loginForm" :validation-schema="loginValidationSchema"
+                submit-text="Login">
                 <CInput class="col-span-12" v-model="loginForm.email" type="email" label="E-mail" id="email" />
                 <CInput class="col-span-12" v-model="loginForm.password" type="password" label="Password"
                     id="password" />
-
-                <CUpload class="col-span-12" v-model="photo" label="Upload" id="upload_photo"
-                    :allowed-mime-types="['image/jpg', 'image/jpeg']" :limit="2" />
 
                 <div class="col-span-12 flex justify-center">
                     <CToggle v-model="loginForm.remember" label="Remember-me" right-label id="remember" />
@@ -26,7 +24,6 @@
 import CForm from '@/components/ui/form/CForm.vue';
 import CInput from '@/components/ui/form/CInput.vue';
 import CToggle from '@/components/ui/form/CToggle.vue';
-import CUpload from '@/components/ui/form/CUpload.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { yupValidator } from '@/utils/validator';
 import { onMounted, ref } from 'vue';
@@ -49,7 +46,14 @@ const loginForm = ref<{
     remember: false
 });
 
-const photo = ref([]);
+const onSubmit = async (validated: any): Promise<void> => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log(validated);
+            resolve();
+        }, 5000);
+    });
+};
 
 onMounted(() => {
 

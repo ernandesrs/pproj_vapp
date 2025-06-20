@@ -4,8 +4,11 @@
             <slot />
         </div>
 
-        <div class="w-full flex justify-center mt-5">
-            <CButton type="submit" icon="check-lg" :label="props.submitText" />
+        <div class="w-full flex justify-center mt-5 relative">
+            <div v-if="submitting" class="w-full h-full absolute z-10 top-0 left-0"></div>
+            <CButton type="submit" icon="check-lg" :label="props.submitText" :loading="submitting" :class="{
+                'relative z-0': submitting
+            }" />
         </div>
     </form>
 </template>
@@ -23,6 +26,8 @@ const props = withDefaults(defineProps<FormProps>(), {
 
 const validationErrors = ref<Record<string, string>>({});
 
+const submitting = ref<boolean>(false);
+
 const onSubmit = async () => {
     if (!(await validate())) {
         // Validation fail
@@ -30,7 +35,12 @@ const onSubmit = async () => {
     }
 
     // Validated
-    console.log('Success!', props.data);
+    submitting.value = true;
+    try {
+        await props.onSubmit(props.data);
+    } finally {
+        submitting.value = false;
+    }
 };
 
 const validate = async (): Promise<boolean> => {
