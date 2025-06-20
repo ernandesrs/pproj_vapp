@@ -11,7 +11,7 @@
                     id="password" />
 
                 <CUpload class="col-span-12" v-model="photo" label="Upload" id="upload_photo"
-                    :allowed-mime-types="['image/jpg', 'image/jpeg']" />
+                    :allowed-mime-types="['image/jpg', 'image/jpeg']" multiple />
 
                 <div class="col-span-12 flex justify-center">
                     <CToggle v-model="loginForm.remember" label="Remember-me" right-label id="remember" />

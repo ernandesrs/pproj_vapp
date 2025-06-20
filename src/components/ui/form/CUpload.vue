@@ -104,6 +104,10 @@ const addFiles = (filesList: FileList) => {
         }
 
         count++;
+
+        if (!props.multiple) {
+            count = filesList.length;
+        }
     } while (count < filesList.length);
 };
 
