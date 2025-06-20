@@ -33,7 +33,7 @@ const { setAppTitle } = useAppSettings();
 const loginValidationSchema = yupValidator.object({
     email: yupValidator.string().required('Required field').email('Requires a valid e-mail'),
     password: yupValidator.string().required('Required field'),
-    remember: yupValidator.boolean()
+    // remember: yupValidator.boolean()
 });
 
 const externalErrors = ref<Record<string, string>>({});
@@ -53,7 +53,7 @@ const onSubmit = async (validated: any): Promise<void | unknown> => {
         setTimeout(() => {
             console.log(validated);
             resolve({});
-        }, 5000);
+        }, 2500);
     }).catch((e) => {
         externalErrors.value = e.validation_errors;
     });

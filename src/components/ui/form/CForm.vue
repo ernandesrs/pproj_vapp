@@ -29,7 +29,9 @@ const validationErrors = ref<Record<string, string>>({});
 const submitting = ref<boolean>(false);
 
 const onSubmit = async () => {
-    if (!(await validate())) {
+    const validatedData = await validate();
+
+    if (!validatedData) {
         // Validation fail
         return;
     }
@@ -37,13 +39,13 @@ const onSubmit = async () => {
     // Validated
     submitting.value = true;
     try {
-        await props.onSubmit(props.data);
+        await props.onSubmit(validatedData);
     } finally {
         submitting.value = false;
     }
 };
 
-const validate = async (): Promise<boolean> => {
+const validate = async (): Promise<any> => {
     validationErrors.value = {};
 
     if (!props.validationSchema) {
@@ -51,11 +53,12 @@ const validate = async (): Promise<boolean> => {
     }
 
     try {
-        await props.validationSchema.validate(props.data, {
+        const validated = await props.validationSchema.validate(props.data, {
             strict: true,
-            abortEarly: false
+            abortEarly: false,
+            stripUnknown: true,
         });
-        return true;
+        return validated;
     } catch (error: unknown) {
         if (error instanceof ValidationError) {
             error.inner.forEach((err: ValidationError) => {
@@ -66,7 +69,7 @@ const validate = async (): Promise<boolean> => {
         } else {
             console.error('Unexpected error:', error);
         }
-        return false;
+        return null;
     }
 };
 
