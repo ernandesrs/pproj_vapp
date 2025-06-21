@@ -6,7 +6,9 @@ export function useBaseFormFields(
     externalError?: () => string | undefined,
     validationRules?: () => Schema<any> | undefined,
     emit?: (event: 'validated' | 'invalidated', payload?: any) => void) {
+
     // vars
+    const fieldsErrors = inject<Ref<Record<string, boolean>>>('fieldsErrors', ref({}));
     const errors = inject<Ref<Record<string, string>>>('errors', ref({}))
     const errorMessage = ref<string | null>(null);
 
@@ -20,6 +22,7 @@ export function useBaseFormFields(
         }
 
         errorMessage.value = null;
+        delete fieldsErrors.value[id];
         delete errors.value[id]; // errors.value[id] = '';
 
         try {
@@ -31,6 +34,8 @@ export function useBaseFormFields(
         } catch (err) {
             if (err instanceof Error) {
                 errorMessage.value = err.message;
+
+                fieldsErrors.value[id] = true;
                 errors.value[id] = err.message;
             }
 

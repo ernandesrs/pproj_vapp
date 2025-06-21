@@ -1,1 +1,1 @@
-[ pending ] Problema na validação do formulário utilizando o validationSchema: quando ocorre erro(s) na validação, o formulário fica 'preso' na condição da linha 32 do componente CForm.
+[ done ] Problema na validação do formulário utilizando o validationSchema: quando ocorre erro(s) na validação, o formulário fica 'preso' na condição da linha 32 do componente CForm.

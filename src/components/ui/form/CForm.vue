@@ -24,12 +24,13 @@ const props = withDefaults(defineProps<FormProps>(), {
     submitText: 'Submit form'
 });
 
+const fieldsValidationErrors = ref<Record<string, boolean>>({});
 const validationErrors = ref<Record<string, string>>({});
 
 const submitting = ref<boolean>(false);
 
 const onSubmit = async () => {
-    if (Object.entries(validationErrors.value).length > 0) {
+    if (Object.entries(fieldsValidationErrors.value).length > 0) {
         // Validation on one or more fields, with validation rule fails
         return;
     }
@@ -84,6 +85,7 @@ watch(() => props.externalErrors, (n) => {
     }
 }, { deep: true, immediate: true });
 
+provide('fieldsErrors', fieldsValidationErrors);
 provide('errors', validationErrors);
 
 </script>

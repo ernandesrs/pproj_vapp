@@ -5,14 +5,15 @@
         </div>
 
         <div>
-            <CForm :on-submit="onSubmit" :data="loginForm" :validation-schema="loginValidationSchema"
-                :external-errors="externalErrors" submit-text="Login">
-                <CInput class="col-span-12" v-model="loginForm.email" type="email" label="E-mail" id="email" />
-                <CInput class="col-span-12" v-model="loginForm.password" type="password" label="Password"
-                    id="password" />
+            <CForm :on-submit="onSubmit" :data="loginForm" :external-errors="externalErrors" submit-text="Login">
+                <CInput class="col-span-12" v-model="loginForm.email" type="email" label="E-mail" id="email"
+                    :validation-rule="yupValidator.string().required('Required field').email('Requires a valid e-mail')" />
+                <CInput class="col-span-12" v-model="loginForm.password" type="password" label="Password" id="password"
+                    :validation-rule="yupValidator.string().required('Required field')" />
 
                 <div class="col-span-12 flex justify-center">
-                    <CToggle v-model="loginForm.remember" label="Remember-me" right-label id="remember" />
+                    <CToggle v-model="loginForm.remember" label="Remember-me" right-label id="remember"
+                        :validation-rule="yupValidator.boolean()" />
                 </div>
             </CForm>
         </div>
@@ -29,12 +30,6 @@ import { yupValidator } from '@/utils/validator';
 import { onMounted, ref } from 'vue';
 
 const { setAppTitle } = useAppSettings();
-
-const loginValidationSchema = yupValidator.object({
-    email: yupValidator.string().required('Required field').email('Requires a valid e-mail'),
-    password: yupValidator.string().required('Required field'),
-    remember: yupValidator.boolean()
-});
 
 const externalErrors = ref<Record<string, string>>({});
 
