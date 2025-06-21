@@ -37,7 +37,7 @@
 <script setup lang="ts">
 
 import type { InputProps } from '@/types/components/ui/form_type';
-import { ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 import CIcon from '../CIcon.vue';
 import { useBaseFormFields } from '@/composables/useBaseFormFields';
 
@@ -51,10 +51,10 @@ const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props
 
 const showPassword = ref<boolean>(false);
 const focused = ref<boolean>(false);
-const value = ref<string | number>(props.modelValue);
 
-watch(() => value.value, (n) => {
-    emit('update:modelValue', n);
+const value = computed({
+    get: () => props.modelValue,
+    set: (val) => emit('update:modelValue', val)
 });
 
 </script>

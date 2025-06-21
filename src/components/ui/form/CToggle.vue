@@ -12,7 +12,7 @@
 <script setup lang="ts">
 
 import type { ToggleProps } from '@/types/components/ui/form_type';
-import { ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useBaseFormFields } from '@/composables/useBaseFormFields';
 import CToggle from '../CToggle.vue';
 
@@ -26,18 +26,26 @@ const props = withDefaults(defineProps<ToggleProps>(), {
 
 const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props.id, () => props.error, () => props.validationRule, emit);
 
-const checked = ref<boolean>(props.modelValue);
+// const checked = ref<boolean>(props.modelValue);
 
-watch(() => props.modelValue, (n) => {
-    checked.value = n;
-}, { deep: false, immediate: false });
+// watch(() => props.modelValue, (n) => {
+//     checked.value = n;
+// }, { deep: false, immediate: false });
 
-watch(() => checked.value, (n) => {
-    emit('update:modelValue', n);
-    n ? emit('checked', true) : emit('unchecked', false);
-    validateField(n);
+// watch(() => checked.value, (n) => {
+//     emit('update:modelValue', n);
+//     n ? emit('checked', true) : emit('unchecked', false);
+//     validateField(n);
+// });
+
+const checked = computed({
+    get: () => props.modelValue,
+    set: (val) => {
+        emit('update:modelValue', val);
+        val ? emit('checked', true) : emit('unchecked', false);
+        validateField(val);
+    }
 });
-
 </script>
 
 <style scoped></style>

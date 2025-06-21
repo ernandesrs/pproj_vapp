@@ -61,29 +61,47 @@ const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props
 const isDragging = ref<boolean>(false);
 
 const inputRef = ref<HTMLElement | null>(null);
-const files = ref<Array<File>>([]);
 const renderableFiles = ref<Array<{
     name: string,
     type: string
 }>>([]);
+
+const files = computed({
+    get: () => props.modelValue,
+    set: (val) => {
+        emit('update:modelValue', val);
+
+        renderableFiles.value = [];
+        val.map((file) => {
+            let fileExt = file.name.split('.').reverse()[0];
+            let filename = file.name.replace('.' + fileExt, '');
+
+            renderableFiles.value.push({
+                name: filename.length > 4 ? filename.slice(0, 3) : filename,
+                type: fileExt
+            });
+        });
+    }
+});
 
 const onFileInput = (e: Event) => {
     const target = e.target as HTMLInputElement | null;
 
     if (!target || !target?.files) return;
 
-    addFiles(target.files);
+    validatedAndAddFiles(target.files);
 };
 
 const onDropFiles = (e: DragEvent) => {
     isDragging.value = false;
 
     if (e.dataTransfer) {
-        addFiles(e.dataTransfer.files);
+        validatedAndAddFiles(e.dataTransfer.files);
     }
 };
 
-const addFiles = (filesList: FileList) => {
+const validatedAndAddFiles = async (filesList: FileList) => {
+    let validFiles: File[] = [];
     let count = 0;
 
     errorMessage.value = null;
@@ -92,12 +110,10 @@ const addFiles = (filesList: FileList) => {
     do {
         const file = filesList[count];
 
-        if (props.allowedMimeTypes.length == 0) {
-            files.value.push(file);
-        } else if (props.allowedMimeTypes.includes(file.type)) {
-            files.value.push(file);
+        if (props.allowedMimeTypes.length == 0 || props.allowedMimeTypes.includes(file.type)) {
+            validFiles.push(file);
         } else {
-            files.value = [];
+            validFiles = [];
             errorMessage.value = 'One or more dropped file has invalid type';
             count = filesList.length;
         }
@@ -109,7 +125,11 @@ const addFiles = (filesList: FileList) => {
         }
     } while (count < filesList.length);
 
-    validateField(files.value);
+    if (await validateField(validFiles)) {
+        files.value = [...validFiles]
+    } else {
+        files.value = [];
+    }
 };
 
 const deleteFile = (index: number) => {
@@ -120,20 +140,20 @@ const isMultiple = computed((): boolean => {
     return props.limit && props.limit > 1 ? true : false;
 });
 
-watch(() => files.value, (n) => {
-    emit('update:modelValue', n);
+// watch(() => files.value, (n) => {
+//     emit('update:modelValue', n);
 
-    renderableFiles.value = [];
-    n.map((file) => {
-        let fileExt = file.name.split('.').reverse()[0];
-        let filename = file.name.replace('.' + fileExt, '');
+//     renderableFiles.value = [];
+//     n.map((file) => {
+//         let fileExt = file.name.split('.').reverse()[0];
+//         let filename = file.name.replace('.' + fileExt, '');
 
-        renderableFiles.value.push({
-            name: filename.length > 4 ? filename.slice(0, 3) : filename,
-            type: fileExt
-        });
-    });
-}, { deep: true });
+//         renderableFiles.value.push({
+//             name: filename.length > 4 ? filename.slice(0, 3) : filename,
+//             type: fileExt
+//         });
+//     });
+// }, { deep: true });
 
 </script>
 

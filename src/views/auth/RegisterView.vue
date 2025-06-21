@@ -8,7 +8,8 @@
 
             <CForm :on-submit="onSubmit" :data="formData" :validation-schema="formDataSchema"
                 :external-errors="externalErrors" class="col-span-12">
-                <CInput @validated="(e) => { console.log(e) }" @invalidated="(e) => { console.log(e) }"
+                <CInput @validated="(e) => { console.log(e) }"
+                    @invalidated="(e) => { formData.first_name = 'updated'; console.log(e) }"
                     class="col-span-12 sm:col-span-6" v-model="formData.first_name" id="first_name" label="First name"
                     type="text" :validation-rule="yupValidator.string().required().min(5)" />
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.last_name" id="last_name" label="Last name"
@@ -43,9 +44,9 @@
                 </div>
             </CForm>
 
-            <CUpload @validated="(e) => { console.log(e) }" @invalidated="(e) => { console.log(e) }" class="col-span-12"
+            <CUpload @validated="(e) => { console.log(e) }" @invalidated="(e) => { p = [] }" class="col-span-12"
                 v-model="p" label="Upload" id="p"
-                :validation-rule="yupValidator.mixed().allowedMimeTypes(['image/jpg', 'image/jpeg'])" />
+                :validation-rule="yupValidator.mixed().allowedMimeTypes(['image/png'])" />
 
         </div>
     </div>
