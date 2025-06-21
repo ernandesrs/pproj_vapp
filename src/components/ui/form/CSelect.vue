@@ -39,11 +39,11 @@ import { useBaseFormFields } from '@/composables/useBaseFormFields';
 import type { SelectProps } from '@/types/components/ui/form_type';
 import { ref, watch } from 'vue';
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'validated', 'invalidated']);
 
 const props = withDefaults(defineProps<SelectProps>(), {});
 
-const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props.id, () => props.error, () => props.validationRule);
+const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props.id, () => props.error, () => props.validationRule, emit);
 
 const focused = ref<boolean>(false);
 const value = ref<string | number | object>(props.modelValue);

@@ -16,7 +16,7 @@ import { ref, watch } from 'vue';
 import { useBaseFormFields } from '@/composables/useBaseFormFields';
 import CToggle from '../CToggle.vue';
 
-const emit = defineEmits(['update:modelValue', 'checked', 'unchecked']);
+const emit = defineEmits(['update:modelValue', 'checked', 'unchecked', 'validated', 'invalidated']);
 
 const props = withDefaults(defineProps<ToggleProps>(), {
     modelValue: false,
@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<ToggleProps>(), {
     iconOnUnchecked: 'x',
 });
 
-const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props.id, () => props.error, () => props.validationRule);
+const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props.id, () => props.error, () => props.validationRule, emit);
 
 const checked = ref<boolean>(props.modelValue);
 

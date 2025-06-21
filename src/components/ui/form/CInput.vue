@@ -41,13 +41,13 @@ import { ref, watch } from 'vue';
 import CIcon from '../CIcon.vue';
 import { useBaseFormFields } from '@/composables/useBaseFormFields';
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'validated', 'invalidated']);
 
 const props = withDefaults(defineProps<InputProps>(), {
     type: 'text'
 });
 
-const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props.id, () => props.error, () => props.validationRule);
+const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props.id, () => props.error, () => props.validationRule, emit);
 
 const showPassword = ref<boolean>(false);
 const focused = ref<boolean>(false);

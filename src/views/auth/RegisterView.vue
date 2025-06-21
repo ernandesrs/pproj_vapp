@@ -8,14 +8,15 @@
 
             <CForm :on-submit="onSubmit" :data="formData" :validation-schema="formDataSchema"
                 :external-errors="externalErrors" class="col-span-12">
-                <CInput class="col-span-12 sm:col-span-6" v-model="formData.first_name" id="first_name"
-                    label="First name" type="text" :validation-rule="yupValidator.string().required().min(5)" />
+                <CInput @validated="(e) => { console.log(e) }" @invalidated="(e) => { console.log(e) }"
+                    class="col-span-12 sm:col-span-6" v-model="formData.first_name" id="first_name" label="First name"
+                    type="text" :validation-rule="yupValidator.string().required().min(5)" />
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.last_name" id="last_name" label="Last name"
                     type="text" />
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.username" id="username" label="Username"
                     type="text" />
-                <CSelect class="col-span-12 sm:col-span-6" v-model="formData.gender" id="gender" label="Gender"
-                    :options="[
+                <CSelect @validated="(e) => { console.log(e) }" @invalidated="(e) => { console.log(e) }"
+                    class="col-span-12 sm:col-span-6" v-model="formData.gender" id="gender" label="Gender" :options="[
                         {
                             label: 'None',
                             value: 'none'
@@ -36,14 +37,15 @@
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.password_confirmation"
                     id="password_confirmation" label="Password confirmation" type="password" />
 
-                <CUpload class="col-span-12" v-model="p" label="Upload" id="p"
-                    :validation-rule="yupValidator.mixed().allowedMimeTypes(['image/jpg', 'image/jpeg'])" />
-
                 <div class="col-span-12 flex items-center justify-center gap-2.5">
                     <CToggle v-model="formData.accept_terms" id="accept_terms" label="Accept terms and conditions"
                         right-label :validation-rule="yupValidator.boolean().isFalse()" />
                 </div>
             </CForm>
+
+            <CUpload @validated="(e) => { console.log(e) }" @invalidated="(e) => { console.log(e) }" class="col-span-12"
+                v-model="p" label="Upload" id="p"
+                :validation-rule="yupValidator.mixed().allowedMimeTypes(['image/jpg', 'image/jpeg'])" />
 
         </div>
     </div>

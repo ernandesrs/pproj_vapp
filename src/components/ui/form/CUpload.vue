@@ -51,12 +51,12 @@ import CIcon from '../CIcon.vue';
 import type { UploadProps } from '@/types/components/ui/form_type';
 import { useBaseFormFields } from '@/composables/useBaseFormFields';
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'validated', 'invalidated']);
 const props = withDefaults(defineProps<UploadProps>(), {
     allowedMimeTypes: () => []
 });
 
-const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props.id, () => props.error, () => props.validationRule);
+const { getId, hasError, errorMessage, validateField } = useBaseFormFields(props.id, () => props.error, () => props.validationRule, emit);
 
 const isDragging = ref<boolean>(false);
 

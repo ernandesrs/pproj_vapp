@@ -1,31 +1,41 @@
 import { computed, inject, ref, watch, type Ref } from "vue";
 import type { Schema } from "yup";
 
-export function useBaseFormFields(id: string, externalError?: () => string | undefined, validationRules?: () => Schema<any> | undefined) {
+export function useBaseFormFields(
+    id: string,
+    externalError?: () => string | undefined,
+    validationRules?: () => Schema<any> | undefined,
+    emit?: (event: 'validated' | 'invalidated', payload?: any) => void) {
     // vars
     const errors = inject<Ref<Record<string, string>>>('errors', ref({}))
     const errorMessage = ref<string | null>(null);
 
     // methods
     const validateField = async (value: any) => {
-        if (!validationRules) {
+        const schema = validationRules ? validationRules() : null;
+
+        if (!schema) {
+            emit ? emit('validated', value) : null;
             return true;
         }
-
-        const schema = validationRules();
-        if (!schema) return true;
 
         errorMessage.value = null;
         delete errors.value[id]; // errors.value[id] = '';
 
         try {
             await schema.validate(value);
+
+            emit ? emit('validated', value) : null;
+
             return true;
         } catch (err) {
             if (err instanceof Error) {
                 errorMessage.value = err.message;
                 errors.value[id] = err.message;
             }
+
+            emit ? emit('invalidated', errorMessage.value) : null;
+
             return false;
         }
     };
