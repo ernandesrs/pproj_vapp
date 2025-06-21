@@ -37,8 +37,7 @@
                     id="password_confirmation" label="Password confirmation" type="password" />
 
                 <div class="col-span-12 flex items-center justify-center gap-2.5">
-                    <CToggle v-model="formData.accept_terms" id="accept_terms" label="Accept terms and conditions"
-                        right-label :validation-rule="yupValidator.boolean().isFalse()" />
+                    <CToggle v-model="formData.accept_terms" id="accept_terms" label="Accept terms and conditions" />
                 </div>
             </CForm>
 
