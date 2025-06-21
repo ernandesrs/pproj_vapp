@@ -8,16 +8,14 @@
 
             <CForm :on-submit="onSubmit" :data="formData" :validation-schema="formDataSchema"
                 :external-errors="externalErrors" class="col-span-12">
-                <CInput @validated="(e) => { console.log(e) }"
-                    @invalidated="(e) => { formData.first_name = 'updated'; console.log(e) }"
-                    class="col-span-12 sm:col-span-6" v-model="formData.first_name" id="first_name" label="First name"
-                    type="text" :validation-rule="yupValidator.string().required().min(5)" />
+                <CInput class="col-span-12 sm:col-span-6" v-model="formData.first_name" id="first_name"
+                    label="First name" type="text" />
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.last_name" id="last_name" label="Last name"
                     type="text" />
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.username" id="username" label="Username"
                     type="text" />
-                <CSelect @validated="(e) => { console.log(e) }" @invalidated="(e) => { console.log(e) }"
-                    class="col-span-12 sm:col-span-6" v-model="formData.gender" id="gender" label="Gender" :options="[
+                <CSelect class="col-span-12 sm:col-span-6" v-model="formData.gender" id="gender" label="Gender"
+                    :options="[
                         {
                             label: 'None',
                             value: 'none'
@@ -30,7 +28,7 @@
                             label: 'Male',
                             value: 'male'
                         }
-                    ]" :validation-rule="yupValidator.mixed().oneOf(['male', 'female'])" />
+                    ]" />
                 <CInput class="col-span-12" v-model="formData.email" id="email" label="E-mail" type="email" />
 
                 <CInput class="col-span-12 sm:col-span-6" v-model="formData.password" id="password" label="Password"
@@ -43,10 +41,6 @@
                         right-label :validation-rule="yupValidator.boolean().isFalse()" />
                 </div>
             </CForm>
-
-            <CUpload @validated="(e) => { console.log(e) }" @invalidated="(e) => { p = [] }" class="col-span-12"
-                v-model="p" label="Upload" id="p"
-                :validation-rule="yupValidator.mixed().allowedMimeTypes(['image/png'])" />
 
         </div>
     </div>
@@ -62,10 +56,8 @@ import CSelect from '@/components/ui/form/CSelect.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { onMounted, ref } from 'vue';
 import { yupValidator } from '@/utils/validator';
-import CUpload from '@/components/ui/form/CUpload.vue';
 
 const { setAppTitle } = useAppSettings();
-const p = ref<Array<File>>([]);
 const formDataSchema = yupValidator.object({
     first_name: yupValidator.string().required(),
     last_name: yupValidator.string().required(),
