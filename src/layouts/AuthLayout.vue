@@ -2,7 +2,7 @@
     <div
         class="w-full min-h-screen p-4 flex gap-5 flex-col justify-center items-center bg-neutral-100 text-neutral-800 dark:bg-neutral-950 dark:text-white">
 
-        <CToggle v-model="dark" icon-on-checked="moon-stars-fill" icon-on-unchecked="sun-fill" label="Dark mode"
+        <CToggle v-model="darkMode" icon-on-checked="moon-stars-fill" icon-on-unchecked="sun-fill" label="Dark mode"
             class="absolute top-4 right-6" />
 
         <header class="flex flex-col items-center">
@@ -41,17 +41,10 @@
 
 import CToggle from '@/components/ui/CToggle.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
-import { ref, watch } from 'vue';
 import { RouterLink, RouterView, useRoute } from 'vue-router';
 
-const { isDarkTheme, darkModeToggle } = useAppSettings();
+const { darkMode } = useAppSettings();
 const route = useRoute();
-
-const dark = ref<boolean>(isDarkTheme());
-
-watch(() => dark.value, (n) => {
-    darkModeToggle();
-});
 
 </script>
 

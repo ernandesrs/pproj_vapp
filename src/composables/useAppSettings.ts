@@ -20,6 +20,7 @@ export function useAppSettings() {
     const windowWidth = ref<number>(window.innerWidth);
     const inMobile = computed(() => windowWidth.value < MOBILE_WIDTH);
     const showSidebar = ref<boolean>(!inMobile.value);
+    const darkMode = ref<boolean>(getThemeFromStorage() === 'dark');
 
     window.addEventListener('resize', () => {
         windowWidth.value = window.innerWidth;
@@ -42,6 +43,10 @@ export function useAppSettings() {
         setAndStoreThemeOnStorage(newTheme);
     };
 
+    watch(() => darkMode.value, (n) => {
+        darkModeToggle();
+    });
+
     watch(() => inMobile.value, (n) => {
         showSidebar.value = !n;
     });
@@ -50,9 +55,9 @@ export function useAppSettings() {
         windowWidth,
         inMobile,
         showSidebar,
+        darkMode,
 
         setAppTitle,
-        isDarkTheme,
-        darkModeToggle
+        isDarkTheme
     };
 };

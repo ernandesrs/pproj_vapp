@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="flex justify-center p-2.5 border-t border-neutral-200 dark:border-neutral-900">
-                    <CToggle v-model="dark" label="Dark theme" icon-on-checked="moon-stars-fill"
+                    <CToggle v-model="darkMode" label="Dark theme" icon-on-checked="moon-stars-fill"
                         icon-on-unchecked="sun-fill" />
                 </div>
 
@@ -74,16 +74,9 @@
 import CIcon from '@/components/ui/CIcon.vue';
 import CToggle from '@/components/ui/CToggle.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
-import { ref, watch } from 'vue';
 import { RouterView } from 'vue-router';
 
-const { showSidebar, isDarkTheme, darkModeToggle } = useAppSettings();
-
-const dark = ref<boolean>(isDarkTheme());
-
-watch(() => dark.value, () => {
-    darkModeToggle();
-});
+const { showSidebar, darkMode } = useAppSettings();
 
 </script>
 
