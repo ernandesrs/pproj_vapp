@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 
-import { computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 import CIcon from '../CIcon.vue';
 import type { UploadProps } from '@/types/components/ui/form_type';
 import { useBaseFormFields } from '@/composables/useBaseFormFields';

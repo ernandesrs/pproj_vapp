@@ -37,7 +37,7 @@
 
 import { useBaseFormFields } from '@/composables/useBaseFormFields';
 import type { SelectProps } from '@/types/components/ui/form_type';
-import { computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 
 const emit = defineEmits(['update:modelValue', 'validated', 'invalidated']);
 
