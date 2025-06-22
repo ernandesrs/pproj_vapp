@@ -2,6 +2,13 @@
     <div
         class="flex w-full h-screen bg-radial-[at_0%_35%] from-35% to-100% from-white to-neutral-50 dark:from-neutral-950 dark:to-black text-neutral-700 dark:text-neutral-100 relative overflow-hidden">
 
+        <Transition enter-from-class="opacity-0" enter-to-class="opacity-100"
+            enter-active-class="duration-200 ease-in-out" leave-from-class="opacity-100" leave-to-class="opacity-0"
+            leave-active-class="duration-100 ease-out">
+            <div @click="showSidebar = false" v-if="inMobile && showSidebar"
+                class="w-full h-screen fixed z-40 top-0 left-0 bg-neutral-300/75 dark:bg-neutral-800/90"></div>
+        </Transition>
+
         <Transition enter-from-class="opacity-0 -translate-x-full" enter-to-class="opacity-100 translate-x-0"
             enter-active-class="duration-300 ease-in-out" leave-from-class="opacity-100 translate-x-0"
             leave-to-class="opacity-0 -translate-x-full" leave-active-class="duration-200 ease-out">
@@ -21,7 +28,7 @@
             </aside>
         </Transition>
 
-        <div class="flex-1">
+        <div class="flex-1 relative z-30">
 
             <!-- header -->
             <header class="flex items-center gap-x-2.5 px-6 h-[60px]">
@@ -76,7 +83,7 @@ import CToggle from '@/components/ui/CToggle.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { RouterView } from 'vue-router';
 
-const { showSidebar, darkMode } = useAppSettings();
+const { showSidebar, inMobile, darkMode } = useAppSettings();
 
 </script>
 
