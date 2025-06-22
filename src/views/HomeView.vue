@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white shadow dark:bg-neutral-900 rounded-lg p-5 w-full max-w-[475px] mx-auto">
 
-        <div class="flex justify-center gap-2.5">
+        <div class="flex flex-wrap justify-center gap-2.5">
             <RouterLink v-for="(link, index) in links" :key="index" :to="link.to">
                 <CButton :icon="link.icon" :label="link.label" color="primary" variant="filled" />
             </RouterLink>
@@ -33,6 +33,11 @@ const links = [
         icon: 'person-plus',
         label: 'Register',
         to: { name: 'auth.register' }
+    },
+    {
+        icon: 'pie-chart',
+        label: 'Dashboard',
+        to: { name: 'dash.home' }
     }
 ];
 

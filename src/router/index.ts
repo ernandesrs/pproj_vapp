@@ -30,6 +30,18 @@ const router = createRouter({
           component: () => import('@/views/auth/RegisterView.vue')
         }
       ]
+    },
+
+    {
+      path: '/dashboard',
+      component: () => import('@/layouts/DashLayout.vue'),
+      children: [
+        {
+          path: '',
+          name: 'dash.home',
+          component: () => import('@/views/dash/HomeView.vue')
+        }
+      ]
     }
   ],
 })
