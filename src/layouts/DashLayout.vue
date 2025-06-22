@@ -6,7 +6,7 @@
             enter-active-class="duration-300 ease-in-out" leave-from-class="opacity-100 translate-x-0"
             leave-to-class="opacity-0 -translate-x-full" leave-active-class="duration-200 ease-out">
             <aside v-show="showSidebar"
-                class="flex flex-col w-full max-w-[275px] max-h-screen border-r border-neutral-200 dark:border-neutral-900 overflow-auto scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700 scrollbar-track-zinc-100 dark:scrollbar-track-zinc-800">
+                class="fixed lg:relative z-50 flex flex-col w-full h-screen lg:h-auto max-w-[275px] max-h-screen border-r bg-neutral-50 lg:bg-transparent dark:bg-neutral-950 lg:dark:bg-transparent border-neutral-200 dark:border-neutral-900 overflow-auto scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700 scrollbar-track-zinc-100 dark:scrollbar-track-zinc-800">
 
                 <!--  -->
                 <div class="flex-1">
@@ -68,7 +68,7 @@ import { useAppSettings } from '@/composables/useAppSettings';
 import { ref, watch } from 'vue';
 import { RouterView } from 'vue-router';
 
-const { showSidebar, isDarkTheme, darkModeToggle } = useAppSettings();
+const { showSidebar, windowWidth, inMobile, isDarkTheme, darkModeToggle } = useAppSettings();
 
 const dark = ref<boolean>(isDarkTheme());
 

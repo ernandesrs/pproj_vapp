@@ -1,4 +1,6 @@
-import { ref } from "vue";
+import { computed, ref, watch } from "vue";
+
+const MOBILE_WIDTH = 1024;
 
 const getThemeFromStorage = (): string => {
     return localStorage.getItem('theme') ?? 'light';
@@ -15,9 +17,15 @@ const setAndStoreThemeOnStorage = (theme: string): void => {
 };
 
 export function useAppSettings() {
-    setAndStoreThemeOnStorage(getThemeFromStorage());
+    const windowWidth = ref<number>(window.innerWidth);
+    const inMobile = computed(() => windowWidth.value < MOBILE_WIDTH);
+    const showSidebar = ref<boolean>(!inMobile.value);
 
-    const showSidebar = ref<boolean>(false);
+    window.addEventListener('resize', () => {
+        windowWidth.value = window.innerWidth;
+    });
+
+    setAndStoreThemeOnStorage(getThemeFromStorage());
 
     const setAppTitle = (title: string): void => {
         const baseTitle = document.title.split('|')[0];
@@ -34,7 +42,13 @@ export function useAppSettings() {
         setAndStoreThemeOnStorage(newTheme);
     };
 
+    watch(() => inMobile.value, (n) => {
+        showSidebar.value = !n;
+    });
+
     return {
+        windowWidth,
+        inMobile,
         showSidebar,
 
         setAppTitle,
