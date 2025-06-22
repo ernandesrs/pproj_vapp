@@ -1,3 +1,5 @@
+import { ref } from "vue";
+
 const getThemeFromStorage = (): string => {
     return localStorage.getItem('theme') ?? 'light';
 };
@@ -15,6 +17,8 @@ const setAndStoreThemeOnStorage = (theme: string): void => {
 export function useAppSettings() {
     setAndStoreThemeOnStorage(getThemeFromStorage());
 
+    const showSidebar = ref<boolean>(false);
+
     const setAppTitle = (title: string): void => {
         const baseTitle = document.title.split('|')[0];
 
@@ -31,6 +35,8 @@ export function useAppSettings() {
     };
 
     return {
+        showSidebar,
+
         setAppTitle,
         isDarkTheme,
         darkModeToggle
