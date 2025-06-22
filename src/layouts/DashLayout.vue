@@ -55,8 +55,13 @@
                 </main>
 
                 <!-- footer -->
-                <footer class="">
-                    <!-- footer content -->
+                <footer class="flex justify-center px-5 sm:px-10 py-2.5">
+                    <small class="text-center text-sm text-neutral-400 dark:text-neutral-600">
+                        <a class="text-violet-700 hover:text-violet-800 duration-200" target="_blank"
+                            href="https://github.com/ernandsrs/pproj_vapp">VApp</a> 2025 |
+                        Developed by <a class="text-violet-700 hover:text-violet-800 duration-200"
+                            href="https://github.com/ernandsrs" target="_blank" title="Profile on Github">Ernands RS</a>
+                    </small>
                 </footer>
             </div>
         </div>
