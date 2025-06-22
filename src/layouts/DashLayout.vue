@@ -55,7 +55,7 @@
                 </main>
 
                 <!-- footer -->
-                <footer class="flex-1">
+                <footer class="">
                     <!-- footer content -->
                 </footer>
             </div>
