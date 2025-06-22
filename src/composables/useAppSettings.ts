@@ -1,10 +1,20 @@
-const currentTheme: string = localStorage.getItem('theme') ?? 'light';
-const htmlElement = document.querySelector('html');
-if (htmlElement) {
-    htmlElement.setAttribute('class', currentTheme);
-}
+const getThemeFromStorage = (): string => {
+    return localStorage.getItem('theme') ?? 'light';
+};
+
+const setAndStoreThemeOnStorage = (theme: string): void => {
+    const htmlElement = document.querySelector('html');
+
+    if (htmlElement) {
+        htmlElement.setAttribute('class', theme);
+    }
+
+    localStorage.setItem('theme', theme);
+};
 
 export function useAppSettings() {
+    setAndStoreThemeOnStorage(getThemeFromStorage());
+
     const setAppTitle = (title: string): void => {
         const baseTitle = document.title.split('|')[0];
 
@@ -12,17 +22,12 @@ export function useAppSettings() {
     };
 
     const isDarkTheme = (): boolean => {
-        return currentTheme === 'dark';
+        return getThemeFromStorage() === 'dark';
     };
 
     const darkModeToggle = (): void => {
-        const currentTheme: string = localStorage.getItem('theme') ?? 'light';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-        if (!htmlElement) return;
-
-        localStorage.setItem('theme', newTheme);
-        htmlElement.setAttribute('class', newTheme);
+        const newTheme = getThemeFromStorage() === 'dark' ? 'light' : 'dark';
+        setAndStoreThemeOnStorage(newTheme);
     };
 
     return {
