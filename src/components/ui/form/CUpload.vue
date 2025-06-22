@@ -27,7 +27,7 @@
 
         <!-- files list -->
         <div v-if="files.length > 0"
-            class="pb-1.5 w-full flex items-center-safe gap-2.5 mt-1 overflow-x-auto scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700 scrollbar-track-zinc-100 dark:scrollbar-track-zinc-800">
+            class="pb-1.5 w-full flex items-center-safe gap-2.5 mt-1 overflow-x-auto custom-scrollbar">
             <div v-for="(file, index) in renderableFiles" :key="'file_item_' + (index + 1)"
                 class="bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 rounded-lg flex gap-2.5 items-center py-1 px-2.5 cursor-default">
                 <div class="text-xs">

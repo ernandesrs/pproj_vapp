@@ -13,7 +13,7 @@
             enter-active-class="duration-300 ease-in-out" leave-from-class="opacity-100 translate-x-0"
             leave-to-class="opacity-0 -translate-x-full" leave-active-class="duration-200 ease-out">
             <aside v-show="showSidebar"
-                class="fixed lg:relative z-50 flex flex-col w-full h-screen lg:h-auto max-w-[275px] max-h-screen border-r bg-neutral-50 lg:bg-transparent dark:bg-neutral-950 lg:dark:bg-transparent border-neutral-200 dark:border-neutral-900 overflow-auto scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700 scrollbar-track-zinc-100 dark:scrollbar-track-zinc-800">
+                class="fixed lg:relative z-50 flex flex-col w-full h-screen lg:h-auto max-w-[275px] max-h-screen border-r bg-neutral-50 lg:bg-transparent dark:bg-neutral-950 lg:dark:bg-transparent border-neutral-200 dark:border-neutral-900 overflow-auto custom-scrollbar">
 
                 <!--  -->
                 <div class="flex-1">
@@ -53,8 +53,7 @@
             </header>
 
             <!-- main and footer -->
-            <div class="flex flex-col overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700 scrollbar-track-zinc-100 dark:scrollbar-track-zinc-800"
-                style="height: calc(100vh - 60px);">
+            <div class="flex flex-col overflow-y-auto custom-scrollbar" style="height: calc(100vh - 60px);">
 
                 <!-- main -->
                 <main class="flex-1">
