@@ -26,13 +26,17 @@
             <!-- header -->
             <header class="flex items-center gap-x-2.5 px-6 h-[60px]">
                 <div>
-                    <slot name="prependHeader" />
+                    <!-- prepend header content -->
+
+                    <h1 class="text-base sm:text-lg md:text-2xl font-semibold">
+                        Hey! Wellcome back.
+                    </h1>
                 </div>
                 <div class="flex-1">
-                    <slot name="header" />
+                    <!-- middle header content -->
                 </div>
                 <div class="flex items-center gap-2.5">
-                    <slot name="appendHeader" />
+                    <!-- append header content -->
 
                     <button @click="showSidebar = !showSidebar" type="button"
                         class="size-9 flex items-center justify-center rounded-full text-2xl cursor-pointer">
@@ -51,8 +55,8 @@
                 </main>
 
                 <!-- footer -->
-                <footer v-if="$slots?.footer" class="flex-1">
-                    <slot name="footer" />
+                <footer class="flex-1">
+                    <!-- footer content -->
                 </footer>
             </div>
         </div>
@@ -68,7 +72,7 @@ import { useAppSettings } from '@/composables/useAppSettings';
 import { ref, watch } from 'vue';
 import { RouterView } from 'vue-router';
 
-const { showSidebar, windowWidth, inMobile, isDarkTheme, darkModeToggle } = useAppSettings();
+const { showSidebar, isDarkTheme, darkModeToggle } = useAppSettings();
 
 const dark = ref<boolean>(isDarkTheme());
 
