@@ -1,1 +1,2 @@
+[ pending ] Problema quando a validação é feita no campo de formulário, o formulário pode ser submetido mesmo sem a validação local.
 [ done ] Problema na validação do formulário utilizando o validationSchema: quando ocorre erro(s) na validação, o formulário fica 'preso' na condição da linha 32 do componente CForm.
