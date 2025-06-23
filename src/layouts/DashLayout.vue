@@ -16,19 +16,26 @@
                 class="fixed lg:relative z-50 flex flex-col w-full h-screen lg:h-auto max-w-[275px] max-h-screen border-r bg-neutral-50 lg:bg-transparent dark:bg-neutral-950 lg:dark:bg-transparent border-neutral-200 dark:border-neutral-900 overflow-auto custom-scrollbar">
 
                 <!--  -->
-                <div class="flex-1 p-6">
+                <div class="flex-1">
 
-                    <CList>
-                        <CSidebarLink icon="pie-chart" :as-link="{ to: { name: 'dash.home' } }" label="Dashboard"
-                            description="Lorem dolor sit dolorem" :active-in="['dash.home']" />
-
-                        <CSidebarLink icon="person" :as-link="{ to: { name: 'dash.profile' } }" label="Profile"
-                            description="Lorem dolor sit dolorem" :active-in="['dash.profile']" />
-
-                        <CSidebarLink icon="box-arrow-up-right"
-                            :as-link="{ href: 'https://google.com.br', target: '_blank' }" label="Google"
-                            description="Lorem dolor sit dolorem" />
-                    </CList>
+                    <CSidebarNav :items="[
+                        {
+                            label: 'Dashboard',
+                            icon: 'pie-chart',
+                            to: {
+                                name: 'dash.home'
+                            },
+                            activeIn: ['dash.home']
+                        },
+                        {
+                            label: 'Profile',
+                            icon: 'person',
+                            to: {
+                                name: 'dash.profile'
+                            },
+                            activeIn: ['dash.profile']
+                        }
+                    ]" />
 
                 </div>
 
@@ -89,9 +96,8 @@
 
 <script setup lang="ts">
 
-import CSidebarLink from '@/components/dashboard/CSidebarLink.vue';
+import CSidebarNav from '@/components/dashboard/CSidebarNav.vue';
 import CIcon from '@/components/ui/CIcon.vue';
-import CList from '@/components/ui/CList.vue';
 import CToggle from '@/components/ui/CToggle.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { RouterView } from 'vue-router';
