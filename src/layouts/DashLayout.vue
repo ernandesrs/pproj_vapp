@@ -21,6 +21,10 @@
                     <CList>
                         <CSidebarLink icon="pie-chart" :as-link="{ to: { name: 'dash.home' } }" label="Dashboard"
                             description="Lorem dolor sit dolorem" :active-in="['dash.home']" />
+
+                        <CSidebarLink icon="person" :as-link="{ to: { name: 'dash.profile' } }" label="Profile"
+                            description="Lorem dolor sit dolorem" :active-in="['dash.profile']" />
+
                         <CSidebarLink icon="box-arrow-up-right"
                             :as-link="{ href: 'https://google.com.br', target: '_blank' }" label="Google"
                             description="Lorem dolor sit dolorem" />

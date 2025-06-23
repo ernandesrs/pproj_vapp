@@ -40,6 +40,11 @@ const router = createRouter({
           path: '',
           name: 'dash.home',
           component: () => import('@/views/dash/HomeView.vue')
+        },
+        {
+          path: '/profile',
+          name: 'dash.profile',
+          component: () => import('@/views/dash/ProfileView.vue')
         }
       ]
     }
