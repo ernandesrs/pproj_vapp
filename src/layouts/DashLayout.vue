@@ -38,8 +38,10 @@
                         subitems: [
                             {
                                 label: 'Introduction',
-                                to: '#',
-                                activeIn: ['route1']
+                                to: {
+                                    name: 'dash.docs.introduction'
+                                },
+                                activeIn: ['dash.docs.introduction']
                             },
                             {
                                 label: 'Buttons',
