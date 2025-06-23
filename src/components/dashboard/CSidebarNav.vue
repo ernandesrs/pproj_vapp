@@ -1,7 +1,10 @@
 <template>
     <nav class="flex flex-col gap-0.5">
         <template v-if="props.items.length > 0">
-            <CSidebarLink v-for="link, index in props.items" :key="'sidebar_nav_link_' + (index + 1)" v-bind="link" />
+            <template v-for="link, index in props.items" :key="'sidebar_nav_link_' + (index + 1)">
+                <CSidebarLink v-if="!link.subitems" v-bind="link" />
+                <CSidebarSubnav v-else :label="link.label" :icon="link.icon" :items="link.subitems" />
+            </template>
         </template>
 
         <slot />
@@ -12,6 +15,7 @@
 
 import type { SidebarNavProps } from '@/types/components/dashboard/sidebar_type';
 import CSidebarLink from './CSidebarLink.vue';
+import CSidebarSubnav from './CSidebarSubnav.vue';
 
 const props = withDefaults(defineProps<SidebarNavProps>(), {
     items: () => []

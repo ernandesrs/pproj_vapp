@@ -16,7 +16,7 @@
                 class="fixed lg:relative z-50 flex flex-col w-full h-screen lg:h-auto max-w-[275px] max-h-screen border-r bg-neutral-50 lg:bg-transparent dark:bg-neutral-950 lg:dark:bg-transparent border-neutral-200 dark:border-neutral-900 overflow-auto custom-scrollbar">
 
                 <!--  -->
-                <div class="flex-1">
+                <div class="flex-1 flex flex-col">
 
                     <CSidebarNav :items="[
                         {
@@ -26,7 +26,35 @@
                                 name: 'dash.home'
                             },
                             activeIn: ['dash.home']
+                        }
+                    ]" />
+
+                    <CSidebarNav :items="[{
+                        label: 'Document',
+                        icon: 'file-earmark-text-fill',
+                        to: {
+                            name: 'dash.profile'
                         },
+                        subitems: [
+                            {
+                                label: 'Introduction',
+                                to: '#',
+                                activeIn: ['route1']
+                            },
+                            {
+                                label: 'Buttons',
+                                to: '#',
+                                activeIn: ['route4', 'route3']
+                            },
+                            {
+                                label: 'Cards',
+                                to: '#',
+                                activeIn: ['route14', 'route10']
+                            }
+                        ]
+                    }]" />
+
+                    <CSidebarNav class="mt-auto" :items="[
                         {
                             label: 'Profile',
                             icon: 'person',

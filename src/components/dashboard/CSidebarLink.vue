@@ -22,6 +22,7 @@ import { computed } from 'vue';
 import CIcon from '../ui/CIcon.vue';
 
 const props = withDefaults(defineProps<SidebarLinkProps>(), {
+    icon: 'dot',
     activeIn: () => []
 });
 

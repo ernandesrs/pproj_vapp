@@ -5,9 +5,15 @@ export interface SidebarLinkProps {
     title?: string,
     icon?: string,
     to?: string | RouteLocationAsRelativeGeneric,
-    activeIn?: Array<string>
+    activeIn?: Array<string>,
+    subitems?: SidebarLinkProps[]
 };
 
 export interface SidebarNavProps {
     items?: SidebarLinkProps[]
+};
+
+export interface SidebarSubnavProps extends SidebarNavProps {
+    label: string,
+    icon?: string,
 };
