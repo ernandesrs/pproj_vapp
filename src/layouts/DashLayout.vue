@@ -16,8 +16,18 @@
                 class="fixed lg:relative z-50 flex flex-col w-full h-screen lg:h-auto max-w-[275px] max-h-screen border-r bg-neutral-50 lg:bg-transparent dark:bg-neutral-950 lg:dark:bg-transparent border-neutral-200 dark:border-neutral-900 overflow-auto custom-scrollbar">
 
                 <!--  -->
-                <div class="flex-1">
-                    <slot name="sidebar" />
+                <div class="flex-1 p-6">
+
+                    <CList>
+                        <CListItem icon="pie-chart" :as-link="{ to: { name: 'dash.home' } }" label="Dashboard"
+                            description="Lorem dolor sit dolorem" />
+                        <CListItem icon="box-arrow-up-right"
+                            :as-link="{ href: 'https://google.com.br', target: '_blank' }" label="Google"
+                            description="Lorem dolor sit dolorem" />
+                        <CListItem icon="people" label="Users" description="Lorem dolor sit dolorem" />
+                        <CListItem icon="people" append-icon="arrow-right" label="Administrators" />
+                    </CList>
+
                 </div>
 
                 <div class="flex justify-center p-2.5 border-t border-neutral-200 dark:border-neutral-900">
@@ -78,6 +88,8 @@
 <script setup lang="ts">
 
 import CIcon from '@/components/ui/CIcon.vue';
+import CList from '@/components/ui/CList.vue';
+import CListItem from '@/components/ui/CListItem.vue';
 import CToggle from '@/components/ui/CToggle.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { RouterView } from 'vue-router';
