@@ -19,13 +19,11 @@
                 <div class="flex-1 p-6">
 
                     <CList>
-                        <CListItem icon="pie-chart" :as-link="{ to: { name: 'dash.home' } }" label="Dashboard"
-                            description="Lorem dolor sit dolorem" />
-                        <CListItem icon="box-arrow-up-right"
+                        <CSidebarLink icon="pie-chart" :as-link="{ to: { name: 'dash.home' } }" label="Dashboard"
+                            description="Lorem dolor sit dolorem" :active-in="['dash.home']" />
+                        <CSidebarLink icon="box-arrow-up-right"
                             :as-link="{ href: 'https://google.com.br', target: '_blank' }" label="Google"
                             description="Lorem dolor sit dolorem" />
-                        <CListItem icon="people" label="Users" description="Lorem dolor sit dolorem" />
-                        <CListItem icon="people" append-icon="arrow-right" label="Administrators" />
                     </CList>
 
                 </div>
@@ -87,9 +85,9 @@
 
 <script setup lang="ts">
 
+import CSidebarLink from '@/components/dashboard/CSidebarLink.vue';
 import CIcon from '@/components/ui/CIcon.vue';
 import CList from '@/components/ui/CList.vue';
-import CListItem from '@/components/ui/CListItem.vue';
 import CToggle from '@/components/ui/CToggle.vue';
 import { useAppSettings } from '@/composables/useAppSettings';
 import { RouterView } from 'vue-router';
