@@ -24,10 +24,32 @@
                             allowedValues: 'default, value',
                             defaultValue: 'value'
                         }
+                    ],
+                    slots: [
+                        {
+                            name: 'Default',
+                            desc: 'Lorem slot description'
+                        }
+                    ],
+                    events: [
+                        {
+                            name: 'validated',
+                            signature: '(validated: any) => void',
+                            desc: 'Emited when lorem dolor sit'
+                        }
                     ]
                 }
             }
         ]">
+
+            <template #previews>
+                <CButton icon="app" label="Button text" />
+            </template>
+
+            <template #codes>
+                <textarea><CButton icon="app" label="Button text" /></textarea>
+            </template>
+
         </CDocSection>
 
     </CPage>
@@ -37,6 +59,7 @@
 
 import CDocSection from '@/components/dashboard/CDocSection.vue';
 import CPage from '@/components/dashboard/CPage.vue';
+import CButton from '@/components/ui/CButton.vue';
 
 </script>
 

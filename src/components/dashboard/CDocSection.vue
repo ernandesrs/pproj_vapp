@@ -8,29 +8,104 @@
             <p v-for="p, pIndex in section.texts" :key="'doc_section_p_' + (pIndex + 1)" v-html="p" class="mb-3"></p>
         </article>
 
-        <div v-if="section.componentDoc"
-            class="col-span-12 overflow-x-auto custom-scrollbar mt-8 border border-neutral-300 dark:border-neutral-700">
-            <table class="w-full table table-auto text-left">
-                <thead class="bg-neutral-200 dark:bg-neutral-900">
-                    <tr>
-                        <th class="px-5 py-3 text-nowrap">Name</th>
-                        <th class="px-5 py-3 text-nowrap">Type</th>
-                        <th class="px-5 py-3 text-nowrap min-w-[300px]">Description</th>
-                        <th class="px-5 py-3 text-nowrap">Allowed values</th>
-                        <th class="px-5 py-3 text-nowrap">Default value</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-neutral-100 dark:bg-neutral-800">
-                    <tr v-for="componentProp, componentPropIndex in section.componentDoc.props"
-                        :key="'component_props_table_row_' + (componentPropIndex + 1)">
-                        <td class="px-5 py-2 text-nowrap" v-html="componentProp.name"></td>
-                        <td class="px-5 py-2 text-nowrap" v-html="componentProp.type"></td>
-                        <td class="px-5 py-2" v-html="componentProp.desc"></td>
-                        <td class="px-5 py-2 text-nowrap" v-html="componentProp.allowedValues"></td>
-                        <td class="px-5 py-2 text-nowrap" v-html="componentProp.defaultValue"></td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- previews -->
+        <div v-if="$slots.previews" class="col-span-12">
+            <div class="px-5 py-3 bg-neutral-300 font-bold uppercase">
+                Component previews
+            </div>
+            <div class="flex justify-center items-center flex-wrap gap-5 p-6">
+                <slot name="previews" />
+            </div>
+        </div>
+
+        <!-- properties -->
+        <div v-if="section.componentDoc?.props" class="col-span-12">
+            <div class="px-5 py-3 bg-neutral-300 dark:bg-neutral-900 font-bold uppercase">
+                Component props
+            </div>
+            <div class="overflow-x-auto custom-scrollbar border border-neutral-300 dark:border-neutral-700">
+                <table class="w-full table table-auto text-left">
+                    <thead class="bg-neutral-200 dark:bg-neutral-900">
+                        <tr>
+                            <th class="px-5 py-3 text-nowrap">Name</th>
+                            <th class="px-5 py-3 text-nowrap">Type</th>
+                            <th class="px-5 py-3 text-nowrap min-w-[300px]">Description</th>
+                            <th class="px-5 py-3 text-nowrap">Allowed values</th>
+                            <th class="px-5 py-3 text-nowrap">Default value</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-neutral-100 dark:bg-neutral-800">
+                        <tr v-for="componentProp, componentPropIndex in section.componentDoc.props"
+                            :key="'component_props_table_row_' + (componentPropIndex + 1)">
+                            <td class="px-5 py-2 text-nowrap" v-html="componentProp.name"></td>
+                            <td class="px-5 py-2 text-nowrap" v-html="componentProp.type"></td>
+                            <td class="px-5 py-2" v-html="componentProp.desc"></td>
+                            <td class="px-5 py-2 text-nowrap" v-html="componentProp.allowedValues"></td>
+                            <td class="px-5 py-2 text-nowrap" v-html="componentProp.defaultValue"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- slots -->
+        <div v-if="section.componentDoc?.slots" class="col-span-12">
+            <div class="px-5 py-3 bg-neutral-300 dark:bg-neutral-900 font-bold uppercase">
+                Component slots
+            </div>
+            <div class="overflow-x-auto custom-scrollbar border border-neutral-300 dark:border-neutral-700">
+                <table class="w-full table table-auto text-left">
+                    <thead class="bg-neutral-200 dark:bg-neutral-900">
+                        <tr>
+                            <th class="px-5 py-3 text-nowrap">Name</th>
+                            <th class="px-5 py-3 text-nowrap min-w-[300px]">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-neutral-100 dark:bg-neutral-800">
+                        <tr v-for="componentSlot, componentSlotIndex in section.componentDoc.slots"
+                            :key="'component_props_table_row_' + (componentSlotIndex + 1)">
+                            <td class="px-5 py-2 text-nowrap" v-html="componentSlot.name"></td>
+                            <td class="px-5 py-2" v-html="componentSlot.desc"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- events -->
+        <div v-if="section.componentDoc?.events" class="col-span-12">
+            <div class="px-5 py-3 bg-neutral-300 dark:bg-neutral-900 font-bold uppercase">
+                Component events
+            </div>
+            <div class="overflow-x-auto custom-scrollbar border border-neutral-300 dark:border-neutral-700">
+                <table class="w-full table table-auto text-left">
+                    <thead class="bg-neutral-200 dark:bg-neutral-900">
+                        <tr>
+                            <th class="px-5 py-3 text-nowrap">Name</th>
+                            <th class="px-5 py-3 text-nowrap">Signature</th>
+                            <th class="px-5 py-3 text-nowrap min-w-[300px]">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-neutral-100 dark:bg-neutral-800">
+                        <tr v-for="componentEvent, componentEventIndex in section.componentDoc.events"
+                            :key="'component_props_table_row_' + (componentEventIndex + 1)">
+                            <td class="px-5 py-2 text-nowrap" v-html="componentEvent.name"></td>
+                            <td class="px-5 py-2 text-nowrap" v-html="componentEvent.signature"></td>
+                            <td class="px-5 py-2" v-html="componentEvent.desc"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- codes -->
+        <div v-if="$slots.codes" class="col-span-12">
+            <div class="px-5 py-3 bg-neutral-300 dark:bg-neutral-900 font-bold uppercase">
+                Preview codes
+            </div>
+            <div class="flex justify-center items-center flex-wrap gap-5 p-6 code-area">
+                <slot name="codes" />
+            </div>
         </div>
 
     </CPageSection>
@@ -59,7 +134,7 @@ interface Section {
         events?: Array<{
             name: string,
             signature: string,
-            description?: string
+            desc?: string
         }>
     }
 };
@@ -70,4 +145,13 @@ const props = withDefaults(defineProps<{
 
 </script>
 
-<style scoped></style>
+<style>
+
+.code-area textarea {
+    width: 100%;
+    min-height: 175px;
+    padding: 16px 10px;
+    border: 1px solid rgb(106, 106, 107);
+}
+
+</style>
