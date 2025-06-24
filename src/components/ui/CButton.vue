@@ -40,7 +40,7 @@ const colors = {
         warning: 'text-yellow-600 hover:text-yellow-500',
         danger: 'text-rose-700 hover:text-rose-600',
         light: 'text-neutral-500 hover:text-neutral-400',
-        dark: 'text-neutral-950 hover:text-neutral-800',
+        dark: 'text-neutral-950 dark:text-neutral-500 hover:text-neutral-800',
     }
 };
 

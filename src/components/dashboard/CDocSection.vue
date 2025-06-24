@@ -10,7 +10,7 @@
 
         <!-- previews -->
         <div v-if="$slots.previews" class="col-span-12">
-            <div class="px-5 py-3 bg-neutral-300 font-bold uppercase">
+            <div class="px-5 py-3 bg-neutral-300 dark:bg-neutral-900 font-bold uppercase">
                 Component previews
             </div>
             <div class="flex justify-center items-center flex-wrap gap-5 p-6">
@@ -38,9 +38,9 @@
                         <tr v-for="componentProp, componentPropIndex in section.componentDoc.props"
                             :key="'component_props_table_row_' + (componentPropIndex + 1)">
                             <td class="px-5 py-2 text-nowrap" v-html="componentProp.name"></td>
-                            <td class="px-5 py-2 text-nowrap" v-html="componentProp.type"></td>
+                            <td class="px-5 py-2" v-html="componentProp.type"></td>
                             <td class="px-5 py-2" v-html="componentProp.desc"></td>
-                            <td class="px-5 py-2 text-nowrap" v-html="componentProp.allowedValues"></td>
+                            <td class="px-5 py-2" v-html="componentProp.allowedValues"></td>
                             <td class="px-5 py-2 text-nowrap" v-html="componentProp.defaultValue"></td>
                         </tr>
                     </tbody>

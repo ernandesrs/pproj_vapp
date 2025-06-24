@@ -45,8 +45,10 @@
                             },
                             {
                                 label: 'Buttons',
-                                to: '#',
-                                activeIn: ['route4', 'route3']
+                                to: {
+                                    name: 'dash.docs.buttons'
+                                },
+                                activeIn: ['dash.docs.buttons']
                             },
                             {
                                 label: 'Cards',
