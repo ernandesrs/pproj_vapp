@@ -34,7 +34,7 @@
                     events: [
                         {
                             name: 'validated',
-                            signature: '(validated: any) => void',
+                            handlerSignature: '(validated: any) => void',
                             desc: 'Emited when lorem dolor sit'
                         }
                     ]
