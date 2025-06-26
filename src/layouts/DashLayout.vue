@@ -56,6 +56,13 @@
                                     name: 'dash.docs.form'
                                 },
                                 activeIn: ['dash.docs.form']
+                            },
+                            {
+                                label: 'Form fields',
+                                to: {
+                                    name: 'dash.docs.formFields'
+                                },
+                                activeIn: ['dash.docs.formFields']
                             }
                         ]
                     }]" />
