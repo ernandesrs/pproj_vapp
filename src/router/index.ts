@@ -64,6 +64,11 @@ const router = createRouter({
               path: '/form-fields',
               name: 'dash.docs.formFields',
               component: () => import('@/views/dash/doc/FormFieldsView.vue'),
+            },
+            {
+              path: '/icons',
+              name: 'dash.docs.icons',
+              component: () => import('@/views/dash/doc/IconsView.vue'),
             }
           ]
         },

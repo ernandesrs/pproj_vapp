@@ -63,6 +63,13 @@
                                     name: 'dash.docs.formFields'
                                 },
                                 activeIn: ['dash.docs.formFields']
+                            },
+                            {
+                                label: 'Icons',
+                                to: {
+                                    name: 'dash.docs.icons'
+                                },
+                                activeIn: ['dash.docs.icons']
                             }
                         ]
                     }]" />
