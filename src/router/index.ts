@@ -54,6 +54,11 @@ const router = createRouter({
               path: '/buttons',
               name: 'dash.docs.buttons',
               component: () => import('@/views/dash/doc/ButtonsView.vue'),
+            },
+            {
+              path: '/form',
+              name: 'dash.docs.form',
+              component: () => import('@/views/dash/doc/FormView.vue'),
             }
           ]
         },
