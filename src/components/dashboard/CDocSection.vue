@@ -90,7 +90,7 @@
                     <thead class="bg-neutral-200 dark:bg-neutral-900">
                         <tr>
                             <th class="px-5 py-3 text-nowrap">Name</th>
-                            <th class="px-5 py-3 text-nowrap">Signature</th>
+                            <th class="px-5 py-3 text-nowrap">Handler Signature</th>
                             <th class="px-5 py-3 text-nowrap min-w-[300px]">Description</th>
                         </tr>
                     </thead>
@@ -101,7 +101,7 @@
                                 'bg-neutral-50 dark:bg-neutral-900': (componentEventIndex + 1) % 2 == 0,
                             }">
                             <td class="px-5 py-2 text-nowrap" v-html="componentEvent.name"></td>
-                            <td class="px-5 py-2 text-nowrap" v-html="componentEvent.signature"></td>
+                            <td class="px-5 py-2 text-nowrap" v-html="componentEvent.handlerSignature"></td>
                             <td class="px-5 py-2" v-html="componentEvent.desc"></td>
                         </tr>
                     </tbody>
@@ -145,7 +145,7 @@ interface Section {
         }>,
         events?: Array<{
             name: string,
-            signature: string,
+            handlerSignature: string,
             desc?: string
         }>
     }
