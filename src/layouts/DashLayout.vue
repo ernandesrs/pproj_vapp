@@ -70,6 +70,13 @@
                                     name: 'dash.docs.icons'
                                 },
                                 activeIn: ['dash.docs.icons']
+                            },
+                            {
+                                label: 'Lists',
+                                to: {
+                                    name: 'dash.docs.list'
+                                },
+                                activeIn: ['dash.docs.list']
                             }
                         ]
                     }]" />

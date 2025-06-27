@@ -16,6 +16,8 @@ export interface ListItemProps {
     transparent?: boolean
 };
 
+export interface ListItem extends ListItemProps { };
+
 export interface ListProps {
-    items?: ListItemProps[]
+    items?: ListItem[]
 };
