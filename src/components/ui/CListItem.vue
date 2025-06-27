@@ -8,7 +8,7 @@
             }">
 
             <CIcon v-if="props.icon" :name="props.icon" />
-            <div class="flex flex-col w-full max-w-[170px] justify-center px-3">
+            <div class="flex flex-col w-full max-w-full justify-center px-3">
                 <div class="text-base font-medium overflow-ellipsis truncate">{{ props.label }}</div>
                 <div v-if="props.description" class="overflow-ellipsis truncate text-sm">{{ props.description }}</div>
             </div>

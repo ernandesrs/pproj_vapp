@@ -1,9 +1,5 @@
 import type { RouteLocationAsPathGeneric, RouteLocationAsRelativeGeneric } from "vue-router";
 
-export interface ListProps {
-
-};
-
 export interface ListItemLinkProps {
     to?: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric,
     href?: string,
@@ -18,4 +14,8 @@ export interface ListItemProps {
     appendIcon?: string,
     asLink?: ListItemLinkProps,
     transparent?: boolean
+};
+
+export interface ListProps {
+    items?: ListItemProps[]
 };
