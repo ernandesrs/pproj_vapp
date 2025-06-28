@@ -10,7 +10,7 @@
 
         <!-- previews -->
         <div v-if="$slots.previews" class="col-span-12">
-            <div class="px-5 py-3 bg-neutral-300 dark:bg-neutral-900 font-bold uppercase">
+            <div class="px-5 py-3 bg-neutral-200 dark:bg-neutral-900 font-bold uppercase rounded-lg">
                 Component previews
             </div>
             <div class="flex justify-center items-center flex-wrap gap-5 p-6">
@@ -20,10 +20,10 @@
 
         <!-- slots -->
         <div v-if="section.componentDoc?.slots" class="col-span-12">
-            <div class="px-5 py-3 bg-neutral-300 dark:bg-neutral-900 font-bold uppercase">
+            <div class="px-5 py-3 bg-neutral-200 dark:bg-neutral-900 font-bold uppercase rounded-lg mb-2.5">
                 Component slots
             </div>
-            <div class="overflow-x-auto custom-scrollbar border border-neutral-300 dark:border-neutral-700">
+            <div class="overflow-x-auto custom-scrollbar rounded-lg">
                 <table class="w-full table table-auto text-left">
                     <thead class="bg-neutral-200 dark:bg-neutral-900">
                         <tr>
@@ -31,7 +31,7 @@
                             <th class="px-5 py-3 text-nowrap min-w-[300px]">Description</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-neutral-100 dark:bg-neutral-800">
+                    <tbody>
                         <tr v-for="componentSlot, componentSlotIndex in section.componentDoc.slots"
                             :key="'component_props_table_row_' + (componentSlotIndex + 1)" :class="{
                                 'bg-neutral-100 dark:bg-neutral-800': (componentSlotIndex + 1) % 2 != 0,
@@ -47,10 +47,10 @@
 
         <!-- properties -->
         <div v-if="section.componentDoc?.props" class="col-span-12">
-            <div class="px-5 py-3 bg-neutral-300 dark:bg-neutral-900 font-bold uppercase">
+            <div class="px-5 py-3 bg-neutral-200 dark:bg-neutral-900 font-bold uppercase rounded-lg mb-2.5">
                 Component props
             </div>
-            <div class="overflow-x-auto custom-scrollbar border border-neutral-300 dark:border-neutral-700">
+            <div class="overflow-x-auto custom-scrollbar rounded-lg">
                 <table class="w-full table table-auto text-left">
                     <thead class="bg-neutral-200 dark:bg-neutral-900">
                         <tr>
@@ -82,10 +82,10 @@
 
         <!-- events -->
         <div v-if="section.componentDoc?.events" class="col-span-12">
-            <div class="px-5 py-3 bg-neutral-300 dark:bg-neutral-900 font-bold uppercase">
+            <div class="px-5 py-3 bg-neutral-200 dark:bg-neutral-900 font-bold uppercase rounded-lg mb-2.5">
                 Component events
             </div>
-            <div class="overflow-x-auto custom-scrollbar border border-neutral-300 dark:border-neutral-700">
+            <div class="overflow-x-auto custom-scrollbar rounded-lg">
                 <table class="w-full table table-auto text-left">
                     <thead class="bg-neutral-200 dark:bg-neutral-900">
                         <tr>
@@ -111,7 +111,7 @@
 
         <!-- codes -->
         <div v-if="$slots.codes" class="col-span-12">
-            <div class="px-5 py-3 bg-neutral-300 dark:bg-neutral-900 font-bold uppercase">
+            <div class="px-5 py-3 bg-neutral-200 dark:bg-neutral-900 font-bold uppercase rounded-lg mb-2.5">
                 Preview codes
             </div>
             <div class="flex justify-center items-center flex-wrap gap-5 p-6 code-area">
