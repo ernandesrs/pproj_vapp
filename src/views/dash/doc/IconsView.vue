@@ -49,7 +49,7 @@
                     <div
                         class="col-span-6 flex flex-col items-center border border-neutral-300 dark:border-neutral-700 rounded-lg p-5">
                         <div class="font-semibold mb-5">Custom</div>
-                        <div class="flex justify-center gap-6 flex-wrapp">
+                        <div class="flex justify-center gap-6 flex-wrapp text-neutral-50">
                             <div
                                 class="size-10 flex justify-center items-center bg-radial-[at_25%_5%] from-purple-600 to-violet-700 rounded-full">
                                 <CIcon name="rocket-takeoff-fill" />
