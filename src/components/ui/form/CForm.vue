@@ -20,6 +20,8 @@ import CButton from '../CButton.vue';
 import { provide, ref, watch } from 'vue';
 import { ValidationError } from 'yup';
 
+const emit = defineEmits(['invalidated']);
+
 const props = withDefaults(defineProps<FormProps>(), {
     submitText: 'Submit form'
 });
@@ -32,6 +34,7 @@ const submitting = ref<boolean>(false);
 const onSubmit = async () => {
     if (Object.entries(fieldsValidationErrors.value).length > 0) {
         // Validation on one or more fields, with validation rule fails
+        emit('invalidated', validationErrors.value);
         return;
     }
 
@@ -39,6 +42,7 @@ const onSubmit = async () => {
 
     if (!validatedData) {
         // Validation on form, with validation schema fails
+        emit('invalidated', validationErrors.value);
         return;
     }
 

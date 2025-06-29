@@ -90,7 +90,13 @@
                             defaultValue: '---'
                         }
                     ],
-                    events: []
+                    events: [
+                        {
+                            name: 'invalidated',
+                            handlerSignature: '(validationErrors: Record< string, string >) => void',
+                            desc: 'Uma função opcional, para lidar com a invalidação dos dados do formulário.'
+                        }
+                    ]
                 }
             }
         ]">
@@ -109,7 +115,7 @@
             </template>
 
             <template #codes>
-<textarea>
+                <textarea>
                 <!-- html -->
                 <CForm :on-submit="onSubmit" :data="loginForm" :validation-schema="loginFormValidation"
                     :external-errors="externalErrors" submit-text="Login">
