@@ -1,4 +1,5 @@
 import { computed, ref, watch } from "vue";
+import { useToast } from "./useToast";
 
 const MOBILE_WIDTH = 1024;
 
@@ -21,6 +22,8 @@ export function useAppSettings() {
     const inMobile = computed(() => windowWidth.value < MOBILE_WIDTH);
     const showSidebar = ref<boolean>(!inMobile.value);
     const darkMode = ref<boolean>(getThemeFromStorage() === 'dark');
+
+    const { addToast } = useToast();
 
     window.addEventListener('resize', () => {
         windowWidth.value = window.innerWidth;
@@ -58,6 +61,8 @@ export function useAppSettings() {
         darkMode,
 
         setAppTitle,
+        addToast,
+
         isDarkTheme
     };
 };
