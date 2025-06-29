@@ -27,7 +27,7 @@
                             name: 'color',
                             type: 'string',
                             desc: 'Button color.',
-                            allowedValues: 'primary, secondary, info, warning, danger, light, dark',
+                            allowedValues: 'primary, secondary, success, info, warning, danger, light, dark',
                             defaultValue: 'primary'
                         },
                         {
@@ -78,6 +78,9 @@
 
                 <CButton label="Info filled" color="info" variant="filled" />
                 <CButton label="Info text" color="info" variant="text" />
+
+                <CButton label="Success filled" color="success" variant="filled" />
+                <CButton label="Success text" color="success" variant="text" />
 
                 <CButton label="Warning filled" color="warning" variant="filled" />
                 <CButton label="Warning text" color="warning" variant="text" />

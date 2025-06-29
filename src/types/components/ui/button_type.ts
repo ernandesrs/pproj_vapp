@@ -1,4 +1,4 @@
-export type ButtonColor = "primary" | "secondary" | "info" | "warning" | "danger" | "light" | "dark";
+export type ButtonColor = "primary" | "secondary" | "success" | "info" | "warning" | "danger" | "light" | "dark";
 export type ButtonVariant = "filled" | "text";
 export type ButtonType = "button" | "submit";
 

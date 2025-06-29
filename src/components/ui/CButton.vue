@@ -1,6 +1,6 @@
 <template>
     <button
-        class="relative text-neutral-50 duration-200 px-6 py-2.5 border border-transparent rounded-lg disabled:opacity-75 disabled:cursor-not-allowed"
+        class="relative duration-200 px-6 py-2.5 border border-transparent rounded-lg disabled:opacity-75 disabled:cursor-not-allowed"
         :class="getStyle" :type="props.type">
 
         <!-- button loading content -->
@@ -25,17 +25,19 @@
 
 const colors = {
     filled: {
-        primary: 'bg-violet-800 hover:bg-violet-700',
-        secondary: 'bg-purple-800 hover:bg-purple-700',
-        info: 'bg-sky-600 hover:bg-sky-500',
-        warning: 'bg-yellow-600 hover:bg-yellow-500',
-        danger: 'bg-rose-700 hover:bg-rose-600',
-        light: 'bg-neutral-500 hover:bg-neutral-400',
-        dark: 'bg-neutral-950 hover:bg-neutral-800',
+        primary: 'text-neutral-50 bg-violet-800 hover:bg-violet-700',
+        secondary: 'text-neutral-50 bg-purple-800 hover:bg-purple-700',
+        success: 'text-neutral-50 bg-emerald-500 hover:bg-emerald-600',
+        info: 'text-neutral-50 bg-sky-600 hover:bg-sky-500',
+        warning: 'text-neutral-50 bg-yellow-600 hover:bg-yellow-500',
+        danger: 'text-neutral-50 bg-rose-700 hover:bg-rose-600',
+        light: 'text-neutral-50 bg-neutral-500 hover:bg-neutral-400',
+        dark: 'text-neutral-50 bg-neutral-950 hover:bg-neutral-800',
     },
     text: {
         primary: 'text-violet-800 hover:text-violet-700',
         secondary: 'text-purple-800 hover:text-purple-700',
+        success: 'text-emerald-600 hover:text-emerald-500',
         info: 'text-sky-600 hover:text-sky-500',
         warning: 'text-yellow-600 hover:text-yellow-500',
         danger: 'text-rose-700 hover:text-rose-600',
