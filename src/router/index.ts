@@ -74,6 +74,11 @@ const router = createRouter({
               path: '/list',
               name: 'dash.docs.list',
               component: () => import('@/views/dash/doc/ListView.vue'),
+            },
+            {
+              path: '/toast',
+              name: 'dash.docs.toast',
+              component: () => import('@/views/dash/doc/ToastsView.vue'),
             }
           ]
         },
