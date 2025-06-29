@@ -4,8 +4,8 @@
             <div
                 class="bg-white border border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-6 col-span-12 lg:col-span-8">
 
-                <CForm :on-submit="formSubmit" :external-errors="externalErrors" :data="profileDataForm"
-                    :validation-schema="profileDataValidation" submit-text="Update form">
+                <CForm @invalidated="validationFailed" :on-submit="formSubmit" :external-errors="externalErrors"
+                    :data="profileDataForm" :validation-schema="profileDataValidation" submit-text="Update form">
                     <CInput class="col-span-12 sm:col-span-6" v-model="profileDataForm.first_name" label="First name"
                         id="first_name" />
                     <CInput class="col-span-12 sm:col-span-6" v-model="profileDataForm.last_name" label="Last name"
@@ -56,8 +56,11 @@ import CForm from '@/components/ui/form/CForm.vue';
 import CInput from '@/components/ui/form/CInput.vue';
 import CSelect from '@/components/ui/form/CSelect.vue';
 import CUpload from '@/components/ui/form/CUpload.vue';
+import { useApp } from '@/composables/useApp';
 import { yupValidator } from '@/utils/validator';
 import { ref } from 'vue';
+
+const { addToast } = useApp();
 
 const externalErrors = ref<Record<string, string>>({});
 
@@ -90,6 +93,14 @@ const profileDataForm = ref<{
     password: '',
     password_confirmation: ''
 });
+
+const validationFailed = () => {
+    addToast({
+        location: 'top-center',
+        type: 'error',
+        message: 'One or more provided data is invalid!'
+    });
+};
 
 const formSubmit = async () => {
     // 
