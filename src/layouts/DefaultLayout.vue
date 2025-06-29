@@ -31,10 +31,10 @@
 <script setup lang="ts">
 
 import CToggle from '@/components/ui/CToggle.vue';
-import { useAppSettings } from '@/composables/useAppSettings';
+import { useApp } from '@/composables/useApp';
 import { RouterLink, RouterView } from 'vue-router';
 
-const { darkMode } = useAppSettings();
+const { darkMode } = useApp();
 
 </script>
 

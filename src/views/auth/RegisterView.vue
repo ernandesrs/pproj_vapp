@@ -52,11 +52,11 @@ import CToggle from '@/components/ui/form/CToggle.vue';
 import CForm from '@/components/ui/form/CForm.vue';
 import CInput from '@/components/ui/form/CInput.vue';
 import CSelect from '@/components/ui/form/CSelect.vue';
-import { useAppSettings } from '@/composables/useAppSettings';
+import { useApp } from '@/composables/useApp';
 import { onMounted, ref } from 'vue';
 import { yupValidator } from '@/utils/validator';
 
-const { setAppTitle } = useAppSettings();
+const { setAppTitle } = useApp();
 const formDataSchema = yupValidator.object({
     first_name: yupValidator.string().required(),
     last_name: yupValidator.string().required(),

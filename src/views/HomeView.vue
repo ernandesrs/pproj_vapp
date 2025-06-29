@@ -13,10 +13,10 @@
 <script setup lang="ts">
 
 import CButton from '@/components/ui/CButton.vue';
-import { useAppSettings } from '@/composables/useAppSettings';
+import { useApp } from '@/composables/useApp';
 import { onMounted } from 'vue';
 
-const { setAppTitle } = useAppSettings();
+const { setAppTitle } = useApp();
 
 const links = [
     {

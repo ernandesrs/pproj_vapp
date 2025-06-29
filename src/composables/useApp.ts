@@ -17,7 +17,7 @@ const setAndStoreThemeOnStorage = (theme: string): void => {
     localStorage.setItem('theme', theme);
 };
 
-export function useAppSettings() {
+export function useApp() {
     const windowWidth = ref<number>(window.innerWidth);
     const inMobile = computed(() => windowWidth.value < MOBILE_WIDTH);
     const showSidebar = ref<boolean>(!inMobile.value);

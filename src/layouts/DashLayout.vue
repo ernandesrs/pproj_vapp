@@ -164,10 +164,10 @@ import CSidebarNav from '@/components/dashboard/CSidebarNav.vue';
 import CToast from '@/components/ui/CToast.vue';
 import CIcon from '@/components/ui/CIcon.vue';
 import CToggle from '@/components/ui/CToggle.vue';
-import { useAppSettings } from '@/composables/useAppSettings';
+import { useApp } from '@/composables/useApp';
 import { RouterView } from 'vue-router';
 
-const { showSidebar, inMobile, darkMode } = useAppSettings();
+const { showSidebar, inMobile, darkMode } = useApp();
 
 </script>
 

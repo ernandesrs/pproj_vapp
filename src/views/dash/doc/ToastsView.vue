@@ -18,7 +18,7 @@
                 tag: 'h2',
                 title: 'Uso',
                 texts: [
-                    'O uso é bastante simples, basta utilizar o método <b>addToast</b> contido no composable <i>@/composables/useToast.ts</i> ou <i>@/composables/useAppSettings.ts</i> e informar os dados do toast.',
+                    'O uso é bastante simples, basta utilizar o método <b>addToast</b> contido no composable <i>@/composables/useToast.ts</i> ou <i>@/composables/useApp.ts</i> e informar os dados do toast.',
                     'Para mais detalhes, veja os exemplos abaixo.'
                 ]
             }

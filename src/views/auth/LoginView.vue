@@ -25,11 +25,11 @@
 import CForm from '@/components/ui/form/CForm.vue';
 import CInput from '@/components/ui/form/CInput.vue';
 import CToggle from '@/components/ui/form/CToggle.vue';
-import { useAppSettings } from '@/composables/useAppSettings';
+import { useApp } from '@/composables/useApp';
 import { yupValidator } from '@/utils/validator';
 import { onMounted, ref } from 'vue';
 
-const { setAppTitle } = useAppSettings();
+const { setAppTitle } = useApp();
 
 const externalErrors = ref<Record<string, string>>({});
 

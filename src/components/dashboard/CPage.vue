@@ -12,11 +12,11 @@
 <script setup lang="ts">
 
 import { computed } from 'vue';
-import { useAppSettings } from '@/composables/useAppSettings';
+import { useApp } from '@/composables/useApp';
 import { onMounted } from 'vue';
 import type { PageProps } from '@/types/components/dashboard/page_type';
 
-const { setAppTitle } = useAppSettings();
+const { setAppTitle } = useApp();
 
 const props = withDefaults(defineProps<PageProps>(), {
 });

@@ -20,7 +20,7 @@
                 tag: 'h1',
                 title: 'Layouts',
                 texts: [
-                    'Novos layouts podem ser facilmente construídos do zero, cujas funcionalidades mais essenciais como abrir/mostrar o sidebar, dark mode e título, são abstraídos em um composable <b>useAppSettings</b>.',
+                    'Novos layouts podem ser facilmente construídos do zero, cujas funcionalidades mais essenciais como abrir/mostrar o sidebar, dark mode e título, são abstraídos em um composable <b>useApp</b>.',
                 ],
             }
         ]">
