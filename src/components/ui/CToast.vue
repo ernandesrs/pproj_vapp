@@ -14,9 +14,9 @@
             <div v-show="show"
                 class="absolute mx-2.5 flex items-start gap-x-2.5 py-2.5 px-5 rounded-lg shadow-md text-base text-neutral-50 cursor-default"
                 :class="colors[props.type] + ' ' + {
-                    'top-0': props.location == 'top-center',
-                    'bottom-0': props.location == 'bottom-center',
-                }">
+                    'top-center': 'top-0',
+                    'bottom-center': 'bottom-0'
+                }[props.location]">
 
                 <div class="text-xl flex items-center justify-center">
                     <CIcon :name="props.icon" />

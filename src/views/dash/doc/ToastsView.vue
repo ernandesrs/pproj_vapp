@@ -79,6 +79,7 @@ const toast = useToast();
 
 const testToast = (type: ToastType) => {
     toast.addToast({
+        location: 'top-center',
         permanent: false,
         type: type as ToastType,
         message: 'Lorem dolor toast message ' + Date.now(),
