@@ -79,6 +79,11 @@ const router = createRouter({
               path: 'toast',
               name: 'dash.docs.toast',
               component: () => import('@/views/dash/doc/ToastsView.vue'),
+            },
+            {
+              path: 'badges',
+              name: 'dash.docs.badges',
+              component: () => import('@/views/dash/doc/BadgesView.vue'),
             }
           ]
         },

@@ -84,6 +84,13 @@
                                     name: 'dash.docs.toast'
                                 },
                                 activeIn: ['dash.docs.toast']
+                            },
+                            {
+                                label: 'Badges',
+                                to: {
+                                    name: 'dash.docs.badges'
+                                },
+                                activeIn: ['dash.docs.badges']
                             }
                         ]
                     }]" />
