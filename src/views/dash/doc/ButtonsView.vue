@@ -58,6 +58,13 @@
                             allowedValues: '---',
                             defaultValue: 'false'
                         },
+                        {
+                            name: 'circle',
+                            type: 'boolean',
+                            desc: 'Full rounded button.',
+                            allowedValues: '---',
+                            defaultValue: 'false'
+                        },
                     ]
                 }
             }
@@ -65,6 +72,7 @@
 
             <template #previews>
                 <CButton icon="app" />
+                <CButton icon="app" circle />
                 <CButton label="Button" />
                 <CButton label="Loading" loading />
                 <CButton icon="arrow-left" label="Prepend icon" />
@@ -99,6 +107,7 @@
             <template #codes>
                 <textarea>
                 <CButton icon="app" />
+                <CButton icon="app" circle />
                 <CButton label="Button" />
                 <CButton label="Loading" loading />
                 <CButton icon="arrow-left" label="Prepend icon" />

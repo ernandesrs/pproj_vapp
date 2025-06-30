@@ -1,6 +1,5 @@
 <template>
-    <button
-        class="relative duration-200 border border-transparent rounded-lg disabled:opacity-75 disabled:cursor-not-allowed"
+    <button class="relative duration-200 border border-transparent disabled:opacity-75 disabled:cursor-not-allowed"
         :class="getStyle" :type="props.type">
 
         <!-- button loading content -->
@@ -60,7 +59,7 @@ const getStyle = computed((): string => {
     const color = colors[props.variant][props.color];
     const onlyIcon = props.label == undefined;
 
-    return (onlyIcon ? 'size-11 ' : 'h-11 px-6 ') + color + (props.loading ? ' animate-pulse cursor-progress pointer-events-none' : ' cursor-pointer');
+    return (onlyIcon ? 'size-11 ' : 'h-11 px-6 ') + (props.circle ? 'rounded-full ' : 'rounded-lg ') + color + (props.loading ? ' animate-pulse cursor-progress pointer-events-none' : ' cursor-pointer');
 });
 
 </script>

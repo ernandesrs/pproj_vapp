@@ -10,4 +10,5 @@ export interface ButtonProps {
     icon?: string,
     appendIcon?: string,
     loading?: boolean,
+    circle?: boolean,
 };
