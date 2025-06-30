@@ -43,40 +43,40 @@ const router = createRouter({
         },
 
         {
-          path: '/docs',
+          path: 'docs',
           children: [
             {
-              path: '/introduction',
+              path: 'introduction',
               name: 'dash.docs.introduction',
               component: () => import('@/views/dash/doc/IntroductionView.vue'),
             },
             {
-              path: '/buttons',
+              path: 'buttons',
               name: 'dash.docs.buttons',
               component: () => import('@/views/dash/doc/ButtonsView.vue'),
             },
             {
-              path: '/form',
+              path: 'form',
               name: 'dash.docs.form',
               component: () => import('@/views/dash/doc/FormView.vue'),
             },
             {
-              path: '/form-fields',
+              path: 'form-fields',
               name: 'dash.docs.formFields',
               component: () => import('@/views/dash/doc/FormFieldsView.vue'),
             },
             {
-              path: '/icons',
+              path: 'icons',
               name: 'dash.docs.icons',
               component: () => import('@/views/dash/doc/IconsView.vue'),
             },
             {
-              path: '/list',
+              path: 'list',
               name: 'dash.docs.list',
               component: () => import('@/views/dash/doc/ListView.vue'),
             },
             {
-              path: '/toast',
+              path: 'toast',
               name: 'dash.docs.toast',
               component: () => import('@/views/dash/doc/ToastsView.vue'),
             }
