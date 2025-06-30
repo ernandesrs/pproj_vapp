@@ -1,6 +1,6 @@
 <template>
     <button
-        class="relative duration-200 px-6 py-2.5 border border-transparent rounded-lg disabled:opacity-75 disabled:cursor-not-allowed"
+        class="relative duration-200 border border-transparent rounded-lg disabled:opacity-75 disabled:cursor-not-allowed"
         :class="getStyle" :type="props.type">
 
         <!-- button loading content -->
@@ -10,7 +10,7 @@
         </div>
 
         <!-- button content -->
-        <div class="relative z-0 w-full h-full flex items-center" :class="{
+        <div class="relative z-0 w-full h-full flex justify-center items-center" :class="{
             'opacity-0': props.loading
         }">
             <CIcon v-if="props.icon" :name="props.icon" :prepend="props.icon && props.label ? true : false" />
@@ -58,7 +58,9 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 
 const getStyle = computed((): string => {
     const color = colors[props.variant][props.color];
-    return color + (props.loading ? ' animate-pulse cursor-progress pointer-events-none' : ' cursor-pointer');
+    const onlyIcon = props.label == undefined;
+
+    return (onlyIcon ? 'size-11 ' : 'h-11 px-6 ') + color + (props.loading ? ' animate-pulse cursor-progress pointer-events-none' : ' cursor-pointer');
 });
 
 </script>

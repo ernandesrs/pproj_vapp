@@ -64,6 +64,7 @@
         ]">
 
             <template #previews>
+                <CButton icon="app" />
                 <CButton label="Button" />
                 <CButton label="Loading" loading />
                 <CButton icon="arrow-left" label="Prepend icon" />
@@ -96,7 +97,9 @@
             </template>
 
             <template #codes>
-                <textarea>                <CButton label="Button" />
+                <textarea>
+                <CButton icon="app" />
+                <CButton label="Button" />
                 <CButton label="Loading" loading />
                 <CButton icon="arrow-left" label="Prepend icon" />
                 <CButton append-icon="arrow-right" label="Append icon" />
