@@ -4,7 +4,7 @@
         <div v-if="withHeader"
             class="bg-white dark:bg-neutral-900 flex items-center gap-2.5 py-5 px-6 border-b border-neutral-200 dark:border-neutral-800 relative z-10 rounded-tl-lg rounded-tr-lg"
             :class="{
-                'rounded-bl-lg rounded-br-lg': minimized && !$slots.footer
+                'rounded-bl-lg rounded-br-lg': show && !$slots.footer
             }">
 
             <div class="flex-1 flex items-center">
@@ -15,9 +15,9 @@
                         <slot name="header" />
                     </template>
 
-                    <button v-if="props.minimizable" @click="minimized = !minimized"
+                    <button v-if="props.minimizable" @click="show = !show"
                         class="cursor-pointer size-7 rounded ml-auto text-xl">
-                        <CIcon :name="minimized ? 'plus-lg' : 'dash-lg'" />
+                        <CIcon :name="show ? 'plus-lg' : 'dash-lg'" />
                     </button>
                 </div>
             </div>
@@ -26,7 +26,7 @@
 
         <Transition enter-from-class="opacity-0 -translate-y-4/12" enter-active-class="duration-200"
             leave-to-class="opacity-0 -translate-y-4/12" leave-active-class="duration-100">
-            <div v-show="!minimized" class="p-6 relative z-0">
+            <div v-show="!show" class="p-6 relative z-0">
                 <slot />
             </div>
         </Transition>
@@ -54,7 +54,7 @@ const props = withDefaults(defineProps<CardProps>(), {
     titleTag: 'h5'
 });
 
-const minimized = ref<boolean>(false);
+const show = ref<boolean>(props.minimized ? true : false);
 
 const withHeader = computed((): boolean => {
     return props.title || props.minimizable || slots.header ? true : false;

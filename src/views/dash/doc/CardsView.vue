@@ -46,6 +46,14 @@
                             desc: 'Card content can be hidden.',
                             allowedValues: '---',
                             defaultValue: '---'
+                        },
+                        {
+                            name: 'minimized',
+                            type: 'boolean',
+                            required: false,
+                            desc: 'Start with card content hidden.',
+                            allowedValues: '---',
+                            defaultValue: '---'
                         }
                     ]
                 }
@@ -92,7 +100,15 @@
                         </template>
                     </CCard>
 
-                    <CCard class="col-span-12" title="Minizable card content" minimizable>
+                    <CCard class="col-span-12" title="Minimizable card content" minimizable>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, quae numquam? Repellat,
+                            voluptate soluta
+                            reiciendis porro veniam ad earum veritatis commodi inventore explicabo, totam eveniet
+                            voluptas dicta nulla velit
+                            doloremque.</p>
+                    </CCard>
+
+                    <CCard class="col-span-12" title="Minimizable card content" minimizable minimized>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, quae numquam? Repellat,
                             voluptate soluta
                             reiciendis porro veniam ad earum veritatis commodi inventore explicabo, totam eveniet
