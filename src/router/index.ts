@@ -84,6 +84,11 @@ const router = createRouter({
               path: 'badges',
               name: 'dash.docs.badges',
               component: () => import('@/views/dash/doc/BadgesView.vue'),
+            },
+            {
+              path: 'cards',
+              name: 'dash.docs.cards',
+              component: () => import('@/views/dash/doc/CardsView.vue'),
             }
           ]
         },

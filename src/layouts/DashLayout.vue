@@ -91,6 +91,13 @@
                                     name: 'dash.docs.badges'
                                 },
                                 activeIn: ['dash.docs.badges']
+                            },
+                            {
+                                label: 'Cards',
+                                to: {
+                                    name: 'dash.docs.cards'
+                                },
+                                activeIn: ['dash.docs.cards']
                             }
                         ]
                     }]" />
