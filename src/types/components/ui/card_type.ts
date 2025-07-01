@@ -1,4 +1,5 @@
 export interface CardProps {
     title?: string,
-    titleTag?: string
+    titleTag?: string,
+    minimizable?: boolean
 };

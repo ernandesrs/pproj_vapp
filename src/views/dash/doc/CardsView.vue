@@ -45,7 +45,7 @@
         ]">
 
             <template #previews>
-                <div class="grid grid-cols-12 gap-5">
+                <div class="flex-1 grid grid-cols-12 gap-5">
 
                     <CCard class="col-span-12 sm:col-span-6">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse laborum cum veniam ad,
@@ -82,6 +82,14 @@
                                 </div>
                             </div>
                         </template>
+                    </CCard>
+
+                    <CCard class="col-span-12" title="Minizable card content" minimizable>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, quae numquam? Repellat,
+                            voluptate soluta
+                            reiciendis porro veniam ad earum veritatis commodi inventore explicabo, totam eveniet
+                            voluptas dicta nulla velit
+                            doloremque.</p>
                     </CCard>
 
                 </div>
