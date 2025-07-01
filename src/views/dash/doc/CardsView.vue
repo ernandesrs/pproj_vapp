@@ -8,6 +8,13 @@
                     'Card component.'
                 ],
                 componentDoc: {
+                    events: [
+                        {
+                            name: 'minimize',
+                            handlerSignature: '(minimized: boolean) => void',
+                            desc: 'Function to handle with minimize toggle.'
+                        }
+                    ],
                     slots: [
                         {
                             name: 'default',

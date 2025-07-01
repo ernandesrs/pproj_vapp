@@ -45,8 +45,10 @@
 <script setup lang="ts">
 
 import type { CardProps } from '@/types/components/ui/card_type';
-import { computed, ref, useSlots } from 'vue';
+import { computed, ref, useSlots, watch } from 'vue';
 import CIcon from './CIcon.vue';
+
+const emit = defineEmits(['minimize']);
 
 const slots = useSlots();
 
@@ -62,6 +64,10 @@ const withHeader = computed((): boolean => {
 
 const withFooter = computed((): boolean => {
     return slots.footer ? true : false;
+});
+
+watch(() => show.value, (n) => {
+    emit('minimize', n);
 });
 
 </script>
