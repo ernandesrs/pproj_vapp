@@ -1,9 +1,7 @@
 <template>
     <CPage title="My profile">
         <CPageSection with-grid>
-            <div
-                class="bg-white border border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-6 col-span-12 lg:col-span-8">
-
+            <CCard class="col-span-12 lg:col-span-8">
                 <CForm @invalidated="validationFailed" :on-submit="formSubmit" :external-errors="externalErrors"
                     :data="profileDataForm" :validation-schema="profileDataValidation" submit-text="Update form">
                     <CInput class="col-span-12 sm:col-span-6" v-model="profileDataForm.first_name" label="First name"
@@ -38,12 +36,9 @@
                     <CInput class="col-span-12 sm:col-span-6" v-model="profileDataForm.password_confirmation"
                         id="password_confirmation" label="Password confirmation" type="password" />
                 </CForm>
+            </CCard>
 
-            </div>
-            <div
-                class="bg-white border border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 rounded-lg p-6 col-span-12 lg:col-span-4">
-
-            </div>
+            <CCard class="col-span-12 lg:col-span-4"></CCard>
         </CPageSection>
     </CPage>
 </template>
@@ -52,6 +47,7 @@
 
 import CPage from '@/components/dashboard/CPage.vue';
 import CPageSection from '@/components/dashboard/CPageSection.vue';
+import CCard from '@/components/ui/CCard.vue';
 import CForm from '@/components/ui/form/CForm.vue';
 import CInput from '@/components/ui/form/CInput.vue';
 import CSelect from '@/components/ui/form/CSelect.vue';
