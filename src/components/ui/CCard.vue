@@ -12,7 +12,7 @@
 
         </div>
 
-        <div class="py-5 px-6 relative z-0">
+        <div class="p-6 relative z-0">
             <slot />
         </div>
 
