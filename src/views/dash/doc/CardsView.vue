@@ -38,6 +38,14 @@
                             desc: 'Card title.',
                             allowedValues: '---',
                             defaultValue: '---'
+                        },
+                        {
+                            name: 'minimizable',
+                            type: 'boolean',
+                            required: false,
+                            desc: 'Card content can be hidden.',
+                            allowedValues: '---',
+                            defaultValue: '---'
                         }
                     ]
                 }
