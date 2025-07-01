@@ -1,5 +1,5 @@
 <template>
-    <span class="inline-flex gap-x-2 items-center justify-center rounded-full px-4 py-0.5 cursor-default border"
+    <span class="inline-flex gap-x-2 items-center justify-center rounded-lg px-4 py-0.5 cursor-default border"
         :class="getStyle">
         <div @click="prependClicked" v-if="props.icon || $slots.prepend">
             <CIcon v-if="props.icon" :name="props.icon" />
