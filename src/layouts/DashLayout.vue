@@ -98,6 +98,13 @@
                                     name: 'dash.docs.cards'
                                 },
                                 activeIn: ['dash.docs.cards']
+                            },
+                            {
+                                label: 'Thumbnails',
+                                to: {
+                                    name: 'dash.docs.thumbnails'
+                                },
+                                activeIn: ['dash.docs.thumbnails']
                             }
                         ]
                     }]" />
