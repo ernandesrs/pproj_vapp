@@ -1,12 +1,12 @@
 <template>
-    <span class="inline-flex gap-x-2 items-center justify-center rounded-lg px-4 py-0.5 cursor-default border"
+    <span class="inline-flex gap-x-2 items-center justify-center rounded-lg px-2.5 py-[1px] cursor-default border"
         :class="getStyle">
         <div @click="prependClicked" v-if="props.icon || $slots.prepend">
             <CIcon v-if="props.icon" :name="props.icon" />
             <slot name="prepend" />
         </div>
 
-        <p class="text-sm whitespace-nowrap" v-html="props.label"></p>
+        <p class="text-xs whitespace-nowrap" v-html="props.label"></p>
 
         <div @click="appendClicked" v-if="props.appendIcon || $slots.append">
             <CIcon v-if="props.appendIcon" :name="props.appendIcon" />
