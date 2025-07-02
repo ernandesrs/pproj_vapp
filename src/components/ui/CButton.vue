@@ -12,9 +12,19 @@
         <div class="relative z-0 w-full h-full flex justify-center items-center" :class="{
             'opacity-0': props.loading
         }">
-            <CIcon v-if="props.icon" :name="props.icon" :prepend="props.icon && props.label ? true : false" />
+            <div v-if="props.icon || $slots.prepend" :class="{
+                'mr-2': (props.icon || $slots.prepend) && props.label
+            }">
+                <CIcon v-if="props.icon" :name="props.icon" />
+                <slot name="prepend" />
+            </div>
             <span class="inline-block" v-if="props.label" v-text="props.label"></span>
-            <CIcon v-if="props.appendIcon" :name="props.appendIcon" append />
+            <div v-if="props.icon || $slots.append" :class="{
+                'ml-2': (props.icon || $slots.append) && props.label
+            }">
+                <CIcon v-if="props.appendIcon" :name="props.appendIcon" />
+                <slot name="append" />
+            </div>
         </div>
 
     </button>

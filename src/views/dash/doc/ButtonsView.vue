@@ -8,6 +8,16 @@
                 texts: [
                 ],
                 componentDoc: {
+                    slots: [
+                        {
+                            name: 'prepend',
+                            desc: 'A slot in left side.'
+                        },
+                        {
+                            name: 'append',
+                            desc: 'A slot in right side.'
+                        }
+                    ],
                     props: [
                         {
                             name: 'type',
@@ -74,6 +84,16 @@
                 <CButton icon="app" />
                 <CButton icon="app" circle />
                 <CButton label="Button" />
+                <CButton label="Using prepend slot">
+                    <template #prepend>
+                        <CBadge label="19" color="warning" />
+                    </template>
+                </CButton>
+                <CButton label="Using append slot">
+                    <template #append>
+                        <CBadge label="19" color="warning" />
+                    </template>
+                </CButton>
                 <CButton label="Loading" loading />
                 <CButton icon="arrow-left" label="Prepend icon" />
                 <CButton append-icon="arrow-right" label="Append icon" />
@@ -109,31 +129,41 @@
                 <CButton icon="app" />
                 <CButton icon="app" circle />
                 <CButton label="Button" />
-                <CButton label="Loading" loading />
-                <CButton icon="arrow-left" label="Prepend icon" />
-                <CButton append-icon="arrow-right" label="Append icon" />
-                <CButton icon="arrow-left" append-icon="arrow-right" label="Two icon" />
+                <CButton label="Using prepend slot">
+                    <template #prepend>
+                        <CBadge label="19" color="warning" />
+                    </template>
+</CButton>
+<CButton label="Using append slot">
+    <template #append>
+                        <CBadge label="19" color="warning" />
+                    </template>
+</CButton>
+<CButton label="Loading" loading />
+<CButton icon="arrow-left" label="Prepend icon" />
+<CButton append-icon="arrow-right" label="Append icon" />
+<CButton icon="arrow-left" append-icon="arrow-right" label="Two icon" />
 
-                <CButton label="Primary filled" color="primary" variant="filled" />
-                <CButton label="Primary text" color="primary" variant="text" />
+<CButton label="Primary filled" color="primary" variant="filled" />
+<CButton label="Primary text" color="primary" variant="text" />
 
-                <CButton label="Secondary filled" color="secondary" variant="filled" />
-                <CButton label="Secondary text" color="secondary" variant="text" />
+<CButton label="Secondary filled" color="secondary" variant="filled" />
+<CButton label="Secondary text" color="secondary" variant="text" />
 
-                <CButton label="Info filled" color="info" variant="filled" />
-                <CButton label="Info text" color="info" variant="text" />
+<CButton label="Info filled" color="info" variant="filled" />
+<CButton label="Info text" color="info" variant="text" />
 
-                <CButton label="Warning filled" color="warning" variant="filled" />
-                <CButton label="Warning text" color="warning" variant="text" />
+<CButton label="Warning filled" color="warning" variant="filled" />
+<CButton label="Warning text" color="warning" variant="text" />
 
-                <CButton label="Danger filled" color="danger" variant="filled" />
-                <CButton label="Danger text" color="danger" variant="text" />
+<CButton label="Danger filled" color="danger" variant="filled" />
+<CButton label="Danger text" color="danger" variant="text" />
 
-                <CButton label="Dark filled" color="dark" variant="filled" />
-                <CButton label="Dark text" color="dark" variant="text" />
+<CButton label="Dark filled" color="dark" variant="filled" />
+<CButton label="Dark text" color="dark" variant="text" />
 
-                <CButton label="Light filled" color="light" variant="filled" />
-                <CButton label="Light text" color="light" variant="text" /></textarea>
+<CButton label="Light filled" color="light" variant="filled" />
+<CButton label="Light text" color="light" variant="text" /></textarea>
             </template>
 
         </CDocSection>
@@ -145,6 +175,7 @@
 
 import CDocSection from '@/components/dashboard/CDocSection.vue';
 import CPage from '@/components/dashboard/CPage.vue';
+import CBadge from '@/components/ui/CBadge.vue';
 import CButton from '@/components/ui/CButton.vue';
 
 </script>
