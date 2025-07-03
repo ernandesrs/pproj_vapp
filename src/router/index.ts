@@ -94,6 +94,11 @@ const router = createRouter({
               path: 'thumbnails',
               name: 'dash.docs.thumbnails',
               component: () => import('@/views/dash/doc/ThumbnailsView.vue'),
+            },
+            {
+              path: 'tables',
+              name: 'dash.docs.tables',
+              component: () => import('@/views/dash/doc/TablesView.vue'),
             }
           ]
         },

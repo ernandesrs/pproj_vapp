@@ -105,6 +105,13 @@
                                     name: 'dash.docs.thumbnails'
                                 },
                                 activeIn: ['dash.docs.thumbnails']
+                            },
+                            {
+                                label: 'Tables',
+                                to: {
+                                    name: 'dash.docs.tables'
+                                },
+                                activeIn: ['dash.docs.tables']
                             }
                         ]
                     }]" />
