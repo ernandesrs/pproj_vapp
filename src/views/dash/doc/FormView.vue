@@ -177,7 +177,7 @@
 <script setup lang="ts">
 
 import CDocSection from '@/components/dashboard/CDocSection.vue';
-import CPage from '@/components/dashboard/CPage.vue';
+import CPage from '@/components/ui/layout/CPage.vue';
 import CToggle from '@/components/ui/CToggle.vue';
 import CForm from '@/components/ui/form/CForm.vue';
 import CInput from '@/components/ui/form/CInput.vue';

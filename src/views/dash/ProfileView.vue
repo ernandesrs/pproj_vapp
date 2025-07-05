@@ -45,8 +45,8 @@
 
 <script setup lang="ts">
 
-import CPage from '@/components/dashboard/CPage.vue';
-import CPageSection from '@/components/dashboard/CPageSection.vue';
+import CPage from '@/components/ui/layout/CPage.vue';
+import CPageSection from '@/components/ui/layout/CPageSection.vue';
 import CCard from '@/components/ui/CCard.vue';
 import CForm from '@/components/ui/form/CForm.vue';
 import CInput from '@/components/ui/form/CInput.vue';

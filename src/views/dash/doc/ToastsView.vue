@@ -70,7 +70,7 @@
 <script setup lang="ts">
 
 import CDocSection from '@/components/dashboard/CDocSection.vue';
-import CPage from '@/components/dashboard/CPage.vue';
+import CPage from '@/components/ui/layout/CPage.vue';
 import CButton from '@/components/ui/CButton.vue';
 import { useToast } from '@/composables/useToast';
 import type { ToastType } from '@/types/components/ui/toast_type';

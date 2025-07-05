@@ -59,9 +59,9 @@ const colors = {
 };
 
 import { nextTick, ref, watch } from 'vue';
-import CIcon from './CIcon.vue';
 import type { ToastOptions } from '@/types/components/ui/toast_type';
 import { useToastStore } from '@/stores/toast';
+import CIcon from '../CIcon.vue';
 
 const toastStore = useToastStore();
 

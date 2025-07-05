@@ -32,8 +32,8 @@
 
 <script setup lang="ts">
 
-import CPage from '@/components/dashboard/CPage.vue';
-import CPageSection from '@/components/dashboard/CPageSection.vue';
+import CPage from '@/components/ui/layout/CPage.vue';
+import CPageSection from '@/components/ui/layout/CPageSection.vue';
 import CCard from '@/components/ui/CCard.vue';
 
 </script>

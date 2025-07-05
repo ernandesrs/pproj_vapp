@@ -124,7 +124,7 @@
 
 <script setup lang="ts">
 
-import CPageSection from './CPageSection.vue';
+import CPageSection from '../ui/layout/CPageSection.vue';
 
 interface Section {
     tag: "h1" | "h2",

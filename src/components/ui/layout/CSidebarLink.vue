@@ -19,7 +19,7 @@
 import type { SidebarLinkProps } from '@/types/components/dashboard/sidebar_type';
 import { useRoute } from 'vue-router';
 import { computed } from 'vue';
-import CIcon from '../ui/CIcon.vue';
+import CIcon from '../CIcon.vue';
 
 const props = withDefaults(defineProps<SidebarLinkProps>(), {
     icon: 'dot',

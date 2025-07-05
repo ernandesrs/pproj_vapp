@@ -191,13 +191,13 @@
 
 <script setup lang="ts">
 
-import CSidebarNav from '@/components/dashboard/CSidebarNav.vue';
-import CToast from '@/components/ui/CToast.vue';
+import CSidebarNav from '@/components/ui/layout/CSidebarNav.vue';
+import CToast from '@/components/ui/layout/CToast.vue';
 import CIcon from '@/components/ui/CIcon.vue';
 import CToggle from '@/components/ui/CToggle.vue';
 import { useApp } from '@/composables/useApp';
 import { RouterView } from 'vue-router';
-import CLoaderBar from '@/components/ui/CLoaderBar.vue';
+import CLoaderBar from '@/components/ui/layout/CLoaderBar.vue';
 import { onMounted, ref } from 'vue';
 
 const { showSidebar, inMobile, darkMode } = useApp();
@@ -208,14 +208,6 @@ onMounted(() => {
 
     setTimeout(() => {
         loading.value = false;
-
-        setTimeout(() => {
-            loading.value = true;
-
-            setTimeout(() => {
-                loading.value = false;
-            }, 10000);
-        }, 2000);
     }, 5000);
 
 });

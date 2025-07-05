@@ -214,7 +214,7 @@
 <script setup lang="ts">
 
 import CDocSection from '@/components/dashboard/CDocSection.vue';
-import CPage from '@/components/dashboard/CPage.vue';
+import CPage from '@/components/ui/layout/CPage.vue';
 import CCard from '@/components/ui/CCard.vue';
 import CTable from '@/components/ui/table/CTable.vue';
 import CTableColumn from '@/components/ui/table/CTableColumn.vue';
