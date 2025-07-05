@@ -137,6 +137,9 @@
             </aside>
         </Transition>
 
+        <!-- loading -->
+        <CLoaderBar :loading="loading" />
+
         <CToast />
 
         <div class="flex-1 relative z-30">
@@ -194,8 +197,28 @@ import CIcon from '@/components/ui/CIcon.vue';
 import CToggle from '@/components/ui/CToggle.vue';
 import { useApp } from '@/composables/useApp';
 import { RouterView } from 'vue-router';
+import CLoaderBar from '@/components/ui/CLoaderBar.vue';
+import { onMounted, ref } from 'vue';
 
 const { showSidebar, inMobile, darkMode } = useApp();
+
+const loading = ref(true);
+
+onMounted(() => {
+
+    setTimeout(() => {
+        loading.value = false;
+
+        setTimeout(() => {
+            loading.value = true;
+
+            setTimeout(() => {
+                loading.value = false;
+            }, 10000);
+        }, 2000);
+    }, 5000);
+
+});
 
 </script>
 
