@@ -138,7 +138,7 @@
         </Transition>
 
         <!-- loading -->
-        <CLoaderBar :loading="appStore.loading" />
+        <CLoaderBar :loading="inLoadingMode" />
 
         <CToast />
 
@@ -198,11 +198,8 @@ import CToggle from '@/components/ui/CToggle.vue';
 import { useApp } from '@/composables/useApp';
 import { RouterView } from 'vue-router';
 import CLoaderBar from '@/components/ui/layout/CLoaderBar.vue';
-import { useAppStore } from '@/stores/app';
 
-const { showSidebar, inMobile, darkMode } = useApp();
-
-const appStore = useAppStore();
+const { showSidebar, inMobile, darkMode, inLoadingMode } = useApp();
 
 </script>
 

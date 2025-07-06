@@ -1,5 +1,6 @@
 import { computed, ref, watch } from "vue";
 import { useToast } from "./useToast";
+import { useAppStore } from "@/stores/app";
 
 const MOBILE_WIDTH = 1024;
 
@@ -18,10 +19,13 @@ const setAndStoreThemeOnStorage = (theme: string): void => {
 };
 
 export function useApp() {
+    const appStore = useAppStore();
+
     const windowWidth = ref<number>(window.innerWidth);
     const inMobile = computed(() => windowWidth.value < MOBILE_WIDTH);
     const showSidebar = ref<boolean>(!inMobile.value);
     const darkMode = ref<boolean>(getThemeFromStorage() === 'dark');
+    const inLoadingMode = computed(() => appStore.loading);
 
     const { addToast } = useToast();
 
@@ -35,6 +39,14 @@ export function useApp() {
         const baseTitle = document.title.split('|')[0];
 
         document.title = baseTitle + ' | ' + title;
+    };
+
+    const addInLoadingMode = (): void => {
+        appStore.loading = true;
+    };
+
+    const removeLoadingMode = (): void => {
+        appStore.loading = false;
     };
 
     const isDarkTheme = (): boolean => {
@@ -59,8 +71,11 @@ export function useApp() {
         inMobile,
         showSidebar,
         darkMode,
+        inLoadingMode,
 
         setAppTitle,
+        addInLoadingMode,
+        removeLoadingMode,
         addToast,
 
         isDarkTheme

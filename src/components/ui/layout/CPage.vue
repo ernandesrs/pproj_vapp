@@ -15,11 +15,8 @@ import { computed, watch } from 'vue';
 import { useApp } from '@/composables/useApp';
 import { onMounted } from 'vue';
 import type { PageProps } from '@/types/components/dashboard/page_type';
-import { useAppStore } from '@/stores/app';
 
-const { setAppTitle } = useApp();
-
-const appStore = useAppStore();
+const { setAppTitle, addInLoadingMode, removeLoadingMode } = useApp();
 
 const props = withDefaults(defineProps<PageProps>(), {
     loading: false
@@ -30,7 +27,11 @@ const showPageHeader = computed(() => {
 });
 
 watch(() => props.loading, (n: boolean) => {
-    appStore.loading = n;
+    if (n) {
+        addInLoadingMode();
+    } else {
+        removeLoadingMode();
+    }
 }, { immediate: true });
 
 onMounted(() => {
