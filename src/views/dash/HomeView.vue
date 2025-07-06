@@ -1,5 +1,5 @@
 <template>
-    <CPage title="Dashboard overview" without-header>
+    <CPage title="Dashboard overview" without-header :loading="loading">
         <CPageSection with-grid>
 
             <CCard class="col-span-12 sm:col-span-6">
@@ -35,6 +35,17 @@
 import CPage from '@/components/ui/layout/CPage.vue';
 import CPageSection from '@/components/ui/layout/CPageSection.vue';
 import CCard from '@/components/ui/CCard.vue';
+import { onMounted, ref } from 'vue';
+
+const loading = ref<boolean>(true);
+
+onMounted(() => {
+
+    setTimeout(() => {
+        loading.value = false;
+    }, 5000);
+
+});
 
 </script>
 

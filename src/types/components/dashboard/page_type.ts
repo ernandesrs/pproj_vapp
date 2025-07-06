@@ -1,6 +1,7 @@
 export interface PageProps {
     title: string,
-    withoutHeader?: boolean
+    withoutHeader?: boolean,
+    loading?: boolean
 };
 
 export interface PageSectionProps {

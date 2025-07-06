@@ -11,19 +11,27 @@
 
 <script setup lang="ts">
 
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { useApp } from '@/composables/useApp';
 import { onMounted } from 'vue';
 import type { PageProps } from '@/types/components/dashboard/page_type';
+import { useAppStore } from '@/stores/app';
 
 const { setAppTitle } = useApp();
 
+const appStore = useAppStore();
+
 const props = withDefaults(defineProps<PageProps>(), {
+    loading: false
 });
 
 const showPageHeader = computed(() => {
     return !props.withoutHeader && props.title.length > 0;
 });
+
+watch(() => props.loading, (n: boolean) => {
+    appStore.loading = n;
+}, { immediate: true });
 
 onMounted(() => {
     setAppTitle(props.title);

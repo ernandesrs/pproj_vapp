@@ -44,12 +44,13 @@ watch(() => props.loading, (n) => {
             show.value = true;
             start();
         }, 250);
-    } else {
+    } else if (progress.value !== 0) {
         progress.value = 100;
         setTimeout(() => {
+            progress.value = 0;
             show.value = false;
             clearInterval(intervalId.value as number);
-        }, 750);
+        }, 500);
     }
 }, { immediate: true });
 

@@ -138,7 +138,7 @@
         </Transition>
 
         <!-- loading -->
-        <CLoaderBar :loading="loading" />
+        <CLoaderBar :loading="appStore.loading" />
 
         <CToast />
 
@@ -198,19 +198,11 @@ import CToggle from '@/components/ui/CToggle.vue';
 import { useApp } from '@/composables/useApp';
 import { RouterView } from 'vue-router';
 import CLoaderBar from '@/components/ui/layout/CLoaderBar.vue';
-import { onMounted, ref } from 'vue';
+import { useAppStore } from '@/stores/app';
 
 const { showSidebar, inMobile, darkMode } = useApp();
 
-const loading = ref(true);
-
-onMounted(() => {
-
-    setTimeout(() => {
-        loading.value = false;
-    }, 5000);
-
-});
+const appStore = useAppStore();
 
 </script>
 
