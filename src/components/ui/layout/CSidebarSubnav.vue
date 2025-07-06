@@ -5,9 +5,9 @@
             icon: props.icon,
             to: ''
         }" class="hover:!pl-6" />
-        <Transition enter-from-class="opacity-0 -translate-y-3/12"
+        <Transition enter-from-class="opacity-0 -translate-y-1/12"
             enter-active-class="duration-200 ease-in-out pointer-events-none"
-            leave-to-class="opacity-0 -translate-y-3/12" leave-active-class="duration-200 ease-out pointer-events-none">
+            leave-to-class="opacity-0 -translate-y-1/12" leave-active-class="duration-200 ease-out pointer-events-none">
             <CSidebarNav v-show="isShow" subnav :items="items" class="ml-6" />
         </Transition>
     </div>
