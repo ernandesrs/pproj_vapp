@@ -2,25 +2,25 @@
     <CPage title="Dashboard overview" without-header :loading="loading">
         <CPageSection with-grid>
 
-            <CCard class="col-span-12 sm:col-span-6">
+            <CCard class="col-span-12 sm:col-span-6" global-loading>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa dolor accusantium exercitationem suscipit
                 possimus tempora quia, laudantium non voluptate culpa consequatur vero blanditiis. Aut aspernatur ex
                 magnam, quasi velit cupiditate?
             </CCard>
 
-            <CCard class="col-span-12 sm:col-span-6">
+            <CCard class="col-span-12 sm:col-span-6" global-loading>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa dolor accusantium exercitationem suscipit
                 possimus tempora quia, laudantium non voluptate culpa consequatur vero blanditiis. Aut aspernatur ex
                 magnam, quasi velit cupiditate?
             </CCard>
 
-            <CCard class="col-span-12 sm:col-span-6">
+            <CCard class="col-span-12 sm:col-span-6" global-loading>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa dolor accusantium exercitationem suscipit
                 possimus tempora quia, laudantium non voluptate culpa consequatur vero blanditiis. Aut aspernatur ex
                 magnam, quasi velit cupiditate?
             </CCard>
 
-            <CCard class="col-span-12 sm:col-span-6">
+            <CCard class="col-span-12 sm:col-span-6" title="Lorem title" minimizable global-loading>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa dolor accusantium exercitationem suscipit
                 possimus tempora quia, laudantium non voluptate culpa consequatur vero blanditiis. Aut aspernatur ex
                 magnam, quasi velit cupiditate?

@@ -61,6 +61,22 @@
                             desc: 'Start with card content hidden.',
                             allowedValues: '---',
                             defaultValue: '---'
+                        },
+                        {
+                            name: 'loading',
+                            type: 'boolean',
+                            required: false,
+                            desc: 'When true, puts the card in loading mode.',
+                            allowedValues: '---',
+                            defaultValue: '---'
+                        },
+                        {
+                            name: 'globalLoading',
+                            type: 'boolean',
+                            required: false,
+                            desc: 'The card is automatically in loading mode according to the global state.',
+                            allowedValues: '---',
+                            defaultValue: '---'
                         }
                     ]
                 }
@@ -108,6 +124,14 @@
                     </CCard>
 
                     <CCard class="col-span-12" title="Minimizable card content" minimizable>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, quae numquam? Repellat,
+                            voluptate soluta
+                            reiciendis porro veniam ad earum veritatis commodi inventore explicabo, totam eveniet
+                            voluptas dicta nulla velit
+                            doloremque.</p>
+                    </CCard>
+
+                    <CCard class="col-span-12" title="Loading card content" minimizable loading>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, quae numquam? Repellat,
                             voluptate soluta
                             reiciendis porro veniam ad earum veritatis commodi inventore explicabo, totam eveniet

@@ -7,7 +7,19 @@
                 'rounded-bl-lg rounded-br-lg': show && !$slots.footer
             }">
 
-            <div class="flex-1 flex items-center">
+            <div class="flex-1 flex items-center relative">
+
+                <!-- skeleton -->
+                <Transition enter-from-class="opacity-0" enter-active-class="duration-100 ease-in-out"
+                    leave-to-class="opacity-0" leave-active-class="duration-200 ease-out">
+                    <div v-if="isLoading"
+                        class="w-full h-full absolute z-50 top-0 left-0 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                        <div
+                            class="w-full h-full bg-gradient-to-r from-neutral-200 dark:from-neutral-900 via-neutral-100 dark:via-neutral-800 to-neutral-100 dark:to-neutral-800 animate-pulse rounded-lg">
+                        </div>
+                    </div>
+                </Transition>
+
                 <Component v-if="props.title" :is="props.titleTag" v-html="props.title"
                     class="text-base font-semibold" />
                 <div class="flex-1 flex items-center">
@@ -27,7 +39,21 @@
         <Transition enter-from-class="opacity-0 -translate-y-4/12" enter-active-class="duration-200"
             leave-to-class="opacity-0 -translate-y-4/12" leave-active-class="duration-100">
             <div v-show="!show" class="p-6 relative z-0">
-                <slot />
+                <div class="relative">
+
+                    <!-- skeleton -->
+                    <Transition enter-from-class="opacity-0" enter-active-class="duration-100 ease-in-out"
+                        leave-to-class="opacity-0" leave-active-class="duration-200 ease-out">
+                        <div v-if="isLoading"
+                            class="w-full h-full absolute z-50 top-0 left-0 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                            <div
+                                class="w-full h-full bg-gradient-to-r from-neutral-200 dark:from-neutral-900 via-neutral-100 dark:via-neutral-800 to-neutral-100 dark:to-neutral-800 animate-pulse rounded-lg">
+                            </div>
+                        </div>
+                    </Transition>
+
+                    <slot />
+                </div>
             </div>
         </Transition>
 
@@ -47,6 +73,7 @@
 import type { CardProps } from '@/types/components/ui/card_type';
 import { computed, ref, useSlots, watch } from 'vue';
 import CIcon from './CIcon.vue';
+import { useApp } from '@/composables/useApp';
 
 const emit = defineEmits(['minimize']);
 
@@ -55,6 +82,10 @@ const slots = useSlots();
 const props = withDefaults(defineProps<CardProps>(), {
     titleTag: 'h5'
 });
+
+const { inLoadingMode } = useApp();
+
+const isLoading = ref<boolean>(false);
 
 const show = ref<boolean>(props.minimized ? true : false);
 
@@ -69,6 +100,16 @@ const withFooter = computed((): boolean => {
 watch(() => show.value, (n) => {
     emit('minimize', n);
 });
+
+watch(() => props.loading, (n) => {
+    isLoading.value = n;
+}, { immediate: true });
+
+watch(() => inLoadingMode.value, (n) => {
+    if (props.globalLoading) {
+        isLoading.value = n;
+    }
+}, { immediate: true });
 
 </script>
 
