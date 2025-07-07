@@ -51,6 +51,11 @@ const router = createRouter({
               component: () => import('@/views/dash/doc/IntroductionView.vue'),
             },
             {
+              path: 'pages',
+              name: 'dash.docs.pages',
+              component: () => import('@/views/dash/doc/PagesView.vue'),
+            },
+            {
               path: 'buttons',
               name: 'dash.docs.buttons',
               component: () => import('@/views/dash/doc/ButtonsView.vue'),

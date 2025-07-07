@@ -44,6 +44,13 @@
                                 activeIn: ['dash.docs.introduction']
                             },
                             {
+                                label: 'Page',
+                                to: {
+                                    name: 'dash.docs.pages'
+                                },
+                                activeIn: ['dash.docs.pages']
+                            },
+                            {
                                 label: 'Buttons',
                                 to: {
                                     name: 'dash.docs.buttons'
