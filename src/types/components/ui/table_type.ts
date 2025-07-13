@@ -6,6 +6,8 @@ export interface TableProps {
     header?: TableHeaderColumn[],
     captionTop?: string,
     captionBottom?: string,
+    loading?: boolean,
+    linesWhenLoading?: number
 };
 
 export interface TableGroupProps {

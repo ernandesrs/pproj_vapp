@@ -203,6 +203,43 @@
 
                     </CTable>
 
+                    <div class="col-span-12 sm:col-span-6 p-6">
+                        <CTable caption-top="Table in permanent loading mode" loading :header="[
+                            {
+                                label: 'Name'
+                            },
+                            {
+                                label: 'DoB'
+                            }
+                        ]">
+
+                            <CTableRow v-for="item in tableItemsA">
+                                <CTableColumn :value="item.name" />
+                                <CTableColumn :value="item.birthdate" />
+                            </CTableRow>
+
+                        </CTable>
+                    </div>
+
+                    <div class="col-span-12 sm:col-span-6 p-6">
+                        <CTable caption-top="Table in loading mode" :loading="loadingTableContent"
+                            :lines-when-loading="4" :header="[
+                                {
+                                    label: 'Name'
+                                },
+                                {
+                                    label: 'DoB'
+                                }
+                            ]">
+
+                            <CTableRow v-for="item in tableItemsA">
+                                <CTableColumn :value="item.name" />
+                                <CTableColumn :value="item.birthdate" />
+                            </CTableRow>
+
+                        </CTable>
+                    </div>
+
                 </div>
             </template>
 
@@ -215,11 +252,11 @@
 
 import CDocSection from '@/components/dashboard/CDocSection.vue';
 import CPage from '@/components/ui/layout/CPage.vue';
-import CCard from '@/components/ui/CCard.vue';
 import CTable from '@/components/ui/table/CTable.vue';
 import CTableColumn from '@/components/ui/table/CTableColumn.vue';
 import CTableGroup from '@/components/ui/table/CTableGroup.vue';
 import CTableRow from '@/components/ui/table/CTableRow.vue';
+import { ref } from 'vue';
 
 const tableItemsA = [
     {
@@ -274,6 +311,12 @@ const tableItemsB = [
         "earnings": "$53,000"
     },
 ];
+
+const loadingTableContent = ref(true);
+
+setTimeout(() => {
+    loadingTableContent.value = false;
+}, 7500);
 
 </script>
 
