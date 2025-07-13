@@ -119,6 +119,13 @@
                                     name: 'dash.docs.tables'
                                 },
                                 activeIn: ['dash.docs.tables']
+                            },
+                            {
+                                label: 'Skeletons',
+                                to: {
+                                    name: 'dash.docs.skeletons'
+                                },
+                                activeIn: ['dash.docs.skeletons']
                             }
                         ]
                     }]" />
