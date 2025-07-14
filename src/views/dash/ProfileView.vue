@@ -1,5 +1,5 @@
 <template>
-    <CPage title="My profile">
+    <CPage title="My profile" :loading="loading">
         <CPageSection with-grid>
             <CCard class="col-span-12 lg:col-span-8">
                 <CForm @invalidated="validationFailed" :on-submit="formSubmit" :external-errors="externalErrors"
@@ -38,7 +38,25 @@
                 </CForm>
             </CCard>
 
-            <CCard class="col-span-12 lg:col-span-4"></CCard>
+            <CCard class="col-span-12 lg:col-span-4 flex flex-wrap justify-center">
+
+                <div class="flex justify-center mb-5">
+                    <div v-if="loading" class="relative size-32">
+                        <CSkeleton :show="loading" circle />
+                    </div>
+                    <CThumbnail v-else text="E" size="xl" square circle />
+                </div>
+
+                <div class="w-full flex flex-wrap justify-center">
+                    <div class="relative w-[225px] h-4 mb-2.5">
+                        <CSkeletonText :show="loading" :lines="1" line-height="h-[16px]" />
+                    </div>
+                    <div class="relative w-[150px] h-4">
+                        <CSkeletonText :show="loading" :lines="1" line-height="h-[10px]" />
+                    </div>
+                </div>
+
+            </CCard>
         </CPageSection>
     </CPage>
 </template>
@@ -55,8 +73,13 @@ import CUpload from '@/components/ui/form/CUpload.vue';
 import { useApp } from '@/composables/useApp';
 import { yupValidator } from '@/utils/validator';
 import { ref } from 'vue';
+import CThumbnail from '@/components/ui/CThumbnail.vue';
+import CSkeleton from '@/components/ui/CSkeleton.vue';
+import CSkeletonText from '@/components/ui/CSkeletonText.vue';
 
 const { addToast } = useApp();
+
+const loading = ref<boolean>(true);
 
 const externalErrors = ref<Record<string, string>>({});
 
