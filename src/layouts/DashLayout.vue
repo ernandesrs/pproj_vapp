@@ -26,6 +26,14 @@
                                 name: 'dash.home'
                             },
                             activeIn: ['dash.home']
+                        },
+                        {
+                            label: 'Users',
+                            icon: 'people',
+                            to: {
+                                name: 'dash.users'
+                            },
+                            activeIn: ['dash.users']
                         }
                     ]" />
 
