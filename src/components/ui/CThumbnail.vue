@@ -4,12 +4,12 @@
         <img v-if="props.image && !props.loading" class="absolute z-10 w-full h-full" :src="props.image"
             :alt="props.text">
 
-        <div v-if="props.text && !props.loading && !props.image" class="relative z-10 w-full h-full flex justify-center items-center font-semibold text-zinc-400 dark:text-zinc-300"
+        <div v-if="props.text && !props.loading && !props.image"
+            class="relative z-10 w-full h-full flex justify-center items-center font-semibold text-zinc-400 dark:text-zinc-300"
             v-text="props.text[0]"></div>
 
-        <div v-if="props.loading"
-            class="absolute z-20 w-full h-full bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-300 dark:from-neutral-500 dark:via-neutral-600 dark:to-neutral-700 animate-pulse">
-        </div>
+
+        <CSkeleton v-if="props.loading" class="absolute top-0 left-0" />
     </div>
 </template>
 
@@ -30,6 +30,7 @@ const getSize = (size: string, squareOrCircle: boolean): string => {
 
 import type { ThumbnailProps } from '@/types/components/ui/thumbnail_type';
 import { computed } from 'vue';
+import CSkeleton from './CSkeleton.vue';
 
 const props = withDefaults(defineProps<ThumbnailProps>(), {
     size: "normal"
