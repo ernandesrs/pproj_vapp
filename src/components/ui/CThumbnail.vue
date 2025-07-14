@@ -2,14 +2,15 @@
     <div class="relative overflow-hidden shadow-md flex items-center justify-center bg-neutral-200 dark:bg-neutral-600 border-4 border-neutral-50 dark:border-neutral-700 p-2"
         :class="getStyle">
         <img v-if="props.image && !props.loading" class="absolute z-10 w-full h-full" :src="props.image"
-            :alt="props.text">
+            :alt="props.text" @load="onLoad">
 
         <div v-if="props.text && !props.loading && !props.image"
             class="relative z-10 w-full h-full flex justify-center items-center font-semibold text-zinc-400 dark:text-zinc-300"
             v-text="props.text[0]"></div>
 
 
-        <CSkeleton v-if="props.loading" class="absolute top-0 left-0" />
+        <CSkeleton v-if="props.loading || props.image && isLoading" class="absolute top-0 left-0"
+            style="z-index: 999;" />
     </div>
 </template>
 
@@ -29,16 +30,22 @@ const getSize = (size: string, squareOrCircle: boolean): string => {
 };
 
 import type { ThumbnailProps } from '@/types/components/ui/thumbnail_type';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import CSkeleton from './CSkeleton.vue';
 
 const props = withDefaults(defineProps<ThumbnailProps>(), {
     size: "normal"
 });
 
+const isLoading = ref<boolean>(true);
+
 const getStyle = computed((): string => {
     return getSize(props.size, props.square ? true : props.circle ? true : false) + (props.circle ? ' rounded-full ' : ' rounded-lg ');
 });
+
+const onLoad = () => {
+    isLoading.value = false;
+};
 
 </script>
 
