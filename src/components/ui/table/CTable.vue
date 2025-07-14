@@ -13,7 +13,7 @@
                         <template v-if="props.loading">
                             <div class="h-9">
                                 <div class="relative w-full h-full flex items-center">
-                                    <CSkeleton show custom-tailwind-size-class="w-full h-[12px] !top-auto" />
+                                    <CSkeleton variant="text" height="h-[10px]" />
                                 </div>
                             </div>
                         </template>
@@ -30,7 +30,7 @@
                         <CTableColumn v-for="td in Array(props.header ? props.header.length : 1).fill(null)"
                             class="h-10">
                             <div class="relative w-full h-full flex items-center">
-                                <CSkeleton show custom-tailwind-size-class="w-full h-2 !top-auto" />
+                                <CSkeleton variant="text" height="h-[8px]" />
                             </div>
                         </CTableColumn>
                     </CTableRow>

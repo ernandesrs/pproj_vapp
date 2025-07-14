@@ -10,7 +10,7 @@
             <div class="flex-1 flex items-center relative">
 
                 <!-- skeleton -->
-                <CSkeleton :show="isLoading" />
+                <CSkeleton v-show="isLoading" class="absolute top-0 left-0" />
 
                 <Component v-if="props.title" :is="props.titleTag" v-html="props.title"
                     class="text-base font-semibold" />
@@ -34,7 +34,7 @@
                 <div class="relative">
 
                     <!-- skeleton -->
-                    <CSkeleton :show="isLoading" />
+                    <CSkeleton v-show="isLoading" class="absolute top-0 left-0" />
 
                     <slot />
                 </div>

@@ -38,24 +38,20 @@
                 </CForm>
             </CCard>
 
-            <CCard class="col-span-12 lg:col-span-4 flex flex-wrap justify-center">
+            <CCard class="col-span-12 lg:col-span-4">
+                <div class="flex flex-wrap justify-center gap-y-5">
 
-                <div class="flex justify-center mb-5">
-                    <div v-if="loading" class="relative size-32">
-                        <CSkeleton :show="loading" circle />
+                    <div class="w-full flex flex-col items-center">
+                        <CSkeleton v-if="loading" variant="circle" width="w-36" height="h-36" />
+                        <CThumbnail v-else text="E" size="xl" square circle />
                     </div>
-                    <CThumbnail v-else text="E" size="xl" square circle />
+
+                    <div class="w-full flex flex-wrap justify-center gap-3.5">
+                        <CSkeleton variant="text" width="w-11/12" height="h-4" />
+                        <CSkeleton variant="text" width="w-8/12" height="h-[12px]" />
+                    </div>
+
                 </div>
-
-                <div class="w-full flex flex-wrap justify-center">
-                    <div class="relative w-[225px] h-4 mb-2.5">
-                        <CSkeletonText :show="loading" :lines="1" line-height="h-[16px]" />
-                    </div>
-                    <div class="relative w-[150px] h-4">
-                        <CSkeletonText :show="loading" :lines="1" line-height="h-[10px]" />
-                    </div>
-                </div>
-
             </CCard>
         </CPageSection>
     </CPage>

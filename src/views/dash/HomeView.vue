@@ -3,9 +3,9 @@
         <CPageSection with-grid>
 
             <CCard class="col-span-12 sm:col-span-6">
-                <CSkeletonText :show="loading" :lines="3" line-height="h-2" line-gap="gap-4" />
+                <CSkeletonText v-if="loading" :lines="3" line-height="h-2" line-gap="gap-4" />
 
-                <div v-show="!loading">
+                <div v-else>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa dolor accusantium exercitationem
                     suscipit
                     possimus tempora quia, laudantium non voluptate culpa consequatur vero blanditiis. Aut aspernatur ex

@@ -1,12 +1,11 @@
 export interface SkeletonProps {
-    show?: boolean,
-    circle?: boolean,
-    customTailwindSizeClass?: string
+    variant?: 'text' | 'circle' | 'rect',
+    width?: string,
+    height?: string
 };
 
 export interface SkeletonTextProps {
-    show?: boolean,
-    lines?: number,
+    lines?: Array<string> | number,
     lineHeight?: string,
     lineGap?: string
 };
