@@ -114,6 +114,11 @@ const router = createRouter({
               path: 'skeletons',
               name: 'dash.docs.skeletons',
               component: () => import('@/views/dash/doc/SkeletonView.vue'),
+            },
+            {
+              path: 'paginations',
+              name: 'dash.docs.paginations',
+              component: () => import('@/views/dash/doc/PaginationView.vue'),
             }
           ]
         },

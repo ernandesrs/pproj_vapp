@@ -134,6 +134,13 @@
                                     name: 'dash.docs.skeletons'
                                 },
                                 activeIn: ['dash.docs.skeletons']
+                            },
+                            {
+                                label: 'Paginations',
+                                to: {
+                                    name: 'dash.docs.paginations'
+                                },
+                                activeIn: ['dash.docs.paginations']
                             }
                         ]
                     }]" />
