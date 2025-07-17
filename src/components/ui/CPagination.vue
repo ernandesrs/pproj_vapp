@@ -3,7 +3,7 @@
         <a v-for="link, index in getLinks" :key="'pagination_link_' + index"
             class="hover:shadow-md dark:shadow-neutral-700 duration-300 rounded-lg py-1.5 px-4 cursor-pointer" :class="{
                 'text-white dark:text-neutral-50 bg-violet-500 dark:bg-violet-800 hover:bg-violet-700 dark:hover:bg-violet-900': props.currentPage !== link.page,
-                'text-violet-600 shadow-md dark:shadow-neutral-700 bg-violet-100 dark:bg-violet-200': props.currentPage === link.page,
+                'text-violet-600 shadow-md dark:shadow-neutral-700 bg-violet-100 dark:bg-violet-200 pointer-events-none': props.currentPage === link.page,
             }" href="#" v-text="link.label" @click="onClick(link.page)"></a>
     </nav>
 </template>
@@ -47,7 +47,6 @@ const getItems = (): void => {
 
 const onClick = (page: number | null) => {
     if (page !== null) {
-        console.log('navigate to ', page);
         emit('changePage', page);
     }
 };

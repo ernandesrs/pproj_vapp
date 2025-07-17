@@ -1,9 +1,9 @@
 <template>
     <CPage :loading="loading" title="Users">
 
-        <CPageSection>
+        <CPageSection with-grid>
 
-            <CTable :loading="loading" :lines-when-loading="listItems" :header="[
+            <CTable class="col-span-12" :loading="loading" :lines-when-loading="itemsPerPage" :header="[
                 {
                     label: 'Name'
                 },
@@ -27,6 +27,11 @@
 
             </CTable>
 
+            <div class="col-span-12 flex justify-center">
+                <CPagination @change-page="changePage" :total-items="totalItems" :items-per-page="itemsPerPage"
+                    :current-page="currentPage" />
+            </div>
+
         </CPageSection>
 
     </CPage>
@@ -34,6 +39,7 @@
 
 <script setup lang="ts">
 
+import CPagination from '@/components/ui/CPagination.vue';
 import CPage from '@/components/ui/layout/CPage.vue';
 import CPageSection from '@/components/ui/layout/CPageSection.vue';
 import CTable from '@/components/ui/table/CTable.vue';
@@ -43,7 +49,9 @@ import { onMounted, ref } from 'vue';
 
 const loading = ref<boolean>(true);
 
-const listItems = 15;
+const totalItems = ref<number>(0);
+const itemsPerPage = ref<number>(15);
+const currentPage = ref<number>(1);
 
 const users = ref<Array<{
     name: string,
@@ -53,9 +61,11 @@ const users = ref<Array<{
 }>>([]);
 
 const getUsers = async () => {
-    await fetch('https://dummyjson.com/users?limit=' + listItems + '&delay=5000', {}).then(async (response) => {
+    loading.value = true;
+    await fetch(`https://dummyjson.com/users?delay=5000&limit=${itemsPerPage.value}&skip=${currentPage.value}`).then(async (response) => {
         const r = await response.json();
 
+        totalItems.value = r.total;
         users.value = r.users.map((item: any) => {
             return {
                 name: item.firstName + ' ' + item.lastName,
@@ -67,6 +77,11 @@ const getUsers = async () => {
     }).finally(() => {
         loading.value = false;
     });
+};
+
+const changePage = (page: number): void => {
+    currentPage.value = page;
+    getUsers();
 };
 
 onMounted(() => {
