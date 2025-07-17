@@ -119,6 +119,11 @@ const router = createRouter({
               path: 'paginations',
               name: 'dash.docs.paginations',
               component: () => import('@/views/dash/doc/PaginationView.vue'),
+            },
+            {
+              path: 'dialogs',
+              name: 'dash.docs.dialogs',
+              component: () => import('@/views/dash/doc/DialogsView.vue'),
             }
           ]
         },

@@ -141,6 +141,13 @@
                                     name: 'dash.docs.paginations'
                                 },
                                 activeIn: ['dash.docs.paginations']
+                            },
+                            {
+                                label: 'Dialogs',
+                                to: {
+                                    name: 'dash.docs.dialogs'
+                                },
+                                activeIn: ['dash.docs.dialogs']
                             }
                         ]
                     }]" />
