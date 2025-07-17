@@ -17,9 +17,9 @@
 </template>
 
 <script setup lang="ts">
+
 import CDocSection from '@/components/dashboard/CDocSection.vue';
 import CPage from '@/components/ui/layout/CPage.vue';
-
 
 </script>
 
