@@ -3,6 +3,8 @@
 @plugin 'tailwind-scrollbar';
 @custom-variant dark (&:where(.dark, .dark *));
 
+@import "./animations";
+
 .custom-scrollbar {
   @apply scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700 scrollbar-track-zinc-100 dark:scrollbar-track-zinc-800;
 }

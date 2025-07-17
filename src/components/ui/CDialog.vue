@@ -3,7 +3,7 @@
         <Transition enter-from-class="opacity-0" enter-active-class="duration-200" leave-to-class="opacity-0"
             leave-active-class="duration-100">
             <div ref="dialogBackdrop" @click="closeDialog" v-show="visible"
-                class="bg-neutral-200/50 dark:bg-black/75 fixed left-0 top-0 w-full h-screen flex justify-center items-start p-6"
+                class="bg-black/75 dark:bg-black/90 fixed left-0 top-0 w-full h-screen flex justify-center items-start p-6"
                 style="z-index: 990;">
 
                 <Transition enter-from-class="opacity-25 scale-105" enter-active-class="duration-200"
@@ -81,7 +81,21 @@ const closeDialog = (event?: Event) => {
     }, 100);
 };
 
-const checkClosability = (target: EventTarget) => (dialogBackdrop.value === target && !props.persistent) || closeDialogButton.value === target;
+const checkClosability = (target: EventTarget) => {
+    if (target === dialogBackdrop.value) {
+        if (props.persistent) {
+            dialogContent.value?.classList.add('animate-shake');
+            setTimeout(() => {
+                dialogContent.value?.classList.remove('animate-shake');
+            }, 500);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    return target === closeDialogButton.value;
+};
 
 watch(() => props.modelValue, async (newValue: boolean, oldValue: boolean | undefined) => {
     if (newValue) {
