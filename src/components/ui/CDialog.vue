@@ -8,8 +8,14 @@
 
                 <Transition enter-from-class="opacity-25 scale-105" enter-active-class="duration-200"
                     leave-to-class="opacity-25 scale-105" leave-active-class="duration-100">
-                    <div ref="dialogContent" v-show="visibleContent" class="w-full max-w-[575px]">
-                        <CCard class="text-neutral-600 dark:text-neutral-50">
+                    <div ref="dialogContent" v-show="visibleContent" class="w-full flex" :class="{
+                        'sm': 'max-w-[375px]',
+                        'normal': 'max-w-[575px]',
+                        'lg': 'max-w-[875px]',
+                        'full': 'max-w-full',
+                        'screen': 'max-w-full h-full'
+                    }[props.size]">
+                        <CCard class="flex-1 text-neutral-600 dark:text-neutral-50">
                             <template #header>
                                 <div class="flex-1 flex items-center justify-between">
                                     <div class="w-full">
@@ -28,10 +34,14 @@
                                 </div>
                             </template>
 
-                            <slot />
+                            <div class="overflow-y-auto max-h-[66vh] custom-scrollbar">
+                                <slot />
+                            </div>
 
                             <template v-if="$slots.footer" #footer>
-                                <slot name="footer" />
+                                <div ref="footerEl">
+                                    <slot name="footer" />
+                                </div>
                             </template>
 
                         </CCard>
@@ -52,7 +62,9 @@ import CIcon from './CIcon.vue';
 
 const emit = defineEmits(['update:modelValue']);
 
-const props = withDefaults(defineProps<DialogProps>(), {});
+const props = withDefaults(defineProps<DialogProps>(), {
+    size: 'normal'
+});
 
 const dialogBackdrop = ref<HTMLElement | null>(null);
 const dialogContent = ref<HTMLElement | null>(null);

@@ -3,5 +3,6 @@ export interface DialogProps {
     persistent?: boolean,
     icon?: string,
     title?: string,
-    hideCloseButton?: boolean
+    hideCloseButton?: boolean,
+    size?: "sm" | "normal" | "lg" | "full"
 };
