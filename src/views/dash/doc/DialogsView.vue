@@ -6,7 +6,65 @@
                 title: 'CDialog',
                 texts: [
                     'Dialog component.'
-                ]
+                ],
+                componentDoc: {
+                    slots: [
+                        {
+                            name: 'default',
+                            desc: 'Default slot.',
+                        },
+                        {
+                            name: 'header',
+                            desc: 'Custom header content.',
+                        },
+                        {
+                            name: 'footer',
+                            desc: 'Custom footer content',
+                        }
+                    ],
+                    props: [
+                        {
+                            name: 'modelValue',
+                            type: 'boolean',
+                            required: true,
+                            desc: 'Define dialog visibility. When true, it shows, when false, it hides.',
+                            allowedValues: '---',
+                            defaultValue: '---'
+                        },
+                        {
+                            name: 'persistent',
+                            type: 'boolean',
+                            required: false,
+                            desc: 'When true, disables closing through click on the backdrop.',
+                            allowedValues: '---',
+                            defaultValue: '---'
+                        },
+                        {
+                            name: 'icon',
+                            type: 'string',
+                            required: false,
+                            desc: 'Dialog icon.',
+                            allowedValues: 'Requires a valid Bootstrap Icon class name.',
+                            defaultValue: '---'
+                        },
+                        {
+                            name: 'title',
+                            type: 'string',
+                            required: false,
+                            desc: 'Dialog title.',
+                            allowedValues: '---',
+                            defaultValue: '---'
+                        },
+                        {
+                            name: 'hideCloseButton',
+                            type: 'boolean',
+                            required: false,
+                            desc: 'Hides the close button in the dialog header.',
+                            allowedValues: '---',
+                            defaultValue: '---'
+                        }
+                    ]
+                }
             }
         ]">
 
@@ -56,19 +114,19 @@
                                 Custom <span class="font-semibold inline-block text-sky-300 ml-2">header</span>
                             </div>
                         </template>
-                        <template #footer>
+<template #footer>
                             <div class="flex items-center justify-between">
                                 <CButton color="info" label="Button" />
                                 <CButton @click="dialogB = false" color="danger" label="Close" />
                             </div>
                         </template>
-                    </CDialog>
+</CDialog>
 
-                    <CButton @click="dialogA = true" label="Show dialog A" />
-                    <CButton @click="dialogB = true" label="Show dialog B" />
+<CButton @click="dialogA = true" label="Show dialog A" />
+<CButton @click="dialogB = true" label="Show dialog B" />
 
-                    <!-- Script -->
-                     <script>
+<!-- Script -->
+<script>
                         const dialogA = ref<boolean>(false);
                         const dialogB = ref<boolean>(false);
                     </script></textarea>
