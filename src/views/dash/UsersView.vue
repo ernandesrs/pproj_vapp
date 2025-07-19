@@ -3,6 +3,11 @@
 
         <CPageSection with-grid>
 
+            <CDialogConfirmation v-model="userDeletionObject.confirmationDialog" :title="userDeletionObject.confirmationDialogTitle"
+                :text="userDeletionObject.confirmationDialogMessage" :on-confirm="{
+                    callback: deleteUserConfirmed
+                }" />
+
             <CTable class="col-span-12" :loading="loading" :lines-when-loading="itemsPerPage" :header="[
                 {
                     label: 'Name'
@@ -15,6 +20,9 @@
                 },
                 {
                     label: 'DoB'
+                },
+                {
+                    label: 'Actions'
                 }
             ]">
 
@@ -23,6 +31,11 @@
                     <CTableColumn :value="user.username" />
                     <CTableColumn :value="user.email" />
                     <CTableColumn :value="user.dob" />
+                    <CTableColumn>
+
+                        <CButton @click="deleteUser(user)" color="danger" variant="text" icon="trash" />
+
+                    </CTableColumn>
                 </CTableRow>
 
             </CTable>
@@ -39,13 +52,24 @@
 
 <script setup lang="ts">
 
+import CButton from '@/components/ui/CButton.vue';
+import CDialogConfirmation from '@/components/ui/CDialogConfirmation.vue';
 import CPagination from '@/components/ui/CPagination.vue';
 import CPage from '@/components/ui/layout/CPage.vue';
 import CPageSection from '@/components/ui/layout/CPageSection.vue';
 import CTable from '@/components/ui/table/CTable.vue';
 import CTableColumn from '@/components/ui/table/CTableColumn.vue';
 import CTableRow from '@/components/ui/table/CTableRow.vue';
+import { useApp } from '@/composables/useApp';
 import { onMounted, ref } from 'vue';
+
+interface UserType {
+    id: string | number,
+    name: string,
+    username: string,
+    email: string,
+    dob: string
+};
 
 const loading = ref<boolean>(true);
 
@@ -53,12 +77,19 @@ const totalItems = ref<number>(0);
 const itemsPerPage = ref<number>(15);
 const currentPage = ref<number>(1);
 
-const users = ref<Array<{
-    name: string,
-    username: string,
-    email: string,
-    dob: string
-}>>([]);
+const userDeletionObject = ref<{
+    confirmationDialog: boolean,
+    confirmationDialogTitle: string,
+    confirmationDialogMessage: string,
+    user: UserType | null
+}>({
+    confirmationDialog: false,
+    confirmationDialogTitle: 'Delete user?',
+    confirmationDialogMessage: 'Once you confirm the deletion, it can no longer be undone.',
+    user: null
+});
+
+const users = ref<Array<UserType>>([]);
 
 const getUsers = async () => {
     loading.value = true;
@@ -68,6 +99,7 @@ const getUsers = async () => {
         totalItems.value = r.total;
         users.value = r.users.map((item: any) => {
             return {
+                id: item.id,
                 name: item.firstName + ' ' + item.lastName,
                 username: item.username,
                 email: item.email,
@@ -76,6 +108,33 @@ const getUsers = async () => {
         });
     }).finally(() => {
         loading.value = false;
+    });
+};
+
+const deleteUser = (user: UserType) => {
+    userDeletionObject.value.confirmationDialog = true;
+    userDeletionObject.value.user = user;
+};
+
+const deleteUserConfirmed = async () => {
+    if (!userDeletionObject.value.user) return;
+
+    await fetch('https://dummyjson.com/users/' + userDeletionObject.value.user.id + '?delay=2500', {
+        method: 'DELETE',
+    }).then(() => {
+        users.value = users.value.filter((user) => user.id != userDeletionObject.value.user?.id);
+
+        useApp().addToast({
+            type: 'success',
+            message: 'Deleted!',
+            caption: 'The user was successfully deleted.'
+        });
+    }).catch(() => {
+        useApp().addToast({
+            type: 'error',
+            message: 'Fail on delete!',
+            caption: 'Something unexpected happened while deleting user.'
+        });
     });
 };
 
