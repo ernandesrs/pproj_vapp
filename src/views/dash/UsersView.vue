@@ -1,10 +1,27 @@
 <template>
-    <CPage :loading="loading" title="Users">
+    <CPage :loading="loading" title="Users" without-header>
+
+        <CPageSection uncontained with-grid>
+            <div class="col-span-12 flex flex-col justify-center items-center gap-2.5 bg-violet-200 dark:bg-violet-400/45 cursor-default text-center p-12 md:p-20 mt-8">
+                <h1 class="text-2xl md:text-3xl lg:text-4xl font-semibold">
+                    Using DummyJSON
+                </h1>
+
+                <p class="text-lg lg:text-xl font-medium py-2.5">
+                    Free Fake REST API for Placeholder JSON Data
+                </p>
+
+                <div>
+                    <a href="https://dummyjson.com" target="_blank" class="bg-violet-700 dark:bg-violet-800 hover:bg-violet-600 dark:hover:bg-violet-700 hover:shadow duration-300 text-white px-12 py-4 rounded-lg inline-block">Go to DummyJSON</a>
+                </div>
+            </div>
+        </CPageSection>
 
         <CPageSection with-grid>
 
-            <CDialogConfirmation v-model="userDeletionObject.confirmationDialog" :title="userDeletionObject.confirmationDialogTitle"
-                :text="userDeletionObject.confirmationDialogMessage" :on-confirm="{
+            <CDialogConfirmation v-model="userDeletionObject.confirmationDialog"
+                :title="userDeletionObject.confirmationDialogTitle" :text="userDeletionObject.confirmationDialogMessage"
+                :on-confirm="{
                     callback: deleteUserConfirmed
                 }" />
 
