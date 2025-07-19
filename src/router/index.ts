@@ -124,6 +124,11 @@ const router = createRouter({
               path: 'dialogs',
               name: 'dash.docs.dialogs',
               component: () => import('@/views/dash/doc/DialogsView.vue'),
+            },
+            {
+              path: 'dropdowns',
+              name: 'dash.docs.dropdowns',
+              component: () => import('@/views/dash/doc/DropdownView.vue'),
             }
           ]
         },

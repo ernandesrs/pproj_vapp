@@ -148,6 +148,13 @@
                                     name: 'dash.docs.dialogs'
                                 },
                                 activeIn: ['dash.docs.dialogs']
+                            },
+                            {
+                                label: 'Dropdowns',
+                                to: {
+                                    name: 'dash.docs.dropdowns'
+                                },
+                                activeIn: ['dash.docs.dropdowns']
                             }
                         ]
                     }]" />
