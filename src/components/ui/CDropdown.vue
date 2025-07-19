@@ -12,7 +12,7 @@
             <template v-if="$slots.activator">
                 <slot name="activator" />
             </template>
-            <div v-else v-text="props.label"
+            <div v-else v-text="props.activatorLabel"
                 class="bg-gray-200 dark:bg-gray-900 hover:bg-gray-300 dark:hover:bg-gray-800 duration-300 text-neutral-600 dark:text-neutral-50 px-3 py-2 rounded-md select-none" />
         </div>
         <Transition
@@ -40,7 +40,7 @@ import type { DropdownProps } from '@/types/components/ui/dropdown_type';
 import { ref } from 'vue';
 
 const props = withDefaults(defineProps<DropdownProps>(), {
-    label: 'Dropdown',
+    activatorLabel: 'Dropdown',
     location: 'left'
 });
 
