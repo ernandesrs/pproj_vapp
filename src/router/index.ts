@@ -129,6 +129,11 @@ const router = createRouter({
               path: 'dropdowns',
               name: 'dash.docs.dropdowns',
               component: () => import('@/views/dash/doc/DropdownView.vue'),
+            },
+            {
+              path: 'tooltips',
+              name: 'dash.docs.tooltips',
+              component: () => import('@/views/dash/doc/TooltipsView.vue'),
             }
           ]
         },

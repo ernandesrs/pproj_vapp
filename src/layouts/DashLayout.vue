@@ -155,6 +155,13 @@
                                     name: 'dash.docs.dropdowns'
                                 },
                                 activeIn: ['dash.docs.dropdowns']
+                            },
+                            {
+                                label: 'Tooltips',
+                                to: {
+                                    name: 'dash.docs.tooltips'
+                                },
+                                activeIn: ['dash.docs.tooltips']
                             }
                         ]
                     }]" />
