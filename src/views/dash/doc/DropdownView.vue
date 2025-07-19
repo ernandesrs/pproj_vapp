@@ -28,7 +28,7 @@
                     </CCard>
                 </CDropdown>
 
-                <CDropdown width="w-[425px]">
+                <CDropdown width="w-[425px]" location="center">
                     <template #activator>
                         <CButton icon="rocket-fill" label="Lorem dropdown" />
                     </template>
