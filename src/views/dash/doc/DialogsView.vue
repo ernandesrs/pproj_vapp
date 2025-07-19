@@ -70,6 +70,14 @@
                             desc: 'Dialog sizes.',
                             allowedValues: 'sm, normal, lg, full',
                             defaultValue: 'normal'
+                        },
+                        {
+                            name: 'location',
+                            type: 'string',
+                            required: false,
+                            desc: 'Dialog location.',
+                            allowedValues: 'top, center, bottom',
+                            defaultValue: 'top'
                         }
                     ]
                 }
@@ -82,8 +90,8 @@
                         This is a dialog with icon and title
                     </CDialog>
 
-                    <CDialog v-model="dialogB" persistent hide-close-button>
-                        This is a persistent dialog, with custom header, without close button and with a custom close
+                    <CDialog v-model="dialogB" location="center" persistent hide-close-button>
+                        This is a centered and persistent dialog, with custom header, without close button and with a custom close
                         button on footer, or you can <a href="#" class="text-sky-600"
                             @click.prevent="dialogB = false">click here to
                             close</a>.
@@ -269,12 +277,6 @@
 
         </CDocSection>
 
-        <!--
-                    title?: string,
-                    text?: string,
-                    onConfirm: onConfirm,
-                    onCancel?: onCancel,
-                    size?: "sm" | "normal" | "lg" | "full" -->
         <CDocSection :data="[
             {
                 tag: 'h1',

@@ -4,7 +4,8 @@ export interface DialogProps {
     icon?: string,
     title?: string,
     hideCloseButton?: boolean,
-    size?: "sm" | "normal" | "lg" | "full"
+    size?: "sm" | "normal" | "lg" | "full",
+    location?: "top" | "center" | "bottom"
 };
 
 export interface onConfirm {

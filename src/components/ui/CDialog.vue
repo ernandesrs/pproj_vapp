@@ -3,8 +3,11 @@
         <Transition enter-from-class="opacity-0" enter-active-class="duration-200" leave-to-class="opacity-0"
             leave-active-class="duration-100">
             <div ref="dialogBackdrop" @click="closeDialog" v-show="visible"
-                class="bg-black/75 dark:bg-black/90 fixed left-0 top-0 w-full h-screen flex justify-center items-start p-6"
-                style="z-index: 990;">
+                class="bg-black/75 dark:bg-black/90 fixed left-0 top-0 w-full h-screen flex justify-center p-6" :class="{
+                    top: 'items-start',
+                    center: 'items-center',
+                    bottom: 'items-end'
+                }[props.location]" style="z-index: 990;">
 
                 <Transition enter-from-class="opacity-25 scale-105" enter-active-class="duration-200"
                     leave-to-class="opacity-25 scale-105" leave-active-class="duration-100">
@@ -63,7 +66,8 @@ import CIcon from './CIcon.vue';
 const emit = defineEmits(['update:modelValue']);
 
 const props = withDefaults(defineProps<DialogProps>(), {
-    size: 'normal'
+    size: 'normal',
+    location: 'top'
 });
 
 const dialogBackdrop = ref<HTMLElement | null>(null);
