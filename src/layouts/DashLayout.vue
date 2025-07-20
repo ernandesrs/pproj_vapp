@@ -33,7 +33,7 @@
                             to: {
                                 name: 'dash.users'
                             },
-                            activeIn: ['dash.users']
+                            activeIn: ['dash.users', 'dash.users.info']
                         }
                     ]" />
 

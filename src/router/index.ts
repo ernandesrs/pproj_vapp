@@ -43,8 +43,18 @@ const router = createRouter({
         },
         {
           path: 'users',
-          name: 'dash.users',
-          component: () => import('@/views/dash/UsersView.vue')
+          children: [
+            {
+              path: '',
+              name: 'dash.users',
+              component: () => import('@/views/dash/UsersView.vue')
+            },
+            {
+              path: 'info/:user_id',
+              name: 'dash.users.info',
+              component: () => import('@/views/dash/UserInfoView.vue')
+            }
+          ]
         },
 
         {

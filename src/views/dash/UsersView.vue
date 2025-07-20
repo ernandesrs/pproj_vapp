@@ -2,7 +2,8 @@
     <CPage :loading="loading" title="Users" without-header>
 
         <CPageSection uncontained with-grid>
-            <div class="col-span-12 flex flex-col justify-center items-center gap-2.5 bg-violet-200 dark:bg-violet-400/45 cursor-default text-center p-12 md:p-20 mt-8">
+            <div
+                class="col-span-12 flex flex-col justify-center items-center gap-2.5 bg-violet-200 dark:bg-violet-400/45 cursor-default text-center p-12 md:p-20 mt-8">
                 <h1 class="text-2xl md:text-3xl lg:text-4xl font-semibold">
                     Using DummyJSON
                 </h1>
@@ -12,7 +13,9 @@
                 </p>
 
                 <div>
-                    <a href="https://dummyjson.com" target="_blank" class="bg-violet-700 dark:bg-violet-800 hover:bg-violet-600 dark:hover:bg-violet-700 hover:shadow duration-300 text-white px-12 py-4 rounded-lg inline-block">Go to DummyJSON</a>
+                    <a href="https://dummyjson.com" target="_blank"
+                        class="bg-violet-700 dark:bg-violet-800 hover:bg-violet-600 dark:hover:bg-violet-700 hover:shadow duration-300 text-white px-12 py-4 rounded-lg inline-block">Go
+                        to DummyJSON</a>
                 </div>
             </div>
         </CPageSection>
@@ -51,6 +54,9 @@
                     <CTableColumn>
 
                         <CButton @click="deleteUser(user)" color="danger" variant="text" icon="trash" />
+                        <RouterLink :to="{ name: 'dash.users.info', params: { user_id: user.id } }">
+                            <CButton color="info" variant="text" icon="pencil" class="pointer-events-none" />
+                        </RouterLink>
 
                     </CTableColumn>
                 </CTableRow>
@@ -79,14 +85,7 @@ import CTableColumn from '@/components/ui/table/CTableColumn.vue';
 import CTableRow from '@/components/ui/table/CTableRow.vue';
 import { useApp } from '@/composables/useApp';
 import { onMounted, ref } from 'vue';
-
-interface UserType {
-    id: string | number,
-    name: string,
-    username: string,
-    email: string,
-    dob: string
-};
+import type { User as UserType } from '@/types/user_type';
 
 const loading = ref<boolean>(true);
 
