@@ -5,8 +5,47 @@
             {
                 tag: 'h1',
                 title: 'CTooltip',
-                texts: [],
-                componentDoc: {}
+                texts: [
+                    'Tooltip component.'
+                ],
+                componentDoc: {
+                    slots: [
+                        {
+                            name: 'default',
+                            desc: 'Default slot component.'
+                        },
+                        {
+                            name: 'tooltip',
+                            desc: 'Slot to custom tooltip content.'
+                        }
+                    ],
+                    props: [
+                        {
+                            name: 'text',
+                            type: 'string',
+                            required: false,
+                            desc: 'The tooltip text. Alternatively, you can set a custom content without slot <b>tooltip</b>.',
+                            allowedValues: '---',
+                            defaultValue: '---'
+                        },
+                        {
+                            name: 'width',
+                            type: 'string',
+                            required: false,
+                            desc: 'The tooltip content width. Requires a valid Tailwind CSS class.',
+                            allowedValues: 'w-*, max-w-*, *:w-*, *:max-w-*',
+                            defaultValue: 'w-full'
+                        },
+                        {
+                            name: 'location',
+                            type: 'string',
+                            required: false,
+                            desc: 'The tooltip content location.',
+                            allowedValues: 'left, center, right, top-left, top-center, top-right',
+                            defaultValue: 'left'
+                        }
+                    ]
+                }
             }
         ]">
 
@@ -50,7 +89,39 @@
 
             <template #codes>
                 <textarea>
-                </textarea>
+                    <CCard class="col-span-12" title="Tooltip in text">
+                        <p>
+                            Lorem ipsum dolor sit amet <CTooltip text="Tooltip text lorem ipsum" width="w-[125px]"
+                                class="text-rose-500 dark:text-rose-700">this
+                                is a Tooltip</CTooltip> elit. Veniam, asperiores pariatur quos
+                            iste voluptates expedita. Deleniti sit unde iure cum corrupti tenetur neque suscipit.
+                            Laborum aliquam facilis quod delectus velit <span class="inline">
+                                <CTooltip text="Lorem ipsum dolor sit" width="w-[225px]"><a
+                                        class="text-violet-500 dark:text-violet-700" href="">this is other Tooltip</a>
+                                </CTooltip>
+                            </span> ipsum dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </CCard>
+
+                    <CTooltip text="Lorem tooltip consectetur adipisicing elit" width="w-[150px]">
+                        <CButton label="Tooltip in a button" />
+                    </CTooltip>
+
+                    <CTooltip text="Lorem tooltip consectetur adipisicing elit" width="w-[150px] sm:w-[250px]"
+                            location="top-left">
+                        <CButton label="Tooltip in a button" />
+                    </CTooltip>
+
+                    <CTooltip width="w-[150px] sm:w-[250px]" location="top-center">
+                        <CButton label="Custom tooltip content" />
+
+                        <template #tooltip>
+                            <div class="flex flex-col items-center text-center py-2.5">
+                                <CIcon name="rocket-fill" class="text-2xl md:text-3xl mb-2.5" />
+                                <p>Lorem tooltip consectetur <span class="font-semibold">adipisicing elit</span>!</p>
+                            </div>
+                        </template>
+                    </CTooltip></textarea>
             </template>
 
         </CDocSection>
