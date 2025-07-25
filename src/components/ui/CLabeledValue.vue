@@ -10,7 +10,7 @@
         <span v-if="!props.loading"
             class="w-full inline-block text-nowrap truncate text-neutral-700 dark:text-neutral-200">{{ props.value
             }}</span>
-        <CSkeleton v-else height="h-[20px]" />
+        <CSkeleton v-else height="h-[20px]" class="mt-1" />
     </div>
 </template>
 

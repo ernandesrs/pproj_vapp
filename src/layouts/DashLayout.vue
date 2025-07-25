@@ -162,6 +162,13 @@
                                     name: 'dash.docs.tooltips'
                                 },
                                 activeIn: ['dash.docs.tooltips']
+                            },
+                            {
+                                label: 'Texts',
+                                to: {
+                                    name: 'dash.docs.texts'
+                                },
+                                activeIn: ['dash.docs.texts']
                             }
                         ]
                     }]" />
