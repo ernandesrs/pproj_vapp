@@ -5,10 +5,10 @@
             icon: props.icon,
             to: ''
         }" class="hover:!pl-6" />
-        <Transition enter-from-class="opacity-0 -translate-y-1/12"
+        <Transition enter-from-class="opacity-0 -translate-y-[24px]"
             enter-active-class="duration-200 ease-in-out pointer-events-none"
-            leave-to-class="opacity-0 -translate-y-1/12" leave-active-class="duration-200 ease-out pointer-events-none">
-            <CSidebarNav v-show="isShow" subnav :items="items" class="ml-6" />
+            leave-to-class="opacity-0 -translate-y-[24px]" leave-active-class="duration-200 ease-out pointer-events-none">
+            <CSidebarNav v-show="show" subnav :items="items" class="ml-6" />
         </Transition>
     </div>
 </template>
@@ -18,7 +18,7 @@
 import type { SidebarSubnavProps } from '@/types/components/dashboard/sidebar_type';
 import CSidebarLink from './CSidebarLink.vue';
 import CSidebarNav from './CSidebarNav.vue';
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 const props = withDefaults(defineProps<SidebarSubnavProps>(), {
@@ -33,8 +33,12 @@ const getActiveInRoutes = computed((): Array<string> => {
     return props.items.map((v) => v.activeIn ?? []).flat();
 });
 
-const isShow = computed((): boolean => {
-    return show.value || getActiveInRoutes.value.includes(route.name as string);
+onMounted(() => {
+
+    if (getActiveInRoutes.value.includes(route.name as string)) {
+        show.value = true;
+    }
+
 });
 
 </script>
