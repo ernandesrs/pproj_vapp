@@ -1,7 +1,7 @@
 <template>
     <CPage title="Form" without-header>
 
-        <CDocSection title="Form" :data="[
+        <CDocSection :data="[
             {
                 tag: 'h1',
                 title: 'CForm',
