@@ -2,7 +2,7 @@
     <CPage title="Dashboard overview" without-header :loading="loading">
         <CPageSection with-grid>
 
-            <CCard class="col-span-12">
+            <CCard class="col-span-6">
                 <div class="h-[250px]">
                     <CLineChart :labels="['Jan', 'Feb', 'Mar', 'Apr', 'May']" :datasets="[
                         {
@@ -21,13 +21,13 @@
                 </div>
             </CCard>
 
-            <CCard class="col-span-7">
+            <CCard class="col-span-6">
                 <div class="flex justify-center">
                     <CBarChart :labels="chartLabels" :datasets="chartDataSets" />
                 </div>
             </CCard>
 
-            <CCard class="col-span-5">
+            <CCard class="col-span-12 sm:col-span-6">
                 <div class="flex justify-center h-[225px]">
                     <CPieChart :labels="['JAN', 'FEB', 'MAR']" :datasets="[
                         {
@@ -65,7 +65,7 @@
                 magnam, quasi velit cupiditate?
             </CCard>
 
-            <CCard class="col-span-12 sm:col-span-6" title="Lorem title" minimizable global-loading>
+            <CCard class="col-span-12" title="Lorem title" minimizable global-loading>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa dolor accusantium exercitationem suscipit
                 possimus tempora quia, laudantium non voluptate culpa consequatur vero blanditiis. Aut aspernatur ex
                 magnam, quasi velit cupiditate?
