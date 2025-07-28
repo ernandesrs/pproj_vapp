@@ -9,14 +9,9 @@
 
 import { Pie } from 'vue-chartjs';
 import { useBaseChart } from '@/composables/components/ui/useBaseChart';
-import type { PieChartDataSet } from '@/types/components/ui/chart_type';
+import type { ChartProps, PieChartDataSet } from '@/types/components/ui/chart_type';
 
-const props = withDefaults(defineProps<{
-    id?: string,
-    title?: string,
-    labels: Array<string>,
-    datasets: Array<PieChartDataSet>
-}>(), {});
+const props = withDefaults(defineProps<ChartProps<PieChartDataSet>>(), {});
 
 const { getId, getOptions } = useBaseChart('pie', { id: props.id, title: props.title });
 

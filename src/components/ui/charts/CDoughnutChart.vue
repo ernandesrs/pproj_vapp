@@ -8,15 +8,10 @@
 <script setup lang="ts">
 
 import { useBaseChart } from '@/composables/components/ui/useBaseChart';
-import type { DoughnutChartDataSet } from '@/types/components/ui/chart_type';
+import type { ChartProps, DoughnutChartDataSet } from '@/types/components/ui/chart_type';
 import { Doughnut } from 'vue-chartjs';
 
-const props = withDefaults(defineProps<{
-    id?: string,
-    title?: string,
-    labels: Array<string>,
-    datasets: Array<DoughnutChartDataSet>
-}>(), {});
+const props = withDefaults(defineProps<ChartProps<DoughnutChartDataSet>>(), {});
 
 const { getId, getOptions } = useBaseChart('doughnut', { id: props.id, title: props.title });
 

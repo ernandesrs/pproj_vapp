@@ -9,14 +9,9 @@
 
 import { Line } from 'vue-chartjs';
 import { useBaseChart } from '@/composables/components/ui/useBaseChart';
-import type { LineChartDataSet } from '@/types/components/ui/chart_type';
+import type { ChartProps, LineChartDataSet } from '@/types/components/ui/chart_type';
 
-const props = withDefaults(defineProps<{
-    id?: string,
-    title?: string,
-    labels: Array<string>,
-    datasets: Array<LineChartDataSet>
-}>(), {});
+const props = withDefaults(defineProps<ChartProps<LineChartDataSet>>(), {});
 
 const { getId, getOptions } = useBaseChart('line', { id: props.id, title: props.title });
 

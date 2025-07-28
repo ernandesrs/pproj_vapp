@@ -70,3 +70,10 @@ export interface DoughnutChartDataSet extends BaseChartDataSet {
     backgroundColor?: ChartColor[],
     data: number[],
 };
+
+export interface ChartProps<T> {
+    id?: string,
+    title?: string,
+    labels: Array<string>,
+    datasets: Array<T>
+};

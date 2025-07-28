@@ -9,14 +9,9 @@
 
 import { Bar } from 'vue-chartjs';
 import { useBaseChart } from '@/composables/components/ui/useBaseChart';
-import type { BarChartDataSet } from '@/types/components/ui/chart_type';
+import type { BarChartDataSet, ChartProps } from '@/types/components/ui/chart_type';
 
-const props = withDefaults(defineProps<{
-    id?: string,
-    title?: string,
-    labels: Array<string>,
-    datasets: Array<BarChartDataSet>
-}>(), {});
+const props = withDefaults(defineProps<ChartProps<BarChartDataSet>>(), {});
 
 const { getId, getOptions } = useBaseChart('bar', { id: props.id, title: props.title });
 
