@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex w-full h-screen bg-radial-[at_0%_35%] from-35% to-100% from-white to-neutral-50 dark:from-neutral-950 dark:to-black text-neutral-700 dark:text-neutral-100 relative overflow-hidden">
+        class="flex w-full h-screen bg-radial-[at_0%_35%] from-35% to-100% from-neutral-100 to-neutral-200 dark:from-neutral-950 dark:to-black text-neutral-700 dark:text-neutral-100 relative overflow-hidden">
 
         <Transition enter-from-class="opacity-0" enter-to-class="opacity-100"
             enter-active-class="duration-200 ease-in-out" leave-from-class="opacity-100" leave-to-class="opacity-0"
