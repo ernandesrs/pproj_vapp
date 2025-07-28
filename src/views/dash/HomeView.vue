@@ -29,7 +29,7 @@
 
             <CCard class="col-span-12 sm:col-span-6">
                 <div class="flex justify-center h-[325px]">
-                    <CDoughnutChart :labels="['JAN', 'FEB', 'MAR', 'APR']" :datasets="[
+                    <CDoughnutChart :labels="['JAN', 'FEB', 'MAR']" :datasets="[
                         {
                             backgroundColor: [
                                 ChartColors.EMERALD,
