@@ -28,14 +28,29 @@
             </CCard>
 
             <CCard class="col-span-12 sm:col-span-6">
-                <div class="flex justify-center h-[225px]">
+                <div class="flex justify-center h-[325px]">
+                    <CDoughnutChart :labels="['JAN', 'FEB', 'MAR', 'APR']" :datasets="[
+                        {
+                            backgroundColor: [
+                                ChartColors.EMERALD,
+                                ChartColors.BLUE,
+                                ChartColors.RED
+                            ],
+                            data: [45, 35, 75]
+                        }
+                    ]" />
+                </div>
+            </CCard>
+
+            <CCard class="col-span-12 sm:col-span-6">
+                <div class="flex justify-center h-[325px]">
                     <CPieChart :labels="['JAN', 'FEB', 'MAR']" :datasets="[
                         {
                             data: [100, 50, 175],
                             backgroundColor: [
-                                ChartColors.GREEN,
                                 ChartColors.EMERALD,
-                                ChartColors.LIME,
+                                ChartColors.BLUE,
+                                ChartColors.RED
                             ]
                         }
                     ]" />
@@ -65,7 +80,7 @@
                 magnam, quasi velit cupiditate?
             </CCard>
 
-            <CCard class="col-span-12" title="Lorem title" minimizable global-loading>
+            <CCard class="col-span-12 sm:col-span-6" title="Lorem title" minimizable global-loading>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa dolor accusantium exercitationem suscipit
                 possimus tempora quia, laudantium non voluptate culpa consequatur vero blanditiis. Aut aspernatur ex
                 magnam, quasi velit cupiditate?
@@ -87,6 +102,7 @@ import { ChartColors, type BarChartDataSet } from '@/types/components/ui/chart_t
 import { getRandomIntBetween } from '@/utils/functions';
 import CPieChart from '@/components/ui/charts/CPieChart.vue';
 import CLineChart from '@/components/ui/charts/CLineChart.vue';
+import CDoughnutChart from '@/components/ui/charts/CDoughnutChart.vue';
 
 const loading = ref<boolean>(true);
 
@@ -94,17 +110,17 @@ const chartDataSets = ref<Array<BarChartDataSet>>([
     {
         label: 'Data #1',
         data: [25, 10, 50, 60],
-        backgroundColor: ChartColors.BLUE
+        backgroundColor: ChartColors.EMERALD
     },
     {
         label: 'Data #2',
         data: [215, 110, 250, 160],
-        backgroundColor: ChartColors.SKY
+        backgroundColor: ChartColors.BLUE
     },
     {
         label: 'Data #3',
         data: [251, 110, 50, 260],
-        backgroundColor: ChartColors.VIOLET
+        backgroundColor: ChartColors.RED
     }
 ]);
 

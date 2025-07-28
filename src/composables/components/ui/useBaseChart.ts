@@ -31,7 +31,7 @@ ChartJS.defaults.backgroundColor = [
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, ArcElement, LineElement, PointElement, CategoryScale, LinearScale);
 
-export function useBaseChart<T>(type: "bar" | "pie" | "line" | "area", props: {
+export function useBaseChart<T>(type: "bar" | "pie" | "line" | "area" | "doughnut", props: {
     id: string | undefined
 }) {
     const { isDarkTheme } = useApp();
@@ -45,6 +45,9 @@ export function useBaseChart<T>(type: "bar" | "pie" | "line" | "area", props: {
             responsive: true,
             maintainAspectRatio: true,
             datasets: {
+                doughnut: {
+                    borderColor: isDarkTheme() ? '#171717' : '#f5f5f5'
+                },
                 pie: {
                     borderColor: isDarkTheme() ? '#171717' : '#f5f5f5'
                 },

@@ -65,3 +65,8 @@ export interface LineChartDataSet extends BaseChartDataSet {
     backgroundColor?: ChartColor | ChartColor[],
     data: Array<number | Point>,
 };
+
+export interface DoughnutChartDataSet extends BaseChartDataSet {
+    backgroundColor?: ChartColor[],
+    data: number[],
+};
