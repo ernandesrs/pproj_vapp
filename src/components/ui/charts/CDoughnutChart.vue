@@ -13,11 +13,12 @@ import { Doughnut } from 'vue-chartjs';
 
 const props = withDefaults(defineProps<{
     id?: string,
+    title?: string,
     labels: Array<string>,
     datasets: Array<DoughnutChartDataSet>
 }>(), {});
 
-const { getId, getOptions } = useBaseChart('doughnut', { id: props.id });
+const { getId, getOptions } = useBaseChart('doughnut', { id: props.id, title: props.title });
 
 </script>
 

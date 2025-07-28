@@ -1,5 +1,5 @@
 import { computed } from "vue";
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, ArcElement, LineElement, PointElement, CategoryScale, LinearScale, type LineOptions } from 'chart.js';
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, ArcElement, LineElement, PointElement, CategoryScale, LinearScale, type LineOptions, plugins } from 'chart.js';
 import { ChartColors } from "@/types/components/ui/chart_type";
 import { useApp } from "@/composables/useApp";
 
@@ -32,8 +32,10 @@ ChartJS.defaults.backgroundColor = [
 ChartJS.register(Title, Tooltip, Legend, BarElement, ArcElement, LineElement, PointElement, CategoryScale, LinearScale);
 
 export function useBaseChart<T>(type: "bar" | "pie" | "line" | "area" | "doughnut", props: {
-    id: string | undefined
+    id: string | undefined,
+    title: string | undefined
 }) {
+    const fontFamily = 'ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
     const { isDarkTheme } = useApp();
 
     const getId = computed(() => {
@@ -44,6 +46,33 @@ export function useBaseChart<T>(type: "bar" | "pie" | "line" | "area" | "doughnu
         return {
             responsive: true,
             maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    // position: 'bottom',
+                    title: {
+                        display: true,
+                    },
+                    labels: {
+                        font: {
+                            family: fontFamily,
+                            weight: 400
+                        },
+                        color: isDarkTheme() ? '#B5B5B5' : '#828282'
+                    }
+                },
+                title: {
+                    display: props.title ? true : false,
+                    text: props.title,
+                    color: isDarkTheme() ? '#E0E0E0' : '#525252',
+                    // position: 'top',
+                    font: {
+                        family: fontFamily,
+                        size: 15,
+                        weight: 600
+                    }
+                }
+            },
             datasets: {
                 doughnut: {
                     borderColor: isDarkTheme() ? '#171717' : '#f5f5f5'
@@ -62,6 +91,6 @@ export function useBaseChart<T>(type: "bar" | "pie" | "line" | "area" | "doughnu
 
     return {
         getId,
-        getOptions
+        getOptions,
     };
 };

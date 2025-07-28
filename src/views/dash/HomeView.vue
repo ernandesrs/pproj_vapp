@@ -4,7 +4,7 @@
 
             <CCard class="col-span-6">
                 <div class="h-[250px]">
-                    <CLineChart :labels="['Jan', 'Feb', 'Mar', 'Apr', 'May']" :datasets="[
+                    <CLineChart title="Loremd olor" :labels="['Jan', 'Feb', 'Mar', 'Apr', 'May']" :datasets="[
                         {
                             label: 'Line #1',
                             data: [10, 20, 15, 10, 25],

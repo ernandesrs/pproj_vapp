@@ -13,11 +13,12 @@ import type { BarChartDataSet } from '@/types/components/ui/chart_type';
 
 const props = withDefaults(defineProps<{
     id?: string,
+    title?: string,
     labels: Array<string>,
     datasets: Array<BarChartDataSet>
 }>(), {});
 
-const { getId, getOptions } = useBaseChart('bar', { id: props.id });
+const { getId, getOptions } = useBaseChart('bar', { id: props.id, title: props.title });
 
 </script>
 

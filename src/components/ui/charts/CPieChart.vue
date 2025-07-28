@@ -13,11 +13,12 @@ import type { PieChartDataSet } from '@/types/components/ui/chart_type';
 
 const props = withDefaults(defineProps<{
     id?: string,
+    title?: string,
     labels: Array<string>,
     datasets: Array<PieChartDataSet>
 }>(), {});
 
-const { getId, getOptions } = useBaseChart('pie', { id: props.id });
+const { getId, getOptions } = useBaseChart('pie', { id: props.id, title: props.title });
 
 </script>
 

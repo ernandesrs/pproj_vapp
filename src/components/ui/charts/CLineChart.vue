@@ -13,11 +13,12 @@ import type { LineChartDataSet } from '@/types/components/ui/chart_type';
 
 const props = withDefaults(defineProps<{
     id?: string,
+    title?: string,
     labels: Array<string>,
     datasets: Array<LineChartDataSet>
 }>(), {});
 
-const { getId, getOptions } = useBaseChart('line', { id: props.id });
+const { getId, getOptions } = useBaseChart('line', { id: props.id, title: props.title });
 
 </script>
 
