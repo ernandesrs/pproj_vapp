@@ -169,6 +169,13 @@
                                     name: 'dash.docs.texts'
                                 },
                                 activeIn: ['dash.docs.texts']
+                            },
+                            {
+                                label: 'Charts',
+                                to: {
+                                    name: 'dash.docs.charts'
+                                },
+                                activeIn: ['dash.docs.charts']
                             }
                         ]
                     }]" />

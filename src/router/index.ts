@@ -149,6 +149,11 @@ const router = createRouter({
               path: 'texts',
               name: 'dash.docs.texts',
               component: () => import('@/views/dash/doc/TextsView.vue'),
+            },
+            {
+              path: 'charts',
+              name: 'dash.docs.charts',
+              component: () => import('@/views/dash/doc/ChartsView.vue'),
             }
           ]
         },
