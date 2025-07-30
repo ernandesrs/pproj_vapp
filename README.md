@@ -1,20 +1,23 @@
-# vapp
+# VAPP
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a Vue JS 3 project with several components for a dashboard, aimed at studying Vue 3 with the Composition API and TypeScript.
 
-## Recommended IDE Setup
+## VAPP PREVIEW
+![vapp-home-preview](./src/assets/vapp%20home.png)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## IMPLEMENTAÇÕES
+- Simple home page
+- Login page
+- Register page
+- Various components:
+    - Table, card, dialog, buttons, dropdown, and more.
+    - Form components, base and input, select and upload:
+        - The form components, both the base component and the input components, are capable of handling client-side validation.
+        - The form components also accept injection of error messages received from the server.
+    - Charts, using Vue Chart JS library.
+- Basic dashboard using the implemented components.
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+# Project Setup
 
 ```sh
 npm install
